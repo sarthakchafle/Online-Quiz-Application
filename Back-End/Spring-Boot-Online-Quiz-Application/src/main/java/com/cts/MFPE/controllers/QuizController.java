@@ -3,6 +3,7 @@ package com.cts.MFPE.controllers;
 import com.cts.MFPE.models.quizData.Quiz;
 import com.cts.MFPE.payload.response.MessageResponse;
 import com.cts.MFPE.payload.response.QuestionAnswerResponse;
+import com.cts.MFPE.payload.response.QuizTitleResponse;
 import com.cts.MFPE.security.services.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -55,7 +56,7 @@ public class QuizController {
     @GetMapping("/getAllTitles")
     @PreAuthorize("hasRole('ADMIN')")
     @ResponseBody
-    public List<String> getAllQuizzesByTitle() {
+    public List<QuizTitleResponse> getAllQuizzesByTitle() {
         return service.getAllQuizzesByTitle();
     }
 

@@ -2,6 +2,7 @@ package com.cts.MFPE.security.services;
 
 import com.cts.MFPE.models.quizData.Quiz;
 import com.cts.MFPE.payload.response.QuestionAnswerResponse;
+import com.cts.MFPE.payload.response.QuizTitleResponse;
 import com.cts.MFPE.repository.QuizRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,7 +36,7 @@ public class QuizServiceImpl implements QuizService {
     }
 
     @Override
-    public List<String> getAllQuizzesByTitle() {
+    public List<QuizTitleResponse> getAllQuizzesByTitle() {
         return quizRepository.findAllQuizzesByTitle();
     }
 

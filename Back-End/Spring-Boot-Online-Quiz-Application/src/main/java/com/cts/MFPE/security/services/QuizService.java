@@ -7,13 +7,13 @@ import com.cts.MFPE.payload.response.QuizTitleResponse;
 import java.util.List;
 
 public interface QuizService {
-    public Quiz saveQuiz(Quiz quiz);
-    public List<Quiz> getAllQuizzes();
+     Quiz saveQuiz(Quiz quiz);
+    List<Quiz> getAllQuizzes();
 
-    public Quiz findByTitle(String title);
-    public Boolean existsByTitle(String title);
+    Quiz findByTitle(String title);
+    Boolean existsByTitle(String title);
 
-    public List<QuizTitleResponse> getAllQuizzesByTitle();
+   List<QuizTitleResponse> getAllQuizzesByTitle();
 
-    public List<QuestionAnswerResponse> getQuestionAnswer(String title);
+    List<QuestionAnswerResponse> getQuestionAnswer(String title);
 }

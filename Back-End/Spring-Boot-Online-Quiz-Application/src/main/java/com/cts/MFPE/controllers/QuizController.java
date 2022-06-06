@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
-
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -39,6 +37,7 @@ public class QuizController {
 //Get all the quizzes
     @GetMapping("/getAllQuizzes")
     @PreAuthorize("hasRole('ADMIN')")
+    @ResponseBody
     public List<Quiz> getAllQuizzes() {
         return service.getAllQuizzes();
     }

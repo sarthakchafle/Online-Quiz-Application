@@ -23,4 +23,6 @@ public interface QuizRepository extends JpaRepository<Quiz,Long> {
 
     @Query(value = "select q.quiz_id as id,q.title as title,que.question as question,a.answer as answer from quiz q JOIN question que JOIN answer a where a.is_correct=true and a.fk_ques_id=que.ques_id and q.quiz_id=que.fk_quiz_id and q.title=:title",nativeQuery = true)
     List<QuestionAnswerResponse> getAnswerByQuestion(@Param("title") String title);
+
+
 }

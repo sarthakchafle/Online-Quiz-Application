@@ -23,7 +23,7 @@ public class AnswerController {
 
 
     @PostMapping("/saveAnswer")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity<?> saveAnswer(@Valid @RequestBody UserAnswerRequest userAnswerRequest) {
 
         try {

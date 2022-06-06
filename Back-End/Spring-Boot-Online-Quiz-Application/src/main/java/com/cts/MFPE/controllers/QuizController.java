@@ -20,7 +20,7 @@ public class QuizController {
     @Autowired
     QuizService service;
 
-//Create Quiz with a title and other fields
+    //Create Quiz with a title and other fields
     @PostMapping("/addQuiz")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> addQuiz(@Valid @RequestBody Quiz quiz) {
@@ -34,7 +34,8 @@ public class QuizController {
 
         }
     }
-//Get all the quizzes
+
+    //Get all the quizzes
     @GetMapping("/getAllQuizzes")
     @PreAuthorize("hasRole('ADMIN')")
     @ResponseBody
@@ -42,7 +43,7 @@ public class QuizController {
         return service.getAllQuizzes();
     }
 
-//Get all the quiz with title
+    //Get all the quiz with title
     @GetMapping("/getQuiz")
     @PreAuthorize("hasRole('ADMIN')")
     @ResponseBody
@@ -51,7 +52,7 @@ public class QuizController {
         return service.findByTitle(title);
     }
 
-//Get all the titles
+    //Get all the titles
     @GetMapping("/getAllTitles")
     @PreAuthorize("hasRole('ADMIN')")
     @ResponseBody
@@ -59,11 +60,38 @@ public class QuizController {
         return service.getAllQuizzesByTitle();
     }
 
-//Get all the question with correct answer by title
+    //Get all the question with correct answer by title
     @GetMapping("/getQuestionAnswer")
     @PreAuthorize("hasRole('ADMIN')")
     @ResponseBody
     public List<QuestionAnswerResponse> getQuestionAnswer(@RequestParam String title) {
         return service.getQuestionAnswer(title);
     }
+
+    // get the question id from the answer id
+    @GetMapping("/getQuestionId")
+    @PreAuthorize("hasRole('ADMIN')")
+    @ResponseBody
+    public long getQuestionByAnswerId(@RequestParam long ans_id) {
+        return service.getQuestionByAnswerId(ans_id);
+    }
+
+    // get the correct answer's id from the question id
+    @GetMapping("/getCorrectAnswerId")
+    @PreAuthorize("hasRole('ADMIN')")
+    @ResponseBody
+    public long getCorrectAnswerByQuestionId(@RequestParam long ques_id) {
+        return service.getCorrectAnswerByQuestionId(ques_id);
+
+    }
+
+    // get the quiz id from the question id
+    @GetMapping("/getQuizId")
+    @PreAuthorize("hasRole('ADMIN')")
+    @ResponseBody
+    public long getQuizByQuestionId(@RequestParam long ques_id) {
+        return service.getQuizByQuestionId(ques_id);
+
+    }
+
 }

@@ -16,4 +16,10 @@ public interface QuizService {
    List<QuizTitleResponse> getAllQuizzesByTitle();
 
     List<QuestionAnswerResponse> getQuestionAnswer(String title);
+
+    long getQuestionByAnswerId(long ans_id);
+
+    long getCorrectAnswerByQuestionId(long ques_id);
+    long getQuizByQuestionId(long ques_id);
+
 }

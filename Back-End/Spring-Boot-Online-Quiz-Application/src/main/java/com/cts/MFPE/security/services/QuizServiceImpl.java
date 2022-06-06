@@ -45,5 +45,21 @@ public class QuizServiceImpl implements QuizService {
         return quizRepository.getAnswerByQuestion(title);
     }
 
+    @Override
+    public long getQuestionByAnswerId(long ans_id) {
+        return quizRepository.getQuestionByAnswerId(ans_id);
+    }
+
+    @Override
+    public long getCorrectAnswerByQuestionId(long ques_id) {
+        return quizRepository.getCorrectAnswerByQuestionId(ques_id);
+    }
+
+    @Override
+    public long getQuizByQuestionId(long ques_id) {
+        return quizRepository.getQuizByQuestionId(ques_id);
+    }
+
+
 
 }

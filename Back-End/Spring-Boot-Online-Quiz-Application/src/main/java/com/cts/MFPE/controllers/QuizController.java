@@ -6,13 +6,17 @@ import com.cts.MFPE.payload.response.QuestionAnswerResponse;
 import com.cts.MFPE.payload.response.QuizTitleResponse;
 import com.cts.MFPE.security.services.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.WebApplicationContext;
 
 import javax.validation.Valid;
 import java.util.List;
 
+@Scope(value= WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api")
@@ -68,30 +72,6 @@ public class QuizController {
         return service.getQuestionAnswer(title);
     }
 
-    // get the question id from the answer id
-    @GetMapping("/getQuestionId")
-    @PreAuthorize("hasRole('ADMIN')")
-    @ResponseBody
-    public long getQuestionByAnswerId(@RequestParam long ans_id) {
-        return service.getQuestionByAnswerId(ans_id);
-    }
 
-    // get the correct answer's id from the question id
-    @GetMapping("/getCorrectAnswerId")
-    @PreAuthorize("hasRole('ADMIN')")
-    @ResponseBody
-    public long getCorrectAnswerByQuestionId(@RequestParam long ques_id) {
-        return service.getCorrectAnswerByQuestionId(ques_id);
-
-    }
-
-    // get the quiz id from the question id
-    @GetMapping("/getQuizId")
-    @PreAuthorize("hasRole('ADMIN')")
-    @ResponseBody
-    public long getQuizByQuestionId(@RequestParam long ques_id) {
-        return service.getQuizByQuestionId(ques_id);
-
-    }
 
 }

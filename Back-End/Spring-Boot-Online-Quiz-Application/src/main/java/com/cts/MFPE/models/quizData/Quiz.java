@@ -18,6 +18,11 @@ public class Quiz {
     @JoinColumn(name="fk_quiz_id", referencedColumnName = "quiz_id")
     private List<Question> question;
 
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="fk_quiz_id",referencedColumnName = "quiz_id")
+    private List<UserScore> userScores;
+
     public Quiz(long quizId, String title, List<Question> question) {
         this.quizId = quizId;
         this.title = title;

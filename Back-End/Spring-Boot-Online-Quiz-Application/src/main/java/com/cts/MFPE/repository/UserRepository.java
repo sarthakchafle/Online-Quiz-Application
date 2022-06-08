@@ -1,18 +1,14 @@
 package com.cts.MFPE.repository;
 
-import java.util.List;
-import java.util.Optional;
-
-import com.cts.MFPE.payload.request.UserAnswerRequest;
-import com.cts.MFPE.payload.response.QuestionAnswerResponse;
+import com.cts.MFPE.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-
-import com.cts.MFPE.models.User;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
@@ -39,4 +35,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
   @Query(value = "select fk_ques_id from answer where ans_id=:ans_id",nativeQuery = true)
   long getQuestionIdFromAnswer(long ans_id);
+
+  @Modifying
+  @Query(value = "insert into user_score(fk_user_id,fk_quiz_id,score) values(:user_id,:quiz_id,:score) ",nativeQuery = true)
+  @Transactional
+  public void storeScore(@Param("user_id") long user_id,@Param("quiz_id") long quiz_id,@Param("score") int score);
 }

@@ -1,6 +1,7 @@
 package com.cts.MFPE.models;
 
 import com.cts.MFPE.models.quizData.Answer;
+import com.cts.MFPE.models.quizData.UserScore;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -50,6 +51,11 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "ans_id"))
     private List<Answer> user_answers = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="fk_user_id",referencedColumnName = "id")
+    private List<UserScore> userScores;
+
 
   public List<Answer> getUser_answers() {
     return user_answers;

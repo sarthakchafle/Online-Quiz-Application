@@ -1,7 +1,7 @@
 package com.cts.MFPE.models.quizData;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+
 
 @Entity
 @Table(name="answer")

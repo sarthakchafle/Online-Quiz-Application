@@ -1,18 +1,15 @@
 package com.cts.MFPE.controllers;
 
 import com.cts.MFPE.payload.request.EvaluateAnswerRequest;
-import com.cts.MFPE.payload.request.UserAnswerRequest;
 import com.cts.MFPE.payload.response.MessageResponse;
 import com.cts.MFPE.security.services.AnswerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.WebApplicationContext;
 
 import javax.validation.Valid;
@@ -36,7 +33,7 @@ public class AnswerController {
     public ResponseEntity<?> saveAnswer(@Valid @RequestBody EvaluateAnswerRequest[] evaluateAnswerRequests) {
         try {
             Arrays.stream(evaluateAnswerRequests).forEach(e -> {
-                service.startEvaluation(e,userScore,questionScoreMap);
+                service.startEvaluation(e,userScore,questionScoreMap,evaluateAnswerRequests.length);
                 service.saveAnswer(e.getUser_id(), e.getAnswer_id());
             });
             return ResponseEntity.ok(new MessageResponse("Answers saved Successfully!"));

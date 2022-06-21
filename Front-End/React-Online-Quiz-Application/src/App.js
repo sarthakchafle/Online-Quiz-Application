@@ -49,11 +49,9 @@ const App = () => {
     setCurrentUser(undefined);
     //setcreateQuiz(false);
   };
-  return <Quiz />
-
   return (
     <div>
-      <nav className="navbar navbar-expand navbar-dark bg-dark">
+      <nav className="navbar navbar-expand navbar-dark bg-dark" style={{height: "10vh"}}>
         <Link to={"/"} className="navbar-brand">
           Online Quiz
         </Link>
@@ -130,6 +128,7 @@ const App = () => {
           <Route path="/mod" element={<BoardModerator />} />
           <Route path="/admin" element={<BoardAdmin />} />
           <Route path="/createQuiz" element={<CreateQuiz />} />
+          <Route path="/quiz" element={<Quiz />} />
         </Routes>
       </div>
     </div>

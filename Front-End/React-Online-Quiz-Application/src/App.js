@@ -15,6 +15,7 @@ import BoardAdmin from "./components/BoardAdmin";
 
 import CreateQuiz from "./components/Admin/createQuiz";
 import EventBus from "./common/EventBus";
+import Quiz from "./components/Quiz";
 
 const App = () => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
@@ -48,6 +49,7 @@ const App = () => {
     setCurrentUser(undefined);
     //setcreateQuiz(false);
   };
+  return <Quiz />
 
   return (
     <div>

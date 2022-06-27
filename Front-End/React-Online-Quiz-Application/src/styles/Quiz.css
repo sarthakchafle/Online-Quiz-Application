@@ -1,0 +1,9 @@
+.quiz-container {
+    height: 100vh;
+    background-color: #533b7c ;
+}
+.quiz-semi-container  {
+    height: 70vh;
+    width: 70vw;
+    background-color:beige;
+}

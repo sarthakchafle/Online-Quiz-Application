@@ -16,50 +16,30 @@ import AddedQuestions from "./AddedQuestions";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DateTimePicker from "@mui/lab/DateTimePicker";
-
 import { postQuiz } from "../../services/quiz.service";
+import AddQuestion from "./AddQuestion";
 
 const CreateQuiz = () => {
-  const [content, setContent] = useState("");
+  const [state, setState] = useState(0)
   const history = useNavigate();
   const [title, setTitle] = useState("");
-  const [question, setQuestion] = useState("");
-  const [option1, setOption1] = useState("");
-  const [option2, setOption2] = useState("");
-  const [option3, setOption3] = useState("");
-  const [option4, setOption4] = useState("");
-  const [answer, setAnswer] = useState("");
-  const [allAdded, setAllAdded] = useState(false);
   const [admin, setAdmin] = useState(false);
-  const [started, setStarted] = useState(false);
-  const [ended, setEnded] = useState(false);
   const [count, setCount] = useState(0);
   const [numberOfQuestions, setNumberOfQuestions] = useState(3);
   const [startTime, setStartTime] = useState(Date.now());
   const [endTime, setEndTime] = useState(Date.now() + 60 * 60 * 1000);
-  const [questions, setQuestions] = useState([]);
-  const [formattedArray, setFormattedArray] = useState([]);
+  const [formattedArray, setFormattedArray] = useState([]); //api
   let que = {
     title: title,
     question: formattedArray,
-  };
+  }; // api
 
   useEffect(() => {
     UserService.getCreateQuiz().then(
       (response) => {
-        setContent(response.data);
         setAdmin(true);
       },
       (error) => {
-        const _content =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
-          error.message ||
-          error.toString();
-
-        setContent(_content);
-
         if (error.response && error.response.status === 401) {
           EventBus.dispatch("logout");
         }
@@ -98,85 +78,15 @@ const CreateQuiz = () => {
   const handleEndTimeChange = (newValue) => {
     setEndTime(Date.parse(newValue));
   };
-  const handleOption1 = (e) => {
-    setOption1(e.target.value);
-  };
-  const handleTitle = (e) => {
-    setTitle(e.target.value);
-  };
-  const handleQuestion = (e) => {
-    setQuestion(e.target.value);
-    console.log(question);
-  };
-  const handleOption2 = (e) => {
-    setOption2(e.target.value);
-  };
-  const handleOption3 = (e) => {
-    setOption3(e.target.value);
-  };
-  const handleOption4 = (e) => {
-    setOption4(e.target.value);
-  };
-  const handleAdd = (e) => {
-    //console.log("count: " + count);
-    //console.log("no. of que: " + numberOfQuestions);
-    e.preventDefault();
-
-    setStarted(true);
-    setQuestion("");
-    setOption1("");
-    setOption2("");
-    setOption3("");
-    setOption4("");
-    setAnswer("");
-
-    if (count < numberOfQuestions - 1) {
-      setCount(count + 1);
-      setQuestions((oldQues) => [...oldQues, que]);
-      setFormattedArray((old) => [
-        ...old,
-        {
-          question: question,
-          option: [
-            { answer: option1, correct: answer === option1 },
-            { answer: option2, correct: answer === option2 },
-            { answer: option3, correct: answer === option3 },
-            { answer: option4, correct: answer === option4 },
-          ],
-        },
-      ]);
-      console.log(que);
-    } else if (count === numberOfQuestions - 1) {
-      setQuestions((oldQues) => [...oldQues, que]);
-      setFormattedArray((old) => [
-        ...old,
-        {
-          question: question,
-          option: [
-            { answer: option1, correct: answer === option1 },
-            { answer: option2, correct: answer === option2 },
-            { answer: option3, correct: answer === option3 },
-            { answer: option4, correct: answer === option4 },
-          ],
-        },
-      ]);
-
-      console.log(que);
-      setAllAdded(true);
-    }
-  };
-
-  const handleChange = (event) => {
-    setAnswer(event.target.value);
-  };
-  const handleNumber = (event) => {
-    setNumberOfQuestions(event.target.value);
-  };
 
   const handleSubmit = () => {
-    setEnded(true);
     console.log(que);
     postQuiz(que);
+    setState(2)
+    setCount(0)
+    setTitle("")
+    setNumberOfQuestions(3)
+    setFormattedArray([])
   };
 
   const handleGoHome = (e) => {
@@ -184,36 +94,32 @@ const CreateQuiz = () => {
     history("/");
   };
 
+  if(!admin) {
+    <Typography variant="h2" gutterBottom component="div">
+      Quiz cannot be created. The user is not admin.
+    </Typography>
+  }
+
   return (
-    <div>
-      <Typography variant="h2" gutterBottom component="div">
-        {content}
-      </Typography>
-      {admin && (
-        <>
-          <AddedQuestions
-            array={formattedArray}
-            title={title}
-            time={timeSince(startTime, endTime)}
-            question={question}
-          />
-          <form onSubmit={handleAdd}>
-            <Grid container direction={"row"}>
+    <div className="p-4">
+          {
+            state === 0 ?
+            <div container direction={"row"}>
               <TextField
+                className="my-4"
                 required={true}
                 id="outlined-textarea"
                 label="Title of Quiz"
-                placeholder="title..."
+                placeholder="Title..."
                 multiline
                 fullWidth
                 margin="dense"
                 value={title}
-                disabled={started}
                 onChange={(e) => {
-                  handleTitle(e);
+                  setTitle(e.target.value);
                 }}
               />
-              <FormControl sx={{ width: "100%" }}>
+              <FormControl sx={{ width: "100%" }} className="my-4">
                 <InputLabel id="demo-multiple-name-label">
                   Number of Questions...
                 </InputLabel>
@@ -224,8 +130,7 @@ const CreateQuiz = () => {
                   id="demo-multiple-name"
                   value={numberOfQuestions}
                   inputProps={{ "aria-label": "Without label" }}
-                  onChange={handleNumber}
-                  disabled={started}
+                  onChange={(e) => setNumberOfQuestions(e.target.value)}
                   input={<OutlinedInput label="Name" />}
                   fullWidth
                 >
@@ -235,181 +140,42 @@ const CreateQuiz = () => {
                   <MenuItem value={20}>{20}</MenuItem>
                 </Select>
               </FormControl>
-            </Grid>
-            <Grid container direction={"row"}>
-              <TextField
-                required={true}
-                id="outlined-textarea"
-                label="Question"
-                placeholder="question..."
-                multiline
-                fullWidth
-                margin="dense"
-                value={question}
-                onChange={(e) => {
-                  handleQuestion(e);
-                }}
-              />
-            </Grid>
-            <Grid container direction={"row"}>
-              <TextField
-                required={true}
-                id="outlined-textarea"
-                label="Oprion 1"
-                placeholder="option..."
-                multiline
-                margin="dense"
-                value={option1}
-                sx={{ width: "49%", marginRight: "2px" }}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">a.</InputAdornment>
-                  ),
-                }}
-                onChange={(e) => handleOption1(e)}
-              />
-
-              <TextField
-                required={true}
-                id="outlined-textarea"
-                label="Oprion 2"
-                placeholder="option..."
-                multiline
-                margin="dense"
-                sx={{ width: "49%", marginLeft: "20px" }}
-                value={option2}
-                onChange={(e) => handleOption2(e)}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">b.</InputAdornment>
-                  ),
-                }}
-              />
-            </Grid>
-            <Grid container direction={"row"}>
-              <TextField
-                required={true}
-                id="outlined-textarea"
-                label="Oprion 3"
-                placeholder="option..."
-                multiline
-                margin="dense"
-                value={option3}
-                onChange={(e) => handleOption3(e)}
-                sx={{ width: "49%", marginRight: "2px" }}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">c.</InputAdornment>
-                  ),
-                }}
-              />
-
-              <TextField
-                required={true}
-                id="outlined-textarea"
-                label="Oprion 4"
-                placeholder="option..."
-                multiline
-                margin="dense"
-                value={option4}
-                onChange={(e) => handleOption4(e)}
-                sx={{ width: "49%", marginLeft: "20px" }}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">d.</InputAdornment>
-                  ),
-                }}
-              />
-            </Grid>
-            <Grid container direction={"row"}>
-              <FormControl sx={{ width: "100%" }}>
-                <InputLabel id="demo-multiple-name-label">
-                  Correct Answer...
-                </InputLabel>
-                <Select
-                  required={true}
-                  label="Correct Answer"
-                  labelId="demo-multiple-name-label"
-                  id="demo-multiple-name"
-                  value={answer}
-                  inputProps={{ "aria-label": "Without label" }}
-                  onChange={handleChange}
-                  input={<OutlinedInput label="Name" />}
-                  fullWidth
-                >
-                  <MenuItem value={option1}>{option1}</MenuItem>
-                  <MenuItem value={option2}>{option2}</MenuItem>
-                  <MenuItem value={option3}>{option3}</MenuItem>
-                  <MenuItem value={option4}>{option4}</MenuItem>
-                </Select>
-              </FormControl>
-              <LocalizationProvider dateAdapter={AdapterDateFns}>
-                <Box sx={{ display: "flex", flexDirection: "row" }}>
-                  <Box sx={{ margin: "5px 10px 5px 0 " }}>
-                    <Typography sx={{ marginTop: "15px " }}>
-                      Start Time
-                    </Typography>
-                    <DateTimePicker
-                      value={startTime}
-                      onChange={handleStartTimeChange}
-                      renderInput={(params) => <TextField {...params} />}
-                    />
-                  </Box>
-                  <Box sx={{ margin: "5px 10px 5px 0 " }}>
-                    <Typography sx={{ marginTop: "15px " }}>
-                      End Time
-                    </Typography>
-                    <DateTimePicker
-                      value={endTime}
-                      onChange={handleEndTimeChange}
-                      renderInput={(params) => <TextField {...params} />}
-                    />
-                  </Box>
-                </Box>
-              </LocalizationProvider>
-            </Grid>
-            <Box>
-              Time of Assignment will be : {timeSince(startTime, endTime)}
-            </Box>
-            <Button
-              sx={{ margin: "20px" }}
-              variant="contained"
-              color="success"
-              type="submit"
-              disabled={allAdded && count === numberOfQuestions - 1}
-            >
-              {"Add"}
-            </Button>
-            {!ended && (
+              <Box>
+                Time of Assignment will be : {timeSince(startTime, endTime)}
+              </Box>
               <Button
+                className="my-2"
+                onClick={(e) => setState(1)}
+                variant="contained"
+                color="success"
+              >
+                {"Add Questions"}
+              </Button>
+            </div> : null}
+            {
+              state === 1 && count < numberOfQuestions ? <AddQuestion formattedArray={formattedArray} setFormattedArray={setFormattedArray} count={count} setCount={setCount}/> : null
+            } 
+            {
+              state === 1 && count === numberOfQuestions ? 
+              <>
+                <AddedQuestions
+                  array={formattedArray}
+                  title={title}
+                  time={timeSince(startTime, endTime)}
+                />
+                <Button
                 onClick={(e) => handleSubmit(e)}
                 sx={{ margin: "20px" }}
                 variant="contained"
                 color="success"
-                disabled={!allAdded}
               >
                 {"Submit"}
               </Button>
-            )}
-          </form>
-          {ended && (
-            <div style={{ margin: "20px 0" }}>
-              <Typography variant="h5" style={{ color: "#07b530" }}>
-                Questions Added Succesfully!
-              </Typography>
-              <Button
-                variant="contained"
-                color="success"
-                onClick={(e) => {
-                  handleGoHome(e);
-                }}
-              >
-                Go Home
-              </Button>
-            </div>
-          )}
-        </>
-      )}
+              </>: null
+            }
+            {
+              state === 2 && <Typography>Congratulation, the quiz has been added</Typography>
+            }
     </div>
   );
 };

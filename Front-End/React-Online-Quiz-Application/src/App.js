@@ -15,6 +15,7 @@ import BoardAdmin from "./components/BoardAdmin";
 
 import CreateQuiz from "./components/Admin/createQuiz";
 import EventBus from "./common/EventBus";
+import Quiz from "./components/Quiz";
 
 const App = () => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
@@ -48,10 +49,9 @@ const App = () => {
     setCurrentUser(undefined);
     //setcreateQuiz(false);
   };
-
   return (
     <div>
-      <nav className="navbar navbar-expand navbar-dark bg-dark">
+      <nav className="navbar navbar-expand navbar-dark bg-dark" style={{height: "10vh"}}>
         <Link to={"/"} className="navbar-brand">
           Online Quiz
         </Link>
@@ -128,6 +128,7 @@ const App = () => {
           <Route path="/mod" element={<BoardModerator />} />
           <Route path="/admin" element={<BoardAdmin />} />
           <Route path="/createQuiz" element={<CreateQuiz />} />
+          <Route path="/quiz" element={<Quiz />} />
         </Routes>
       </div>
     </div>

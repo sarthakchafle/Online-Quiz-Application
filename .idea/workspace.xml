@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55b48739-6a58-493a-ae72-3fa901c39100" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Back-End/Spring-Boot-Online-Quiz-Application/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Back-End/Spring-Boot-Online-Quiz-Application/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back-End/Spring-Boot-Online-Quiz-Application/src/main/java/com/cts/MFPE/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Back-End/Spring-Boot-Online-Quiz-Application/src/main/java/com/cts/MFPE/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back-End/Spring-Boot-Online-Quiz-Application/src/main/java/com/cts/MFPE/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Back-End/Spring-Boot-Online-Quiz-Application/src/main/java/com/cts/MFPE/security/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back-End/Spring-Boot-Online-Quiz-Application/src/main/java/com/cts/MFPE/security/services/AnswerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Back-End/Spring-Boot-Online-Quiz-Application/src/main/java/com/cts/MFPE/security/services/AnswerServiceImpl.java" afterDir="false" />
-    </list>
+    <list default="true" id="55b48739-6a58-493a-ae72-3fa901c39100" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

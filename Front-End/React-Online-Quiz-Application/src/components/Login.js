@@ -21,14 +21,14 @@ const Login = () => {
   const form = useRef();
   const checkBtn = useRef();
 
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
-  const onChangeUsername = (e) => {
+  const onChangeEmail = (e) => {
     const username = e.target.value;
-    setUsername(username);
+    setEmail(username);
   };
 
   const onChangePassword = (e) => {
@@ -45,10 +45,10 @@ const Login = () => {
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
-      AuthService.login(username, password).then(
+      AuthService.login(email, password).then(
         () => {
           navigate("/profile");
-          window.location.reload();
+          // window.location.reload();
         },
         (error) => {
           const resMessage =
@@ -78,13 +78,13 @@ const Login = () => {
 
         <Form onSubmit={handleLogin} ref={form}>
           <div className="form-group">
-            <label htmlFor="username">Username</label>
+            <label htmlFor="email">Email</label>
             <Input
-              type="text"
+              type="email"
               className="form-control"
-              name="username"
-              value={username}
-              onChange={onChangeUsername}
+              name="email"
+              value={email}
+              onChange={onChangeEmail}
               validations={[required]}
             />
           </div>

@@ -3,11 +3,11 @@ import axios from "axios";
 const API_URL = "http://localhost:8299/users-service/users";
 
 const register = (firstName, lastName, email, password) => {
-  return axios.post(API_URL, {
+  return axios.post(API_URL + "/register", {
     firstName,
     lastName,
-    email,
     password,
+    email,
   });
 };
 
@@ -26,6 +26,7 @@ const login = (email, password) => {
       if (response.headers.token) {
         console.log(true);
         localStorage.setItem("user", response.headers.token);
+        localStorage.setItem("userId", response.headers.userid);
       }
       console.log(response.headers.token);
       return response.headers.token;
@@ -33,11 +34,15 @@ const login = (email, password) => {
 };
 
 const logout = () => {
-  localStorage.removeItem("user");
+  window.localStorage.removeItem("user");
+  window.localStorage.removeItem("userId");
 };
 
 const getCurrentUser = () => {
-  return localStorage.getItem("user");
+  return {
+    user: localStorage.getItem("user"),
+    id: localStorage.getItem("userId"),
+  };
 };
 
 const AuthService = {

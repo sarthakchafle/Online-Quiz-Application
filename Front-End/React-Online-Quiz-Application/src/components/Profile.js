@@ -1,31 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import AuthService from "../services/auth.service";
+import UserService from "../services/user.service";
+import axios from "axios";
+import authHeader from "../services/auth-header";
 
 const Profile = () => {
   const currentUser = AuthService.getCurrentUser();
+  const USER_API = "http://localhost:8299/users-service/users/f/";
 
+  const [data, setData] = useState([]);
+
+  const getData = async () => {
+    const { data } = await axios.get(`${USER_API}${currentUser.id}`, {
+      headers: authHeader(),
+    });
+    setData(data);
+  };
+  useEffect(() => {
+    getData();
+  }, []);
+
+  console.log(data);
   return (
     <div className="container">
-      {/* //   <header className="jumbotron">
-    //     <h3>
-    //       <strong>{currentUser.username}</strong> Profile
-    //     </h3>
-    //   </header>
-    //   <p>
-    //     <strong>Token:</strong> {currentUser.accessToken.substring(0, 20)} ...{" "}
-    //     {currentUser.accessToken.substr(currentUser.accessToken.length - 20)}
-    //   </p>
-    //   <p>
-    //     <strong>Id:</strong> {currentUser.id}
-    //   </p>
-    //   <p>
-    //     <strong>Email:</strong> {currentUser.email}
-    //   </p>
-    //   <strong>Authorities:</strong>
-    //   <ul>
-    //     {currentUser.roles &&
-    //       currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
-    //   </ul> */}
+      <header className="jumbotron">
+        <h3>Profile</h3>
+      </header>
+      <p>
+        <strong>Name:</strong> {`${data.firstName} ${data.lastName} `}
+      </p>
+      <p>
+        <strong>UserId:</strong> {data.userId}
+      </p>
+      <p>
+        <strong>Email:</strong> {data.email}
+      </p>
     </div>
   );
 };

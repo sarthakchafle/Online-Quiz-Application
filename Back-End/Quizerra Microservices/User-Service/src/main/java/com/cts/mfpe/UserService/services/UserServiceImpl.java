@@ -79,15 +79,15 @@ public class UserServiceImpl implements UserService {
             throw new UsernameNotFoundException("User not found");
         }
         UserDto userDto = new ModelMapper().map(userEntity, UserDto.class);
-        String albumsurl = String.format(environment.getProperty("albums.url"), userId);
+//        String albumsurl = String.format(environment.getProperty("albums.url"), userId);
 //        ResponseEntity<List<AlbumResponseModel>> albumsListResponse = restTemplate.exchange(albumsurl, HttpMethod.GET, null, new ParameterizedTypeReference<List<AlbumResponseModel>>() {
-        logger.info("before calling Microservice");
+//        logger.info("before calling Microservice");
 
-        List<AlbumResponseModel> albumResponseModelList = serviceClient.getAlbums(userId);
-        logger.info("after calling Microservice");
+//        List<AlbumResponseModel> albumResponseModelList = serviceClient.getAlbums(userId);
+//        logger.info("after calling Microservice");
         // });
 //        List<AlbumResponseModel> albumResponseModelList = albumsListResponse.getBody();
-        userDto.setAlbums(albumResponseModelList);
+//        userDto.setAlbums(albumResponseModelList);
         return userDto;
     }
 }

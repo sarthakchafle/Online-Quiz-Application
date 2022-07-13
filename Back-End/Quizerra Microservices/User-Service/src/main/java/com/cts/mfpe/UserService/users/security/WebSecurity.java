@@ -1,6 +1,7 @@
 package com.cts.mfpe.UserService.users.security;
 
 import com.cts.mfpe.UserService.services.UserService;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpMethod;
@@ -10,6 +11,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.reactive.CorsConfigurationSource;
+import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @Configuration
@@ -27,7 +31,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+//        http.cors().and().csrf().disable();
         http.csrf().disable();
+//        http.cors(Customizer.withDefaults());
         http.authorizeRequests()
                 .antMatchers("/**").permitAll()
                 .antMatchers(HttpMethod.POST,"/users").permitAll()

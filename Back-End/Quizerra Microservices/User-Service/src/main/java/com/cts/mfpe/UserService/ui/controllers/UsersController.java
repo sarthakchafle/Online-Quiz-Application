@@ -1,6 +1,7 @@
 package com.cts.mfpe.UserService.ui.controllers;
 
 
+import com.cts.mfpe.UserService.data.UserEntity;
 import com.cts.mfpe.UserService.repository.UsersRepository;
 import com.cts.mfpe.UserService.services.UserService;
 import com.cts.mfpe.UserService.shared.UserDto;
@@ -20,7 +21,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/users")
-
+//@CrossOrigin(value = "localhost:3000",maxAge = 3600)
 public class UsersController {
 
     @Autowired
@@ -36,7 +37,7 @@ public class UsersController {
         return "working on port " + environment.getProperty("server.port") + "with token= "+environment.getProperty("token.secret");
     }
 
-    @PostMapping(consumes = {MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_VALUE},
+    @PostMapping(value = "/register",consumes = {MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_VALUE},
     produces = {MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity createUser(@Valid @RequestBody CreateUserRequestModel userDetials) {
         ModelMapper modelMapper = new ModelMapper();
@@ -61,5 +62,11 @@ public class UsersController {
     @ResponseBody
     public boolean existsByUserId(@RequestParam String id) {
         return usersRepository.existsByUserId(id);
+    }
+
+    @GetMapping("/f/{id}")
+    @ResponseBody
+    public UserEntity findByUserId(@PathVariable String id) {
+        return usersRepository.findByUserId(id);
     }
 }

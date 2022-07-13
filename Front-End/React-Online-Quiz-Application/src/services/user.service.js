@@ -23,12 +23,24 @@ const getCreateQuiz = () => {
   return axios.get(API_URL + "createQuiz", { headers: authHeader() });
 };
 
+// const getUserDetails = () => {
+//   axios
+//     .get(`${USER_API}${localStorage.getItem("userId")}`, {
+//       headers: authHeader(),
+//     })
+//     .then((response) => {
+//       //console.log(response.data);
+//       return response.data;
+//     });
+// };
+
 const UserService = {
   getPublicContent,
   getUserBoard,
   getModeratorBoard,
   getAdminBoard,
   getCreateQuiz,
+  // getUserDetails,
 };
 
 export default UserService;

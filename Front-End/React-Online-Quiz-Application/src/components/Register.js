@@ -51,16 +51,21 @@ const Register = () => {
   const form = useRef();
   const checkBtn = useRef();
   let navigate = useNavigate();
-  const [username, setUsername] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState("");
 
-  const onChangeUsername = (e) => {
-    const username = e.target.value;
-    setUsername(username);
+  const onChangeFirstname = (e) => {
+    const firstname = e.target.value;
+    setFirstname(firstname);
+  };
+  const onChangeLastname = (e) => {
+    const firstname = e.target.value;
+    setLastname(firstname);
   };
 
   const onChangeEmail = (e) => {
@@ -82,7 +87,7 @@ const Register = () => {
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
-      AuthService.login(username, password).then(
+      AuthService.login(email, password).then(
         () => {
           navigate("/profile");
           window.location.reload();
@@ -113,7 +118,7 @@ const Register = () => {
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
-      AuthService.register(username, email, password).then(
+      AuthService.register(firstname, lastname, email, password).then(
         (response) => {
           setMessage(response.data.message);
           setSuccessful(true);
@@ -151,14 +156,25 @@ const Register = () => {
           {!successful && (
             <div>
               <div className="form-group">
-                <label htmlFor="username">Username</label>
+                <label htmlFor="firstname">Firstname</label>
                 <Input
                   type="text"
                   className="form-control"
-                  name="username"
-                  value={username}
-                  onChange={onChangeUsername}
-                  validations={[required, vusername]}
+                  name="firstname"
+                  value={firstname}
+                  onChange={onChangeFirstname}
+                  validations={[required]}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="lastname">Lastname</label>
+                <Input
+                  type="text"
+                  className="form-control"
+                  name="lastname"
+                  value={lastname}
+                  onChange={onChangeLastname}
+                  validations={[required]}
                 />
               </div>
 

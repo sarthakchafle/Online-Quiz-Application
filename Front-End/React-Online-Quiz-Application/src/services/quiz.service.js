@@ -1,7 +1,7 @@
 import axios from "axios";
 import authHeader from "./auth-header";
 
-const API_URL = "http://localhost:8085/api/";
+const API_URL = "http://localhost:8299/quiz-service/api/";
 
 export const postQuiz = async (data) => {
   console.log(data);

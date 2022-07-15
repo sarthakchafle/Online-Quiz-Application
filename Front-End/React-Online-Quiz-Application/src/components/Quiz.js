@@ -2,9 +2,12 @@ import React, {useState, useEffect} from 'react'
 import './../styles/Quiz.css'
 import Button from "@mui/material/Button";
 import Question from './Question';
+import { useLocation } from 'react-router-dom';
 
 
 export default function Quiz() {
+	const location = useLocation()
+	const { title } = location.state
 	const [started, setStarted] = useState(false)
 	const [questionNumber, setQuestionNumber] = useState(0)
 	const [minutes, setMinutes ] = useState(0);
@@ -23,6 +26,7 @@ export default function Quiz() {
 		answer: ""
 		}
 	])
+  
 	useEffect(()=>{
 		let myInterval = setInterval(() => {
 		if (seconds > 0) {

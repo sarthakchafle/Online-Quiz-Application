@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { Grid } from "@mui/material";
 import Button from "@mui/material/Button";
 import {getAllQuizzesTitles} from '../services/quiz.service'
+import { Link } from "react-router-dom";
 
 
 export default function AllQuizzes() {
@@ -22,13 +23,15 @@ export default function AllQuizzes() {
                     <div className='d-flex align-items-center p-2 flex-column' style={{backgroundColor: "#e3e3e3"}}>
                         <h4>{item.title}</h4>
                         <span>Time Limit: 20 minutes</span>
-                        <Button
-                            className="my-3 px-5"
-                            variant="contained"
-                            style={{backgroundColor: "#533b7c"}}
-                        >
-                            Start
-                        </Button>
+                        <Link to={"/quiz"} state={{title: item.title}} style={{color: "white"}}>
+                            <Button
+                                className="my-3 px-5"
+                                variant="contained"
+                                style={{backgroundColor: "#533b7c"}}
+                            >
+                                Start
+                            </Button>
+                        </Link>
                     </div>
                 </Grid>
             )

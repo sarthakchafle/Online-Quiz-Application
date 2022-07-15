@@ -15,14 +15,23 @@ export const postQuiz = async (data) => {
 		return [];
 	}
 };
+
 export const getAllQuizzes = async () => { 
 	return axios.get(
 		API_URL + "getAllQuizzes",
 		{ headers: authHeader() }
 	);
 };
+
 export const getAllQuizzesTitles = async() => {
 	return axios.get(API_URL + "getAllTitles",
 		{ headers: authHeader() }
 	)
+}
+
+export const getQuizByTitle = async(data) => {
+	return axios.get(API_URL + "getQuiz", {
+		params: { title: data}, 
+		headers: authHeader() 
+	})
 }

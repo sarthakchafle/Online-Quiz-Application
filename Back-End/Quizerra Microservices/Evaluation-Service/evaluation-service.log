@@ -303,3 +303,43 @@ Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (usi
 2022-07-15 12:06:57.550  INFO 212 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
 2022-07-15 12:11:57.575  INFO 212 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
 2022-07-15 12:16:57.578  INFO 212 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-07-16 10:46:35.310  INFO 9552 --- [main] c.c.m.E.EvaluationServiceApplication     : Starting EvaluationServiceApplication using Java 18.0.1 on DESKTOP-IPSMHAI with PID 9552 (C:\Users\user\Documents\GitHub\Online-Quiz-Application\Back-End\Quizerra Microservices\Evaluation-Service\target\classes started by user in C:\Users\user\Documents\GitHub\Online-Quiz-Application\Back-End\Quizerra Microservices\Evaluation-Service)
+2022-07-16 10:46:35.315  INFO 9552 --- [main] c.c.m.E.EvaluationServiceApplication     : No active profile set, falling back to 1 default profile: "default"
+2022-07-16 10:46:36.959  INFO 9552 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-07-16 10:46:37.251  INFO 9552 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 279 ms. Found 1 JPA repository interfaces.
+2022-07-16 10:46:38.004  INFO 9552 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=29c8ae77-9d8a-3545-8b06-696739380b58
+2022-07-16 10:46:38.892  INFO 9552 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8089 (http)
+2022-07-16 10:46:38.910  INFO 9552 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-07-16 10:46:38.911  INFO 9552 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-07-16 10:46:39.263  INFO 9552 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-07-16 10:46:39.263  INFO 9552 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3784 ms
+2022-07-16 10:46:39.994  INFO 9552 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-07-16 10:46:40.121  INFO 9552 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-07-16 10:46:40.380  INFO 9552 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-07-16 10:46:40.685  INFO 9552 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-07-16 10:46:41.721  INFO 9552 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-07-16 10:46:41.756  INFO 9552 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2022-07-16 10:46:43.710  INFO 9552 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-07-16 10:46:43.739  INFO 9552 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-07-16 10:46:44.501  WARN 9552 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-07-16 10:46:45.648  INFO 9552 --- [main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2022-07-16 10:46:45.867  WARN 9552 --- [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-07-16 10:46:45.924  INFO 9552 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2022-07-16 10:46:46.316  INFO 9552 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2022-07-16 10:46:46.331  INFO 9552 --- [main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-07-16 10:46:46.381  INFO 9552 --- [main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2022-07-16 10:46:46.382  INFO 9552 --- [main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2022-07-16 10:46:46.382  INFO 9552 --- [main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2022-07-16 10:46:46.382  INFO 9552 --- [main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2022-07-16 10:46:46.383  INFO 9552 --- [main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2022-07-16 10:46:46.383  INFO 9552 --- [main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2022-07-16 10:46:46.383  INFO 9552 --- [main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2022-07-16 10:46:47.217  INFO 9552 --- [main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2022-07-16 10:46:47.225  INFO 9552 --- [main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2022-07-16 10:46:47.232  INFO 9552 --- [main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2022-07-16 10:46:47.252  INFO 9552 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1657948607249 with initial instances count: 4
+2022-07-16 10:46:47.256  INFO 9552 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application EVALUATION-SERVICE with eureka with status UP
+2022-07-16 10:46:47.258  INFO 9552 --- [main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1657948607258, current=UP, previous=STARTING]
+2022-07-16 10:46:47.263  INFO 9552 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_EVALUATION-SERVICE/DESKTOP-IPSMHAI:evaluation-service:8089: registering service...
+2022-07-16 10:46:47.351  INFO 9552 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8089 (http) with context path ''
+2022-07-16 10:46:47.352  INFO 9552 --- [main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8089

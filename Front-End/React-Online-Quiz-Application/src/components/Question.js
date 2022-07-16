@@ -4,10 +4,10 @@ import Button from "@mui/material/Button";
 export default function Question({questions, questionNumber, setQuestionNumber, setQuestions, question, submit}) {
     const [answer, setAnswer] = useState(question.answer)
     const selectOption = (n) => {
-        setAnswer(question.options[n])
+        setAnswer(n)
         let a = questions
 
-        a[questionNumber].answer = question.options[n]
+        a[questionNumber].answer = question.option[n]
         setQuestions(a)
     }
     const onNextClick = () => {
@@ -17,15 +17,21 @@ export default function Question({questions, questionNumber, setQuestionNumber, 
     return (
         <>
         <div className='d-flex justify-content-space-around flex-row rounded p-5 border' style={{height: "50vh", width: "70vw", position: "absolute"}}>
-            <h4><h1>Question {questionNumber+1} / {questions.length}</h1> {question.question}</h4>
+            <div>
+                <h1>Question {questionNumber+1} / {questions.length}</h1> 
+                <h4 style={{width: '30vw'}}>{question.question}</h4>
+            </div>
             <div className='d-flex flex-column mx-5' style={{flex: 1, height: "15vh"}}>
                 <div 
-                    onClick={() => selectOption(0)} 
+                    onClick={() => selectOption(question.option[0].answer)} 
                     className='border p-2 m-2 pe-auto' 
-                    style={{flex: 1, backgroundColor: answer === question.options[0] ? "#9f8cca" : null}}>{question.options[0]}</div>
-                <div onClick={() => selectOption(1)} className='border p-2 m-2 pe-auto' style={{flex: 1, backgroundColor: answer === question.options[1] ? "#9f8cca" : null}}>{question.options[1]}</div>
-                <div onClick={() => selectOption(2)} className='border p-2 m-2 pe-auto' style={{flex: 1, backgroundColor: answer === question.options[2] ? "#9f8cca" : null}}>{question.options[2]}</div>
-                <div onClick={() => selectOption(3)} className='border p-2 m-2 pe-auto' style={{flex: 1, backgroundColor: answer === question.options[3] ? "#9f8cca" : null}}>{question.options[3]}</div>
+                    style={{flex: 1, backgroundColor: answer === question.option[0].answer ? "#9f8cca" : null, cursor: "pointer"}}>{question.option[0].answer}</div>
+                <div onClick={() => selectOption(question.option[1].answer)} className='border p-2 m-2 pe-auto' 
+                    style={{flex: 1, backgroundColor: answer === question.option[1].answer ? "#9f8cca" : null, cursor: "pointer"}}>{question.option[1].answer}</div>
+                <div onClick={() => selectOption(question.option[2].answer)} className='border p-2 m-2 pe-auto' 
+                    style={{flex: 1, backgroundColor: answer === question.option[2].answer ? "#9f8cca" : null, cursor: "pointer"}}>{question.option[2].answer}</div>
+                <div onClick={() => selectOption(question.option[3].answer)} className='border p-2 m-2 pe-auto' 
+                    style={{flex: 1, backgroundColor: answer === question.option[3].answer ? "#9f8cca" : null, cursor: "pointer"}}>{question.option[3].answer}</div>
             </div>
         </div>
         <Button

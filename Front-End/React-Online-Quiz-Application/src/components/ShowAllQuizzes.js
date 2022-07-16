@@ -9,7 +9,6 @@ export default function AllQuizzes() {
     const [data, setData] = useState([])
     useEffect(async() => {
       const res = await getAllQuizzesTitles()
-      console.log(res.data)
       setData(res.data)
     }, [])
     

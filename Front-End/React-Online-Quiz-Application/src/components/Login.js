@@ -1,10 +1,11 @@
 import React, { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-//AuthService
 import AuthService from "../services/auth.service";
+import LoginRegisterCommon from "./LoginRegisterCommon";
+
 const required = (value) => {
   if (!value) {
     return (
@@ -17,7 +18,6 @@ const required = (value) => {
 
 const Login = () => {
   let navigate = useNavigate();
-
   const form = useRef();
   const checkBtn = useRef();
 
@@ -25,16 +25,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
-
-  const onChangeEmail = (e) => {
-    const username = e.target.value;
-    setEmail(username);
-  };
-
-  const onChangePassword = (e) => {
-    const password = e.target.value;
-    setPassword(password);
-  };
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -68,41 +58,37 @@ const Login = () => {
   };
 
   return (
-    <div className="col-md-12">
-      <div className="card card-container">
-        <img
-          src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-          alt="profile-img"
-          className="profile-img-card"
-        />
-
-        <Form onSubmit={handleLogin} ref={form}>
+    <div className='d-flex' style={{height: "90vh"}}>
+      <div className="d-flex justify-content-center align-items-center py-4 flex-column" style={{backgroundColor: "white", width: "50vw"}}>
+        <h1 style={{color: "#533b7c"}}><b>Sign in to Account</b></h1>
+        <div style={{ height: "2px", width: '50px', backgroundColor: "#533b7c", marginTop: "10px", marginBottom: "10px" }} />
+        <Form onSubmit={handleLogin} ref={form} class="d-flex flex-column">
           <div className="form-group">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">Email*</label>
             <Input
               type="email"
               className="form-control"
               name="email"
               value={email}
-              onChange={onChangeEmail}
+              onChange={(e) => setEmail(e.target.value)}
               validations={[required]}
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">Password*</label>
             <Input
               type="password"
               className="form-control"
               name="password"
               value={password}
-              onChange={onChangePassword}
+              onChange={(e) => setPassword(e.target.value)}
               validations={[required]}
             />
           </div>
 
           <div className="form-group">
-            <button className="btn btn-primary btn-block" disabled={loading}>
+            <button className="btn btn-primary btn-block" disabled={loading} style={{backgroundColor: "#533b7c", borderColor: "#533b7c"}}>
               {loading && (
                 <span className="spinner-border spinner-border-sm"></span>
               )}
@@ -118,10 +104,15 @@ const Login = () => {
             </div>
           )}
           <CheckButton style={{ display: "none" }} ref={checkBtn} />
+          <div style={{alignSelf: "center", marginTop: "-10px", fontSize: "small"}}>
+            Don't have an account? 
+            <Link to={"/register"}> Register</Link>
+          </div>
         </Form>
       </div>
+      <LoginRegisterCommon />
     </div>
-  );
+  )
 };
 
 export default Login;

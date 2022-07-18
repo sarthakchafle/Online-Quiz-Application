@@ -2,8 +2,9 @@ import React, { useState, useRef } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { isEmail } from "validator";
+import LoginRegisterCommon from "./LoginRegisterCommon";
 
 import AuthService from "../services/auth.service";
 
@@ -22,16 +23,6 @@ const validEmail = (value) => {
     return (
       <div className="alert alert-danger" role="alert">
         This is not a valid email.
-      </div>
-    );
-  }
-};
-
-const vusername = (value) => {
-  if (value.length < 3 || value.length > 20) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        The username must be between 3 and 20 characters.
       </div>
     );
   }
@@ -58,25 +49,6 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState("");
-
-  const onChangeFirstname = (e) => {
-    const firstname = e.target.value;
-    setFirstname(firstname);
-  };
-  const onChangeLastname = (e) => {
-    const firstname = e.target.value;
-    setLastname(firstname);
-  };
-
-  const onChangeEmail = (e) => {
-    const email = e.target.value;
-    setEmail(email);
-  };
-
-  const onChangePassword = (e) => {
-    const password = e.target.value;
-    setPassword(password);
-  };
 
   const handleLogin = (e) => {
     //e.preventDefault();
@@ -142,42 +114,40 @@ const Register = () => {
       );
     }
   };
+  
 
   return (
-    <div className="col-md-12">
-      <div className="card card-container">
-        <img
-          src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-          alt="profile-img"
-          className="profile-img-card"
-        />
-
+    <div className='d-flex' style={{height: "90vh"}}>
+      <div className="d-flex justify-content-center align-items-center py-4 flex-column" style={{backgroundColor: "white", width: "50vw"}}>
+        <h1 style={{color: "#533b7c"}}><b>Register</b></h1>
+        <div style={{ height: "2px", width: '50px', backgroundColor: "#533b7c", marginTop: "10px", marginBottom: "10px" }} />
         <Form onSubmit={handleRegister} ref={form}>
           {!successful && (
             <div>
+              <div className="d-flex flex-row">
               <div className="form-group">
-                <label htmlFor="firstname">Firstname</label>
+                <label htmlFor="firstname">First Name</label>
                 <Input
                   type="text"
                   className="form-control"
                   name="firstname"
                   value={firstname}
-                  onChange={onChangeFirstname}
+                  onChange={(e) => setFirstname(e.target.value)}
                   validations={[required]}
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="lastname">Lastname</label>
+                <label htmlFor="lastname">Last Name</label>
                 <Input
                   type="text"
                   className="form-control"
                   name="lastname"
                   value={lastname}
-                  onChange={onChangeLastname}
+                  onChange={(e) => setLastname(e.target.value)}
                   validations={[required]}
                 />
               </div>
-
+              </div>
               <div className="form-group">
                 <label htmlFor="email">Email</label>
                 <Input
@@ -185,7 +155,7 @@ const Register = () => {
                   className="form-control"
                   name="email"
                   value={email}
-                  onChange={onChangeEmail}
+                  onChange={(e) => setEmail(e.target.value)}
                   validations={[required, validEmail]}
                 />
               </div>
@@ -197,7 +167,7 @@ const Register = () => {
                   className="form-control"
                   name="password"
                   value={password}
-                  onChange={onChangePassword}
+                  onChange={(e) => setPassword(e.target.value)}
                   validations={[required, vpassword]}
                 />
               </div>
@@ -206,7 +176,7 @@ const Register = () => {
                 {loading && (
                   <span className="spinner-border spinner-border-sm"></span>
                 )}
-                <button className="btn btn-primary btn-block">Sign Up</button>
+                <button className="btn btn-primary btn-block" style={{backgroundColor: "#533b7c", borderColor: "#533b7c"}}>Register</button>
               </div>
             </div>
           )}
@@ -225,10 +195,16 @@ const Register = () => {
           )}
 
           <CheckButton style={{ display: "none" }} ref={checkBtn} />
+          <div style={{alignSelf: "center", marginTop: "-10px", fontSize: "small"}}>
+            Already have an account? 
+            <Link to={"/login"}> Login</Link>
+          </div>
         </Form>
       </div>
+      <LoginRegisterCommon />
     </div>
-  );
+  )
+
 };
 
 export default Register;

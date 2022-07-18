@@ -2,23 +2,32 @@ import React, {useState, useEffect} from 'react'
 import './../styles/Quiz.css'
 import Button from "@mui/material/Button";
 import Question from './Question';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Navigate, useNavigate } from 'react-router-dom';
 import { getQuizByTitle } from '../services/quiz.service'
+import AuthService from '../services/auth.service';
 
 
 export default function Quiz() {
+	let navigate = useNavigate();
 	const location = useLocation()
-	const { title } = location.state
+	const { title } = location.state ? location.state : ""
 	const [started, setStarted] = useState(false)
 	const [questionNumber, setQuestionNumber] = useState(0)
 	const [minutes, setMinutes ] = useState(0);
 	const [seconds, setSeconds ] =  useState(0);
 	const [questions, setQuestions] = useState([])
 
-	useEffect(async() => {
+	useEffect(() => {
+		if(!location.state) {
+			navigate("/allQuizzes")
+		}
+		getData()
+	}, [])
+
+	const getData = async() => {
 		let res = await getQuizByTitle(title);
 		setQuestions(res.data.question)
-	}, [])
+	}
 	
   
 	useEffect(()=>{
@@ -44,6 +53,12 @@ export default function Quiz() {
 		setSeconds(0)
 		console.log({questions})
 	}
+	if(!AuthService.isLoggedIn()) {
+        return (
+          <Navigate to="/login" replace state={{ from: location }} />
+        )
+      }
+    
 	if(!started)
 		return (
 		<div className='d-flex justify-content-center align-items-center py-4' style={{backgroundColor: "#533b7c", height: "90vh"}}>

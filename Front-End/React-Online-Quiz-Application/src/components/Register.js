@@ -48,47 +48,35 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState("");
-
-  
 
   const handleLogin = (e) => {
     //e.preventDefault();
-
     setMessage("");
     setLoading(true);
+    AuthService.login(email, password).then(
+      () => {
+        navigate(location.state ? location.state.from : "/");
+      },
+      (error) => {
+        const resMessage =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
 
-    form.current.validateAll();
-
-    if (checkBtn.current.context._errors.length === 0) {
-      AuthService.login(email, password).then(
-        () => {
-          navigate(location.state ? location.state.from : "/");
-          window.location.reload();
-        },
-        (error) => {
-          const resMessage =
-            (error.response &&
-              error.response.data &&
-              error.response.data.message) ||
-            error.message ||
-            error.toString();
-
-          setLoading(false);
-          setMessage(resMessage);
-        }
-      );
-    } else {
-      setLoading(false);
-    }
+        setLoading(false);
+        setMessage(resMessage);
+      }
+    );
   };
 
   const handleRegister = (e) => {
     e.preventDefault();
+    setLoading(true)
 
     setMessage("");
-    setSuccessful(false);
 
     form.current.validateAll();
 
@@ -96,7 +84,6 @@ const Register = () => {
       AuthService.register(firstname, lastname, email, password).then(
         (response) => {
           setMessage(response.data.message);
-          setSuccessful(true);
           setTimeout(function () {
             handleLogin();
           }, 1500);
@@ -110,14 +97,13 @@ const Register = () => {
             error.toString();
 
           setMessage(resMessage);
-          setSuccessful(false);
         }
       );
     }
   };
 
   return (
-    <div className='d-flex' style={{height: "90vh"}}>
+    <div className='d-flex' style={{height: "100vh"}}>
       <div className="d-flex justify-content-center align-items-center py-4 flex-column" style={{backgroundColor: "white", width: "40vw"}}>
         {
           AuthService.isLoggedIn() ?
@@ -130,73 +116,68 @@ const Register = () => {
             <h1 style={{color: "#533b7c"}}><b>Register</b></h1>
             <div style={{ height: "2px", width: '50px', backgroundColor: "#533b7c", marginTop: "10px", marginBottom: "10px" }} />
             <Form onSubmit={handleRegister} ref={form}>
-              {!successful && (
-                <div>
-                  <div className="d-flex flex-row">
-                  <div className="form-group">
-                    <label htmlFor="firstname">First Name</label>
-                    <Input
-                      type="text"
-                      className="form-control"
-                      name="firstname"
-                      value={firstname}
-                      onChange={(e) => setFirstname(e.target.value)}
-                      validations={[required]}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="lastname">Last Name</label>
-                    <Input
-                      type="text"
-                      className="form-control"
-                      name="lastname"
-                      value={lastname}
-                      onChange={(e) => setLastname(e.target.value)}
-                      validations={[required]}
-                    />
-                  </div>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="email">Email</label>
-                    <Input
-                      type="text"
-                      className="form-control"
-                      name="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      validations={[required, validEmail]}
-                    />
-                  </div>
+              <div>
+                <div className="d-flex flex-row">
+                <div className="form-group">
+                  <label htmlFor="firstname">First Name*</label>
+                  <Input
+                    type="text"
+                    className="form-control"
+                    name="firstname"
+                    value={firstname}
+                    onChange={(e) => setFirstname(e.target.value)}
+                    validations={[required]}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="lastname">Last Name*</label>
+                  <Input
+                    type="text"
+                    className="form-control"
+                    name="lastname"
+                    value={lastname}
+                    onChange={(e) => setLastname(e.target.value)}
+                    validations={[required]}
+                  />
+                </div>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="email">Email*</label>
+                  <Input
+                    type="text"
+                    className="form-control"
+                    name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    validations={[required, validEmail]}
+                  />
+                </div>
 
-                  <div className="form-group">
-                    <label htmlFor="password">Password</label>
-                    <Input
-                      type="password"
-                      className="form-control"
-                      name="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      validations={[required, vpassword]}
-                    />
-                  </div>
+                <div className="form-group">
+                  <label htmlFor="password">Password*</label>
+                  <Input
+                    type="password"
+                    className="form-control"
+                    name="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    validations={[required, vpassword]}
+                  />
+                </div>
 
-                  <div className="form-group">
+                <div className="form-group">
+                  <button className="btn btn-primary btn-block" style={{backgroundColor: "#533b7c", borderColor: "#533b7c"}} disable={loading}>
                     {loading && (
                       <span className="spinner-border spinner-border-sm"></span>
                     )}
-                    <button className="btn btn-primary btn-block" style={{backgroundColor: "#533b7c", borderColor: "#533b7c"}}>Register</button>
-                  </div>
+                    <span> Register</span>
+                  </button>
                 </div>
-              )}
+              </div>
 
               {message && (
                 <div className="form-group" style={{maxWidth: "30vw"}}>
-                  <div
-                    className={
-                      successful ? "alert alert-success" : "alert alert-danger"
-                    }
-                    role="alert"
-                  >
+                  <div className="alert alert-danger" role="alert">
                     {message}
                   </div>
                 </div>

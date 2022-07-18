@@ -40,7 +40,6 @@ const Login = () => {
       AuthService.login(email, password).then(
         () => {
           navigate(location.state ?  location.state.from : "/");
-          window.location.reload();
         },
         (error) => {
           const resMessage =
@@ -60,7 +59,7 @@ const Login = () => {
   };
 
   return (
-    <div className='d-flex' style={{height: "90vh"}}>
+    <div className='d-flex' style={{height: "100vh"}}>
       <div className="d-flex justify-content-center align-items-center py-4 flex-column" style={{backgroundColor: "white", width: "40vw"}}>
         {
           AuthService.isLoggedIn() ?
@@ -107,7 +106,7 @@ const Login = () => {
               </div>
 
               {message && (
-                <div className="form-group">
+                <div className="form-group" style={{maxWidth: "30vw"}}>
                   <div className="alert alert-danger" role="alert">
                     {message}
                   </div>

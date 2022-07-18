@@ -2,8 +2,12 @@ import React, { useState, useEffect } from "react";
 
 import UserService from "../services/user.service";
 import EventBus from "../common/EventBus";
+import { useLocation, Navigate } from "react-router-dom";
+import AuthService from "../services/auth.service";
+
 
 const BoardAdmin = () => {
+  let location = useLocation()
   const [content, setContent] = useState("");
 
   useEffect(() => {
@@ -27,6 +31,12 @@ const BoardAdmin = () => {
       }
     );
   }, []);
+
+  if(!AuthService.isLoggedIn()) {
+    return (
+      <Navigate to="/login" replace state={{ from: location }} />
+    )
+  }
 
   return (
     <div className="container">

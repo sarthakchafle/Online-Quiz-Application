@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { isEmail } from "validator";
 import LoginRegisterCommon from "./LoginRegisterCommon";
 
@@ -42,6 +42,7 @@ const Register = () => {
   const form = useRef();
   const checkBtn = useRef();
   let navigate = useNavigate();
+  let location = useLocation();
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [loading, setLoading] = useState(false);
@@ -49,6 +50,8 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState("");
+
+  
 
   const handleLogin = (e) => {
     //e.preventDefault();
@@ -61,7 +64,7 @@ const Register = () => {
     if (checkBtn.current.context._errors.length === 0) {
       AuthService.login(email, password).then(
         () => {
-          navigate("/profile");
+          navigate(location.state ? location.state.from : "/");
           window.location.reload();
         },
         (error) => {
@@ -95,8 +98,6 @@ const Register = () => {
           setMessage(response.data.message);
           setSuccessful(true);
           setTimeout(function () {
-            // navigate("/login");
-            // window.location.reload();
             handleLogin();
           }, 1500);
         },
@@ -114,92 +115,101 @@ const Register = () => {
       );
     }
   };
-  
 
   return (
     <div className='d-flex' style={{height: "90vh"}}>
-      <div className="d-flex justify-content-center align-items-center py-4 flex-column" style={{backgroundColor: "white", width: "50vw"}}>
-        <h1 style={{color: "#533b7c"}}><b>Register</b></h1>
-        <div style={{ height: "2px", width: '50px', backgroundColor: "#533b7c", marginTop: "10px", marginBottom: "10px" }} />
-        <Form onSubmit={handleRegister} ref={form}>
-          {!successful && (
-            <div>
-              <div className="d-flex flex-row">
-              <div className="form-group">
-                <label htmlFor="firstname">First Name</label>
-                <Input
-                  type="text"
-                  className="form-control"
-                  name="firstname"
-                  value={firstname}
-                  onChange={(e) => setFirstname(e.target.value)}
-                  validations={[required]}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="lastname">Last Name</label>
-                <Input
-                  type="text"
-                  className="form-control"
-                  name="lastname"
-                  value={lastname}
-                  onChange={(e) => setLastname(e.target.value)}
-                  validations={[required]}
-                />
-              </div>
-              </div>
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <Input
-                  type="text"
-                  className="form-control"
-                  name="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  validations={[required, validEmail]}
-                />
-              </div>
+      <div className="d-flex justify-content-center align-items-center py-4 flex-column" style={{backgroundColor: "white", width: "40vw"}}>
+        {
+          AuthService.isLoggedIn() ?
+          <>
+            <h1 style={{color: "#533b7c"}}><b>Already Logged In</b></h1>
+            <div style={{ height: "2px", width: '50px', backgroundColor: "#533b7c", marginTop: "10px", marginBottom: "30px" }} />
+            <button onClick={() => navigate("/")} className="btn btn-primary" style={{backgroundColor: "#533b7c", borderColor: "#533b7c"}}>Return to home</button>
+          </> : 
+          <>
+            <h1 style={{color: "#533b7c"}}><b>Register</b></h1>
+            <div style={{ height: "2px", width: '50px', backgroundColor: "#533b7c", marginTop: "10px", marginBottom: "10px" }} />
+            <Form onSubmit={handleRegister} ref={form}>
+              {!successful && (
+                <div>
+                  <div className="d-flex flex-row">
+                  <div className="form-group">
+                    <label htmlFor="firstname">First Name</label>
+                    <Input
+                      type="text"
+                      className="form-control"
+                      name="firstname"
+                      value={firstname}
+                      onChange={(e) => setFirstname(e.target.value)}
+                      validations={[required]}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="lastname">Last Name</label>
+                    <Input
+                      type="text"
+                      className="form-control"
+                      name="lastname"
+                      value={lastname}
+                      onChange={(e) => setLastname(e.target.value)}
+                      validations={[required]}
+                    />
+                  </div>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="email">Email</label>
+                    <Input
+                      type="text"
+                      className="form-control"
+                      name="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      validations={[required, validEmail]}
+                    />
+                  </div>
 
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <Input
-                  type="password"
-                  className="form-control"
-                  name="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  validations={[required, vpassword]}
-                />
-              </div>
+                  <div className="form-group">
+                    <label htmlFor="password">Password</label>
+                    <Input
+                      type="password"
+                      className="form-control"
+                      name="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      validations={[required, vpassword]}
+                    />
+                  </div>
 
-              <div className="form-group">
-                {loading && (
-                  <span className="spinner-border spinner-border-sm"></span>
-                )}
-                <button className="btn btn-primary btn-block" style={{backgroundColor: "#533b7c", borderColor: "#533b7c"}}>Register</button>
-              </div>
-            </div>
-          )}
+                  <div className="form-group">
+                    {loading && (
+                      <span className="spinner-border spinner-border-sm"></span>
+                    )}
+                    <button className="btn btn-primary btn-block" style={{backgroundColor: "#533b7c", borderColor: "#533b7c"}}>Register</button>
+                  </div>
+                </div>
+              )}
 
-          {message && (
-            <div className="form-group">
-              <div
-                className={
-                  successful ? "alert alert-success" : "alert alert-danger"
-                }
-                role="alert"
-              >
-                {message}
-              </div>
-            </div>
-          )}
+              {message && (
+                <div className="form-group" style={{maxWidth: "30vw"}}>
+                  <div
+                    className={
+                      successful ? "alert alert-success" : "alert alert-danger"
+                    }
+                    role="alert"
+                  >
+                    {message}
+                  </div>
+                </div>
+              )}
 
-          <CheckButton style={{ display: "none" }} ref={checkBtn} />
-          <div style={{alignSelf: "center", marginTop: "-10px", fontSize: "small"}}>
-            Already have an account? 
-            <Link to={"/login"}> Login</Link>
-          </div>
-        </Form>
+              <CheckButton style={{ display: "none" }} ref={checkBtn} />
+              <div style={{alignSelf: "center", marginTop: "-10px", fontSize: "small"}}>
+                Already have an account? 
+                <Link to={"/login"} state={{ from: location.state ? location.state.from : "/" }}> Login</Link>
+              </div>
+            </Form>
+          </>
+        }
       </div>
       <LoginRegisterCommon />
     </div>

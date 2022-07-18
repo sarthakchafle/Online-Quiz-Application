@@ -16,6 +16,7 @@ import BoardAdmin from "./components/BoardAdmin";
 import CreateQuiz from "./components/Admin/createQuiz";
 import EventBus from "./common/EventBus";
 import Quiz from "./components/Quiz";
+import ShowAllQuizzes from './components/ShowAllQuizzes'
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -108,6 +109,7 @@ const App = () => {
           <Route path="/admin" element={<BoardAdmin />} />
           <Route path="/createQuiz" element={<CreateQuiz />} />
           <Route path="/quiz" element={<Quiz />} />
+          <Route path="/allQuizzes" element={<ShowAllQuizzes />} />
         </Routes>
       </div>
     </div>

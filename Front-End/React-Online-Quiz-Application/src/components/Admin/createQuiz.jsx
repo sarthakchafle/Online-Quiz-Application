@@ -14,11 +14,11 @@ import Button from "@mui/material/Button";
 import AddedQuestions from "./AddedQuestions";
 import { postQuiz } from "../../services/quiz.service";
 import AddQuestion from "./AddQuestion";
-import AuthService from '../../services/auth.service'
+import AuthService from "../../services/auth.service";
 
 const CreateQuiz = () => {
-  const [state, setState] = useState(0)
-  const location = useLocation()
+  const [state, setState] = useState(0);
+  const location = useLocation();
   const [title, setTitle] = useState("");
   const [admin, setAdmin] = useState(false);
   const [count, setCount] = useState(0);
@@ -70,101 +70,101 @@ const CreateQuiz = () => {
   const handleSubmit = () => {
     console.log(que);
     postQuiz(que);
-    setState(2)
-    setCount(0)
-    setTitle("")
-    setNumberOfQuestions(3)
-    setFormattedArray([])
+    setState(2);
+    setCount(0);
+    setTitle("");
+    setNumberOfQuestions(3);
+    setFormattedArray([]);
   };
 
-  if(!admin) {
+  if (!admin) {
     <Typography variant="h2" gutterBottom component="div">
       Quiz cannot be created. The user is not admin.
-    </Typography>
+    </Typography>;
   }
 
-  if(!AuthService.isLoggedIn()) {
-    return (
-      <Navigate to="/login" replace state={{ from: location }} />
-    )
+  if (!AuthService.isLoggedIn()) {
+    return <Navigate to="/login" replace state={{ from: location }} />;
   }
 
   return (
     <div className="p-4">
-          {
-            state === 0 ?
-            <div container direction={"row"}>
-              <TextField
-                className="my-4"
-                required={true}
-                id="outlined-textarea"
-                label="Title of Quiz"
-                placeholder="Title..."
-                multiline
-                fullWidth
-                margin="dense"
-                value={title}
-                onChange={(e) => {
-                  setTitle(e.target.value);
-                }}
-              />
-              <FormControl sx={{ width: "100%" }} className="my-4">
-                <InputLabel id="demo-multiple-name-label">
-                  Number of Questions...
-                </InputLabel>
-                <Select
-                  required={true}
-                  label="Number of Questions"
-                  labelId="demo-multiple-name-label"
-                  id="demo-multiple-name"
-                  value={numberOfQuestions}
-                  inputProps={{ "aria-label": "Without label" }}
-                  onChange={(e) => setNumberOfQuestions(e.target.value)}
-                  input={<OutlinedInput label="Name" />}
-                  fullWidth
-                >
-                  <MenuItem value={3}>{3}</MenuItem>
-                  <MenuItem value={10}>{10}</MenuItem>
-                  <MenuItem value={15}>{15}</MenuItem>
-                  <MenuItem value={20}>{20}</MenuItem>
-                </Select>
-              </FormControl>
-              <Box>
-                Time of Assignment will be : 20 minutes
-              </Box>
-              <Button
-                className="my-2"
-                onClick={(e) => setState(1)}
-                variant="contained"
-                color="success"
-              >
-                {"Add Questions"}
-              </Button>
-            </div> : null}
-            {
-              state === 1 && count < numberOfQuestions ? <AddQuestion formattedArray={formattedArray} setFormattedArray={setFormattedArray} count={count} setCount={setCount}/> : null
-            } 
-            {
-              state === 1 && count === numberOfQuestions ? 
-              <>
-                <AddedQuestions
-                  array={formattedArray}
-                  title={title}
-                  time={"20 minutes"}
-                />
-                <Button
-                onClick={(e) => handleSubmit(e)}
-                sx={{ margin: "20px" }}
-                variant="contained"
-                color="success"
-              >
-                {"Submit"}
-              </Button>
-              </>: null
-            }
-            {
-              state === 2 && <Typography>Congratulation, the quiz has been added</Typography>
-            }
+      {state === 0 ? (
+        <div container direction={"row"}>
+          <TextField
+            className="my-4"
+            required={true}
+            id="outlined-textarea"
+            label="Title of Quiz"
+            placeholder="Title..."
+            multiline
+            fullWidth
+            margin="dense"
+            value={title}
+            onChange={(e) => {
+              setTitle(e.target.value);
+            }}
+          />
+          <FormControl sx={{ width: "100%" }} className="my-4">
+            <InputLabel id="demo-multiple-name-label">
+              Number of Questions...
+            </InputLabel>
+            <Select
+              required={true}
+              label="Number of Questions"
+              labelId="demo-multiple-name-label"
+              id="demo-multiple-name"
+              value={numberOfQuestions}
+              inputProps={{ "aria-label": "Without label" }}
+              onChange={(e) => setNumberOfQuestions(e.target.value)}
+              input={<OutlinedInput label="Name" />}
+              fullWidth
+            >
+              <MenuItem value={3}>{3}</MenuItem>
+              <MenuItem value={10}>{10}</MenuItem>
+              <MenuItem value={15}>{15}</MenuItem>
+              <MenuItem value={20}>{20}</MenuItem>
+            </Select>
+          </FormControl>
+          <Box>Time of Assignment will be : 20 minutes</Box>
+          <Button
+            className="my-2"
+            onClick={(e) => setState(1)}
+            variant="contained"
+            color="success"
+          >
+            {"Add Questions"}
+          </Button>
+        </div>
+      ) : null}
+      {state === 1 && count < numberOfQuestions ? (
+        <AddQuestion
+          formattedArray={formattedArray}
+          setFormattedArray={setFormattedArray}
+          count={count}
+          setCount={setCount}
+        />
+      ) : null}
+      {state === 1 && count === numberOfQuestions ? (
+        <>
+          <AddedQuestions
+            array={formattedArray}
+            title={title}
+            time={"20 minutes"}
+          />
+          <Button
+            onClick={(e) => handleSubmit(e)}
+            sx={{ margin: "20px" }}
+            variant="contained"
+            color="success"
+          >
+            {"Submit"}
+          </Button>
+        </>
+      ) : null}
+      {state === 2 && (
+        <Typography>Congratulation, the quiz has been added</Typography>
+      )}
     </div>
   );
 };

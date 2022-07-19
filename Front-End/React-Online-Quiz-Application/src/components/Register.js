@@ -57,6 +57,7 @@ const Register = () => {
     AuthService.login(email, password).then(
       () => {
         navigate(location.state ? location.state.from : "/");
+        window.location.reload();
       },
       (error) => {
         const resMessage =
@@ -74,7 +75,7 @@ const Register = () => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    setLoading(true)
+    setLoading(true);
 
     setMessage("");
 
@@ -103,43 +104,72 @@ const Register = () => {
   };
 
   return (
-    <div className='d-flex' style={{height: "100vh"}}>
-      <div className="d-flex justify-content-center align-items-center py-4 flex-column" style={{backgroundColor: "white", width: "40vw"}}>
-        {
-          AuthService.isLoggedIn() ?
+    <div className="d-flex" style={{ height: "100vh" }}>
+      <div
+        className="d-flex justify-content-center align-items-center py-4 flex-column"
+        style={{ backgroundColor: "white", width: "40vw" }}
+      >
+        {AuthService.isLoggedIn() ? (
           <>
-            <h1 style={{color: "#533b7c"}}><b>Already Logged In</b></h1>
-            <div style={{ height: "2px", width: '50px', backgroundColor: "#533b7c", marginTop: "10px", marginBottom: "30px" }} />
-            <button onClick={() => navigate("/")} className="btn btn-primary" style={{backgroundColor: "#533b7c", borderColor: "#533b7c"}}>Return to home</button>
-          </> : 
+            <h1 style={{ color: "#533b7c" }}>
+              <b>Already Logged In</b>
+            </h1>
+            <div
+              style={{
+                height: "2px",
+                width: "50px",
+                backgroundColor: "#533b7c",
+                marginTop: "10px",
+                marginBottom: "30px",
+              }}
+            />
+            <button
+              onClick={() => navigate("/")}
+              className="btn btn-primary"
+              style={{ backgroundColor: "#533b7c", borderColor: "#533b7c" }}
+            >
+              Return to home
+            </button>
+          </>
+        ) : (
           <>
-            <h1 style={{color: "#533b7c"}}><b>Register</b></h1>
-            <div style={{ height: "2px", width: '50px', backgroundColor: "#533b7c", marginTop: "10px", marginBottom: "10px" }} />
+            <h1 style={{ color: "#533b7c" }}>
+              <b>Register</b>
+            </h1>
+            <div
+              style={{
+                height: "2px",
+                width: "50px",
+                backgroundColor: "#533b7c",
+                marginTop: "10px",
+                marginBottom: "10px",
+              }}
+            />
             <Form onSubmit={handleRegister} ref={form}>
               <div>
                 <div className="d-flex flex-row">
-                <div className="form-group">
-                  <label htmlFor="firstname">First Name*</label>
-                  <Input
-                    type="text"
-                    className="form-control"
-                    name="firstname"
-                    value={firstname}
-                    onChange={(e) => setFirstname(e.target.value)}
-                    validations={[required]}
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="lastname">Last Name*</label>
-                  <Input
-                    type="text"
-                    className="form-control"
-                    name="lastname"
-                    value={lastname}
-                    onChange={(e) => setLastname(e.target.value)}
-                    validations={[required]}
-                  />
-                </div>
+                  <div className="form-group">
+                    <label htmlFor="firstname">First Name*</label>
+                    <Input
+                      type="text"
+                      className="form-control"
+                      name="firstname"
+                      value={firstname}
+                      onChange={(e) => setFirstname(e.target.value)}
+                      validations={[required]}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="lastname">Last Name*</label>
+                    <Input
+                      type="text"
+                      className="form-control"
+                      name="lastname"
+                      value={lastname}
+                      onChange={(e) => setLastname(e.target.value)}
+                      validations={[required]}
+                    />
+                  </div>
                 </div>
                 <div className="form-group">
                   <label htmlFor="email">Email*</label>
@@ -166,7 +196,14 @@ const Register = () => {
                 </div>
 
                 <div className="form-group">
-                  <button className="btn btn-primary btn-block" style={{backgroundColor: "#533b7c", borderColor: "#533b7c"}} disable={loading}>
+                  <button
+                    className="btn btn-primary btn-block"
+                    style={{
+                      backgroundColor: "#533b7c",
+                      borderColor: "#533b7c",
+                    }}
+                    disable={loading}
+                  >
                     {loading && (
                       <span className="spinner-border spinner-border-sm"></span>
                     )}
@@ -176,7 +213,7 @@ const Register = () => {
               </div>
 
               {message && (
-                <div className="form-group" style={{maxWidth: "30vw"}}>
+                <div className="form-group" style={{ maxWidth: "30vw" }}>
                   <div className="alert alert-danger" role="alert">
                     {message}
                   </div>
@@ -184,18 +221,29 @@ const Register = () => {
               )}
 
               <CheckButton style={{ display: "none" }} ref={checkBtn} />
-              <div style={{alignSelf: "center", marginTop: "-10px", fontSize: "small"}}>
-                Already have an account? 
-                <Link to={"/login"} state={{ from: location.state ? location.state.from : "/" }}> Login</Link>
+              <div
+                style={{
+                  alignSelf: "center",
+                  marginTop: "-10px",
+                  fontSize: "small",
+                }}
+              >
+                Already have an account?
+                <Link
+                  to={"/login"}
+                  state={{ from: location.state ? location.state.from : "/" }}
+                >
+                  {" "}
+                  Login
+                </Link>
               </div>
             </Form>
           </>
-        }
+        )}
       </div>
       <LoginRegisterCommon />
     </div>
-  )
-
+  );
 };
 
 export default Register;

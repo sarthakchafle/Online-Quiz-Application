@@ -1,27 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
 
-import AuthService from "./services/auth.service";
+import AuthService from "../services/auth.service";
+import EventBus from "../common/EventBus";
 
-import Login from "./components/Login";
-import Register from "./components/Register";
-import Home from "./components/Home";
-import Profile from "./components/Profile";
-import BoardUser from "./components/BoardUser";
-import BoardModerator from "./components/BoardModerator";
-import BoardAdmin from "./components/BoardAdmin";
-
-import CreateQuiz from "./components/Admin/createQuiz";
-import EventBus from "./common/EventBus";
-import Quiz from "./components/Quiz";
-import ShowAllQuizzes from "./components/ShowAllQuizzes";
-import Homepage from "./components/Homepage";
-import Navbar from "./components/Navbar";
-
-const App = () => {
+const Navbar = () => {
   const [currentUser, setCurrentUser] = useState(undefined);
+  const [isLoggedin, setIsLoggedin] = useState(AuthService.isLoggedIn());
   //const [createQuiz, setcreateQuiz] = useState(false);
 
   useEffect(() => {
@@ -44,9 +30,10 @@ const App = () => {
     AuthService.logout();
     //setcreateQuiz(false);
   };
+
   return (
     <div>
-      {/* <nav
+      <nav
         className="navbar navbar-expand navbar-dark bg-dark"
         style={{ height: "10vh" }}
       >
@@ -60,7 +47,7 @@ const App = () => {
             </Link>
           </li>
 
-          {currentUser && (
+          {currentUser && isLoggedin && (
             <li className="nav-item">
               <Link to={"/user"} className="nav-link">
                 User
@@ -69,7 +56,7 @@ const App = () => {
           )}
         </div>
 
-        {currentUser ? (
+        {currentUser && isLoggedin ? (
           <div className="navbar-nav ml-auto">
             <li className="nav-item">
               <Link to={"/profile"} className="nav-link">
@@ -97,23 +84,9 @@ const App = () => {
             </li>
           </div>
         )}
-      </nav> */}
-
-      <div>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/home" element={<Homepage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/createQuiz" element={<CreateQuiz />} />
-          <Route path="/quiz" element={<Quiz />} />
-          <Route path="/allQuizzes" element={<ShowAllQuizzes />} />
-        </Routes>
-      </div>
+      </nav>
     </div>
   );
 };
 
-export default App;
+export default Navbar;

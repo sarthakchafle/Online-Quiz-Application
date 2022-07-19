@@ -45,11 +45,19 @@ const getCurrentUser = () => {
   };
 };
 
+const isLoggedIn = () => {
+  if(localStorage.getItem("user")) {
+    return true;
+  }
+  return false;
+}
+
 const AuthService = {
   register,
   login,
   logout,
   getCurrentUser,
+  isLoggedIn
 };
 
 export default AuthService;

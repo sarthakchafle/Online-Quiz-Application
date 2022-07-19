@@ -2,15 +2,26 @@ import React, {useEffect, useState} from 'react'
 import { Grid } from "@mui/material";
 import Button from "@mui/material/Button";
 import {getAllQuizzesTitles} from '../services/quiz.service'
-import { Link } from "react-router-dom";
-
+import { Link, Navigate, useLocation } from "react-router-dom";
+import AuthService from '../services/auth.service';
 
 export default function AllQuizzes() {
+    let location = useLocation()
     const [data, setData] = useState([])
-    useEffect(async() => {
-      const res = await getAllQuizzesTitles()
-      setData(res.data)
+    useEffect(() => {
+      getData()
     }, [])
+
+    const getData = async() => {
+        const res = await getAllQuizzesTitles()
+        setData(res.data)
+    }
+
+    if(!AuthService.isLoggedIn()) {
+        return (
+          <Navigate to="/login" replace state={{ from: location }} />
+        )
+    }
     
     return (
         <div className='p-5'>

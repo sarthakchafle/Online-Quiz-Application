@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
-
+import AuthService from '../services/auth.service'
 import UserService from "../services/user.service";
+import { useLocation } from "react-router";
+import { Navigate } from "react-router-dom";
 
 const Home = () => {
+  const location = useLocation()
   const [content, setContent] = useState("");
 
   useEffect(() => {
@@ -20,6 +23,12 @@ const Home = () => {
       }
     );
   }, []);
+
+  if(!AuthService.isLoggedIn()) {
+    return (
+      <Navigate to="/login" replace state={{ from: location }} />
+    )
+  }
 
   return (
     <div className="container">

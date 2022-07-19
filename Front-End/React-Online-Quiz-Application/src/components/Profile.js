@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import AuthService from "../services/auth.service";
-import UserService from "../services/user.service";
 import axios from "axios";
 import authHeader from "../services/auth-header";
+import { useLocation, Navigate } from "react-router-dom";
 
 const Profile = () => {
+  const location = useLocation()
   const currentUser = AuthService.getCurrentUser();
   const USER_API = "http://localhost:8299/users-service/users/f/";
 
@@ -18,9 +19,14 @@ const Profile = () => {
   };
   useEffect(() => {
     getData();
-  }, []);
+  });
+  
+  if(!AuthService.isLoggedIn()) {
+    return (
+      <Navigate to="/login" replace state={{ from: location }} />
+    )
+  }
 
-  console.log(data);
   return (
     <div className="container">
       <header className="jumbotron">

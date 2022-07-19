@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 import UserService from "../../services/user.service";
 import EventBus from "../../common/EventBus";
 import Box from "@mui/material/Box";
-import { useNavigate } from "react-router-dom";
-import { Grid, Typography } from "@mui/material";
+import { useLocation, Navigate } from "react-router-dom";
+import { Typography } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import InputAdornment from "@mui/material/InputAdornment";
 import Select from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
 import OutlinedInput from "@mui/material/OutlinedInput";
@@ -13,21 +12,17 @@ import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import Button from "@mui/material/Button";
 import AddedQuestions from "./AddedQuestions";
-import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import LocalizationProvider from "@mui/lab/LocalizationProvider";
-import DateTimePicker from "@mui/lab/DateTimePicker";
 import { postQuiz } from "../../services/quiz.service";
 import AddQuestion from "./AddQuestion";
+import AuthService from '../../services/auth.service'
 
 const CreateQuiz = () => {
   const [state, setState] = useState(0)
-  const history = useNavigate();
+  const location = useLocation()
   const [title, setTitle] = useState("");
   const [admin, setAdmin] = useState(false);
   const [count, setCount] = useState(0);
   const [numberOfQuestions, setNumberOfQuestions] = useState(3);
-  const [startTime, setStartTime] = useState(Date.now());
-  const [endTime, setEndTime] = useState(Date.now() + 60 * 60 * 1000);
   const [formattedArray, setFormattedArray] = useState([]); //api
   let que = {
     title: title,
@@ -72,13 +67,6 @@ const CreateQuiz = () => {
 
     return Math.floor(seconds) + " seconds";
   }
-  const handleStartTimeChange = (newValue) => {
-    setStartTime(Date.parse(newValue));
-  };
-  const handleEndTimeChange = (newValue) => {
-    setEndTime(Date.parse(newValue));
-  };
-
   const handleSubmit = () => {
     console.log(que);
     postQuiz(que);
@@ -89,15 +77,16 @@ const CreateQuiz = () => {
     setFormattedArray([])
   };
 
-  const handleGoHome = (e) => {
-    e.preventDefault();
-    history("/");
-  };
-
   if(!admin) {
     <Typography variant="h2" gutterBottom component="div">
       Quiz cannot be created. The user is not admin.
     </Typography>
+  }
+
+  if(!AuthService.isLoggedIn()) {
+    return (
+      <Navigate to="/login" replace state={{ from: location }} />
+    )
   }
 
   return (
@@ -141,7 +130,7 @@ const CreateQuiz = () => {
                 </Select>
               </FormControl>
               <Box>
-                Time of Assignment will be : {timeSince(startTime, endTime)}
+                Time of Assignment will be : 20 minutes
               </Box>
               <Button
                 className="my-2"
@@ -161,7 +150,7 @@ const CreateQuiz = () => {
                 <AddedQuestions
                   array={formattedArray}
                   title={title}
-                  time={timeSince(startTime, endTime)}
+                  time={"20 minutes"}
                 />
                 <Button
                 onClick={(e) => handleSubmit(e)}

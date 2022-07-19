@@ -1,10 +1,11 @@
 import React, { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-//AuthService
 import AuthService from "../services/auth.service";
+import LoginRegisterCommon from "./LoginRegisterCommon";
+
 const required = (value) => {
   if (!value) {
     return (
@@ -16,8 +17,9 @@ const required = (value) => {
 };
 
 const Login = () => {
+  
   let navigate = useNavigate();
-
+  let location = useLocation();
   const form = useRef();
   const checkBtn = useRef();
 
@@ -25,16 +27,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
-
-  const onChangeEmail = (e) => {
-    const username = e.target.value;
-    setEmail(username);
-  };
-
-  const onChangePassword = (e) => {
-    const password = e.target.value;
-    setPassword(password);
-  };
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -47,8 +39,7 @@ const Login = () => {
     if (checkBtn.current.context._errors.length === 0) {
       AuthService.login(email, password).then(
         () => {
-          navigate("/profile");
-          window.location.reload();
+          navigate(location.state ?  location.state.from : "/");
         },
         (error) => {
           const resMessage =
@@ -68,60 +59,71 @@ const Login = () => {
   };
 
   return (
-    <div className="col-md-12">
-      <div className="card card-container">
-        <img
-          src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-          alt="profile-img"
-          className="profile-img-card"
-        />
-
-        <Form onSubmit={handleLogin} ref={form}>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <Input
-              type="email"
-              className="form-control"
-              name="email"
-              value={email}
-              onChange={onChangeEmail}
-              validations={[required]}
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <Input
-              type="password"
-              className="form-control"
-              name="password"
-              value={password}
-              onChange={onChangePassword}
-              validations={[required]}
-            />
-          </div>
-
-          <div className="form-group">
-            <button className="btn btn-primary btn-block" disabled={loading}>
-              {loading && (
-                <span className="spinner-border spinner-border-sm"></span>
-              )}
-              <span>Login</span>
-            </button>
-          </div>
-
-          {message && (
-            <div className="form-group">
-              <div className="alert alert-danger" role="alert">
-                {message}
+    <div className='d-flex' style={{height: "100vh"}}>
+      <div className="d-flex justify-content-center align-items-center py-4 flex-column" style={{backgroundColor: "white", width: "40vw"}}>
+        {
+          AuthService.isLoggedIn() ?
+          <>
+            <h1 style={{color: "#533b7c"}}><b>Already Logged In</b></h1>
+            <div style={{ height: "2px", width: '50px', backgroundColor: "#533b7c", marginTop: "10px", marginBottom: "30px" }} />
+            <button onClick={() => navigate("/")} className="btn btn-primary" style={{backgroundColor: "#533b7c", borderColor: "#533b7c"}}>Return to home</button>
+          </> :
+          <>
+            <h1 style={{color: "#533b7c"}}><b>Sign in to Account</b></h1>
+            <div style={{ height: "2px", width: '50px', backgroundColor: "#533b7c", marginTop: "10px", marginBottom: "10px" }} />
+            <Form onSubmit={handleLogin} ref={form} class="d-flex flex-column">
+              <div className="form-group">
+                <label htmlFor="email">Email*</label>
+                <Input
+                  type="email"
+                  className="form-control"
+                  name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  validations={[required]}
+                />
               </div>
-            </div>
-          )}
-          <CheckButton style={{ display: "none" }} ref={checkBtn} />
-        </Form>
+
+              <div className="form-group">
+                <label htmlFor="password">Password*</label>
+                <Input
+                  type="password"
+                  className="form-control"
+                  name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  validations={[required]}
+                />
+              </div>
+
+              <div className="form-group">
+                <button className="btn btn-primary btn-block" disabled={loading} style={{backgroundColor: "#533b7c", borderColor: "#533b7c"}}>
+                  {loading && (
+                    <span className="spinner-border spinner-border-sm"></span>
+                  )}
+                  <span>Login</span>
+                </button>
+              </div>
+
+              {message && (
+                <div className="form-group" style={{maxWidth: "30vw"}}>
+                  <div className="alert alert-danger" role="alert">
+                    {message}
+                  </div>
+                </div>
+              )}
+              <CheckButton style={{ display: "none" }} ref={checkBtn} />
+              <div style={{alignSelf: "center", marginTop: "-10px", fontSize: "small"}}>
+                Don't have an account? 
+                <Link to={"/register"} state={{ from: location.state ? location.state.from : "/" }}> Register</Link>
+              </div>
+            </Form>
+          </> 
+        }
       </div>
+      <LoginRegisterCommon />
     </div>
-  );
+  )
 };
 
 export default Login;

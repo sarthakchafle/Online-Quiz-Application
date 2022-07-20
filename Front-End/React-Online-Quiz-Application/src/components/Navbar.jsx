@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -26,16 +26,35 @@ const Navbar = () => {
     };
   }, []);
 
+  const [navBackground, setNavBackground] = useState(false);
+  const navRef = useRef();
+  navRef.current = navBackground;
+  useEffect(() => {
+    const handleScroll = () => {
+      const show = window.scrollY > 50;
+      if (navRef.current !== show) {
+        setNavBackground(show);
+      }
+    };
+    document.addEventListener("scroll", handleScroll);
+    return () => {
+      document.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   const logOut = () => {
     AuthService.logout();
     //setcreateQuiz(false);
   };
 
   return (
-    <div>
+    <div style={{ marginBottom: "20px" }}>
       <nav
-        className="navbar navbar-expand navbar-dark bg-dark"
-        style={{ height: "10vh" }}
+        className="navbar  fixed-top navbar-expand-lg navbar-light shadow-5-strong"
+        style={{
+          transition: "0.5s ease",
+          backgroundColor: navBackground ? "	#f1f2f3" : "transparent",
+        }}
       >
         <Link to={"/"} className="navbar-brand">
           Online Quiz
@@ -49,7 +68,7 @@ const Navbar = () => {
 
           {currentUser && isLoggedin && (
             <li className="nav-item">
-              <Link to={"/user"} className="nav-link">
+              <Link to={"/profile"} className="nav-link">
                 User
               </Link>
             </li>

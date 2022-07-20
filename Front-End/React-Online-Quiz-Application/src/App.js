@@ -100,7 +100,7 @@ const App = () => {
       </nav> */}
 
       <div>
-        <Navbar />
+        {/* <Navbar /> */}
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/home" element={<Homepage />} />

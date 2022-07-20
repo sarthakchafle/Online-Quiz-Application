@@ -153,12 +153,11 @@ const Login = () => {
                   fontSize: "small",
                 }}
               >
-                Don't have an account?
-                <Link
-                  to={"/register"}
+                Don't have an account?{" "}
+                <Link 
+                  to={"/register"} 
                   state={{ from: location.state ? location.state.from : "/" }}
-                >
-                  {" "}
+                > 
                   Register
                 </Link>
               </div>

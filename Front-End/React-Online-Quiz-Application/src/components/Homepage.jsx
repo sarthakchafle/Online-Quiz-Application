@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@mui/styles";
-import { Link } from "react-router-dom";
+import { Link, useLocation, Navigate } from "react-router-dom";
 import "./homepage.css";
+import Navbar from "./Navbar";
+import AuthService from "../services/auth.service";
 // import Loading from "components/Loading";
 // import { getHomepage } from "services/staticdata";
 
@@ -78,6 +80,7 @@ const useStyles = makeStyles({
 });
 
 const Homepage = () => {
+  let location = useLocation();
   const faq = [
     {
       que: "what is the minimum requirement for using this app?",
@@ -213,6 +216,12 @@ const Homepage = () => {
   //     }
   //   );
   // }, []);
+
+  if(!AuthService.isLoggedIn()) {
+    return (
+      <Navigate to="/login" replace state={{ from: location }} />
+    )
+  }
 
   return (
     <>

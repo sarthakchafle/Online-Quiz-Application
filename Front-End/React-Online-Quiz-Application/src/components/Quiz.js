@@ -61,7 +61,7 @@ export default function Quiz() {
     
 	if(!started)
 		return (
-		<div className='d-flex justify-content-center align-items-center py-4' style={{backgroundColor: "#533b7c", height: "90vh"}}>
+		<div className='d-flex justify-content-center align-items-center py-4' style={{backgroundColor: "#533b7c", height: "100vh"}}>
 			<div className='quiz-semi-container d-flex justify-content-center align-items-center flex-column rounded p-5'>
 				<h3 className='font-weight-bold'>Quiz Title: {title}</h3>
 				<div style={{width: '500px', color: "grey", textAlign: "center"}}>

@@ -54,10 +54,24 @@ export default function Quiz() {
 		};
 	});
 	const submit = () => {
+		console.log({param})
+		AnswerService.saveAnswers(param.param).then(
+			(response) => {
+				setMinutes(0)
+				setSeconds(0)
+			},
+			(error) => {
+			  const resMessage =
+				(error.response &&
+				  error.response.data &&
+				  error.response.data.message) ||
+				error.message ||
+				error.toString();
+	
+			  
+			})
 		setMinutes(0)
 		setSeconds(0)
-		console.log({param})
-		AnswerService.saveAnswers(param.param)
 	}
 	if(!AuthService.isLoggedIn()) {
         return (

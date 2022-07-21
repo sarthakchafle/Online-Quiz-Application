@@ -1,5 +1,5 @@
 import React from "react";
-import quizGuy from "../assets/quizGuy.json";
+import quizGuy from "../Assets/quizGuy.json";
 import Lottie from "lottie-react";
 
 export default function LoginRegisterCommon() {

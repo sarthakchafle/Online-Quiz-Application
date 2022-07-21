@@ -1,0 +1,32 @@
+.root{
+    margin-top: 5%;
+    background: #EEE;
+    margin-right:auto;
+    margin-left:auto;
+
+}
+.table{
+width:50%;
+height: 50px;
+overflow-y: scroll;
+}
+table.my-table tr:hover td {
+background-color: #FEFEFE;
+}
+.my-custom-scrollbar {
+    position: relative;
+    height: 300px;
+    overflow: auto;
+    }
+    .table-wrapper-scroll-y {
+    display: block;
+    }
+
+.name{
+        text-align: center;
+        margin-top: 2px;
+        text-decoration: none;
+}
+.btn{
+    background:#a190be;
+}

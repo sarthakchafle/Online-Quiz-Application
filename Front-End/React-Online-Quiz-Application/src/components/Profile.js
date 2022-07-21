@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import AuthService from "../services/auth.service";
 import axios from "axios";
 import authHeader from "../services/auth-header";
-import { useLocation, Navigate } from "react-router-dom";
+import { useLocation, Navigate, useNavigate } from "react-router-dom";
 import "../components/profile.css";
 
 const Profile = () => {
   const location = useLocation();
+  let navigate = useNavigate();
   const currentUser = AuthService.getCurrentUser();
   const USER_API = "http://localhost:8299/users-service/users/f/";
 
@@ -59,8 +60,7 @@ const Profile = () => {
             <button
               type="button"
               class="btn btn-danger"
-              onClick={<Navigate to="/home" />}
-            >
+              onClick={() => navigate("/")} >
               Close
             </button>
           </div>

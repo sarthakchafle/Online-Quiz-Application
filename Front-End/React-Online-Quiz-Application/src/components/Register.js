@@ -75,13 +75,13 @@ const Register = () => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    setLoading(true);
 
     setMessage("");
 
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
+      setLoading(true);
       AuthService.register(firstname, lastname, email, password).then(
         (response) => {
           setMessage(response.data.message);
@@ -228,12 +228,11 @@ const Register = () => {
                   fontSize: "small",
                 }}
               >
-                Already have an account?
+                Already have an account?{" "}
                 <Link
                   to={"/login"}
                   state={{ from: location.state ? location.state.from : "/" }}
                 >
-                  {" "}
                   Login
                 </Link>
               </div>

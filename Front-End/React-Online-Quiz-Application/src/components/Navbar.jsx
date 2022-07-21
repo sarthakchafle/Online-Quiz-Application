@@ -7,10 +7,11 @@ import EventBus from "../common/EventBus";
 
 const Navbar = () => {
   const [currentUser, setCurrentUser] = useState(undefined);
-  const [isLoggedin, setIsLoggedin] = useState(AuthService.isLoggedIn());
+  const [isLoggedin, setIsLoggedin] = useState(false);
   //const [createQuiz, setcreateQuiz] = useState(false);
 
   useEffect(() => {
+    setIsLoggedin(AuthService.isLoggedIn)
     const user = AuthService.getCurrentUser();
 
     if (user.user) {
@@ -75,7 +76,7 @@ const Navbar = () => {
           )}
         </div>
 
-        {currentUser && isLoggedin ? (
+        {isLoggedin ? (
           <div className="navbar-nav ml-auto">
             <li className="nav-item">
               <Link to={"/profile"} className="nav-link">

@@ -20,6 +20,8 @@ public class EmailService {
     @Autowired
     private MailRequest mailRequest;
 
+    boolean isAttachment = true;
+
     public void sendSimpleEmail(String toEmail,
                                 String body,
                                 String subject) {
@@ -59,13 +61,17 @@ public class EmailService {
         System.out.println("Mail Send...");
 
     }
+
     public void triggerMail() throws MessagingException {
 
-        sendEmailWithAttachment(mailRequest.getEmail(),
-                "This is Email Body with Attachment...",
-                "This email has attachment",
-                "C:\\Users\\Sarthak\\Downloads\\truYum-fse-Microservices-AWS-specification.docx");
 
+//        sendEmailWithAttachment(mailRequest.getEmail(),
+//                "This is Email Body with Attachment...",
+//                "This email has attachment",
+//                "D:\\git handson\\welcome.txt");
+        sendSimpleEmail(mailRequest.getEmail(),
+                "you scored 5/5",
+                "This email has attachment");
 
     }
 

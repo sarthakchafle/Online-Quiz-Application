@@ -19,7 +19,7 @@ import Quiz from "./components/Quiz";
 import ShowAllQuizzes from "./components/ShowAllQuizzes";
 import Homepage from "./components/Homepage";
 import Navbar from "./components/Navbar";
-
+import Result from "./components/Result";
 const App = () => {
   const [currentUser, setCurrentUser] = useState(undefined);
   //const [createQuiz, setcreateQuiz] = useState(false);
@@ -110,6 +110,7 @@ const App = () => {
           <Route path="/createQuiz" element={<CreateQuiz />} />
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/allQuizzes" element={<ShowAllQuizzes />} />
+          <Route path="/result" element={<Result />} />
         </Routes>
       </div>
     </div>

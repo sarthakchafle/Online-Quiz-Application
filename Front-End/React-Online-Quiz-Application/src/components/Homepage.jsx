@@ -217,12 +217,13 @@ const Homepage = () => {
   //   );
   // }, []);
 
-  if(!AuthService.isLoggedIn()) {
-    return (
-      <Navigate to="/login" replace state={{ from: location }} />
-    )
+  if (!AuthService.isLoggedIn()) {
+    return <Navigate to="/login" replace state={{ from: location }} />;
   }
-
+  const logOut = () => {
+    AuthService.logout();
+    //setcreateQuiz(false);
+  };
   return (
     <>
       {isLoading}
@@ -258,6 +259,9 @@ const Homepage = () => {
                 </Link>
                 <Link to={"/profile"} className="btn-red">
                   Profile
+                </Link>
+                <Link to={"/"} className="btn-red" onClick={logOut}>
+                  Logout
                 </Link>
               </span>
             </div>

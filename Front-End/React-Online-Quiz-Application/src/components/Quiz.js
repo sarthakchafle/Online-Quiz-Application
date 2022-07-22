@@ -5,6 +5,7 @@ import Question from './Question';
 import { useLocation, Navigate, useNavigate } from 'react-router-dom';
 import { getQuizByTitle } from '../services/quiz.service'
 import AuthService from '../services/auth.service';
+import AnswerService from '../services/answer.service';
 
 
 export default function Quiz() {
@@ -16,6 +17,7 @@ export default function Quiz() {
 	const [minutes, setMinutes ] = useState(0);
 	const [seconds, setSeconds ] =  useState(0);
 	const [questions, setQuestions] = useState([])
+	const [param, setparam] = useState()
 
 	useEffect(() => {
 		if(!location.state) {
@@ -27,6 +29,9 @@ export default function Quiz() {
 	const getData = async() => {
 		let res = await getQuizByTitle(title);
 		setQuestions(res.data.question)
+		setparam({
+			length: 3, quiz_id: res.data.quizId, param: []
+		})
 	}
 	
   
@@ -49,9 +54,24 @@ export default function Quiz() {
 		};
 	});
 	const submit = () => {
+		console.log({param})
+		AnswerService.saveAnswers(param.param).then(
+			(response) => {
+				setMinutes(0)
+				setSeconds(0)
+			},
+			(error) => {
+			  const resMessage =
+				(error.response &&
+				  error.response.data &&
+				  error.response.data.message) ||
+				error.message ||
+				error.toString();
+	
+			  
+			})
 		setMinutes(0)
 		setSeconds(0)
-		console.log({questions})
 	}
 	if(!AuthService.isLoggedIn()) {
         return (
@@ -84,10 +104,10 @@ export default function Quiz() {
 		</div>
 	)
 	return (
-		<div style={{height: "90vh"}}>
+		<div style={{height: "100vh"}}>
 		{ minutes === 0 && seconds === 0
 			? 
-			<div className='quiz-container d-flex justify-content-center align-items-center' style={{height: "90vh"}}>
+			<div className='quiz-container d-flex justify-content-center align-items-center' style={{height: "100vh"}}>
 				<div className='quiz-semi-container d-flex justify-content-center align-items-center flex-column rounded p-5'>
 					<h1 className='font-italic my-4'>Congratulations!!</h1>
 					<h4 className=''>The test has been submitted</h4>
@@ -101,10 +121,10 @@ export default function Quiz() {
 				</div>
 			</div>
 			: 
-			<div className='d-flex justify-content-center align-items-center flex-column' style={{height: "90vh"}}>
+			<div className='d-flex justify-content-center align-items-center flex-column' style={{height: "100vh"}}>
 				<h4 style={{display: "grid", alignSelf: "flex-end",justifySelf:"flex-start", flex: 1, margin: '2vh', color: minutes == 0 ? "red" : "black"}}>
 					Time Left: {minutes} : {seconds}</h4>
-				<Question question={questions[questionNumber]} setQuestions={setQuestions} questions={questions} questionNumber={questionNumber} setQuestionNumber={setQuestionNumber} submit={submit} />
+				<Question question={questions[questionNumber]} setparam={setparam} param={param} questionNumber={questionNumber} setQuestionNumber={setQuestionNumber} submit={submit} />
 			</div>
 		}
 		</div>

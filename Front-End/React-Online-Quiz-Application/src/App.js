@@ -103,7 +103,6 @@ const App = () => {
         {/* <Navbar /> */}
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/home" element={<Homepage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />

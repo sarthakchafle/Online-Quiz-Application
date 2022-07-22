@@ -310,9 +310,9 @@ const Homepage = () => {
             <div className="features__text container--pall">
               <h2>Features</h2>
               <p>
-                Our main aim is to make attepmting the online quizzes and their
+                Our main aim is to make attempting the online quizzes and their
                 evaluation easy and intersting, by providing an user friendly
-                interface for attepmting quizzes and automated evaluation beign
+                interface for attempting quizzes and automated evaluation beign
                 enabled for all the quizzes are that are available, provided an
                 easy way to generate new quizzes.
               </p>
@@ -341,11 +341,11 @@ const Homepage = () => {
             <div className="features__feature featureTap active">
               <div className={featuresSection2Classes.rightImage}></div>
               <div className="feature__text container--pall">
-                <h3>Attept Quiz</h3>
+                <h3>Attempt Quiz</h3>
                 <p>
-                  The quizzes can be attepmted by just clicking on the available
+                  The quizzes can be attempted by just clicking on the available
                   quizzes in the page.Each quiz has a timer attached to it,
-                  which specifies a time limit to attepmt the quiz, if the timer
+                  which specifies a time limit to attempt the quiz, if the timer
                   runs out the quiz is submitted automatically.
                 </p>
                 {/* <Link to="/" className="primary-btn btn-blue">More Info</Link> */}

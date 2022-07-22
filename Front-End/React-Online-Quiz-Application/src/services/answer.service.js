@@ -1,5 +1,6 @@
 import axios from "axios";
 import authHeader from "./auth-header";
+import AuthService from "./auth.service";
 
 const API_URL = "http://localhost:8299/answer-service/api/";
 
@@ -15,8 +16,17 @@ const saveAnswers = (param) => {
 		return [];
 	}
 }
+
+export const getAllAttemptedQuiz = () => {
+	return axios.get(API_URL + "getAllAttemptedQuiz", {
+		params: { user_id: AuthService.getCurrentUser().id}, 
+		headers: authHeader() 
+	}) 
+}
+
 const AnswerService = {
-    saveAnswers
+    saveAnswers, 
+	getAllAttemptedQuiz
 };
   
 export default AnswerService;

@@ -3,8 +3,8 @@ import "./result.css";
 const Result = () => {
   return (
     <React.Fragment>
-      <div class="name">
-        <h1 class="display-5">Name: abcd Title: html</h1>
+      <div className="name">
+        <h1 className="display-5">Name: abcd Title: html</h1>
       </div>
       <div style={{ textAlign: "center" }}>
         <h4>Your Score</h4>
@@ -12,8 +12,8 @@ const Result = () => {
       </div>
       <div className="root">
         <div>
-          <div class="table-wrapper-scroll-y my-custom-scrollbar">
-            <table class="table table-hover mx-auto my-table shadow p-3 mb-5 bg-body rounded">
+          <div className="table-wrapper-scroll-y my-custom-scrollbar">
+            <table className="table table-hover mx-auto my-table shadow p-3 mb-5 bg-body rounded">
               <thead>
                 <tr>
                   <th scope="col">Question</th>
@@ -22,27 +22,27 @@ const Result = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr class="table-success">
+                <tr className="table-success">
                   <th scope="row">What is Html</th>
                   <td>Structural language</td>
                   <td>1</td>
                 </tr>
-                <tr class="table-success">
+                <tr className="table-success">
                   <th scope="row">What does HTML stand for?</th>
                   <td>Hyper Text Markup language</td>
                   <td>1</td>
                 </tr>
-                <tr class="table-danger">
+                <tr className="table-danger">
                   <th scope="row">Who is the father of HTML?</th>
                   <td>Tim Berners-Lee</td>
                   <td>0</td>
                 </tr>
-                <tr class="table-success">
+                <tr className="table-success">
                   <th scope="row">Who is making the Web standards?</th>
                   <td>W3C</td>
                   <td>1</td>
                 </tr>
-                <tr class="table-warning">
+                <tr className="table-warning">
                   <th scope="row">
                     Choose the correct HTML element for the largest heading:
                   </th>
@@ -54,7 +54,7 @@ const Result = () => {
           </div>
           <div style={{ textAlign: "center" }}>Total Score: 3/5</div>
           <div style={{ textAlign: "center" }}>
-            <button type="button" class="btn">
+            <button type="button" className="btn">
               Mail Score
             </button>
           </div>

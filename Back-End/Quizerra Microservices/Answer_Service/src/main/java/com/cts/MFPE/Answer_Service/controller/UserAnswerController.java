@@ -16,7 +16,6 @@ import org.springframework.web.context.WebApplicationContext;
 import java.util.Arrays;
 
 @Scope(value= WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
-@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api")
 public class UserAnswerController {

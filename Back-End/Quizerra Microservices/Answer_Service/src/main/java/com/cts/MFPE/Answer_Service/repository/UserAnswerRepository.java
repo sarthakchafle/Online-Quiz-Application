@@ -14,5 +14,4 @@ public interface UserAnswerRepository extends JpaRepository<UserAnswer,Long> {
     @Query(value = "insert into user_answer values(:user_id,:answer_id,:quiz_id) ",nativeQuery = true)
     @Transactional
     public void saveAnswer(@Param("user_id") String user_id, @Param("answer_id") long answer_id,@Param("quiz_id") long quiz_id);
-
 }

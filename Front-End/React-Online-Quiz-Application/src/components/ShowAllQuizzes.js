@@ -2,20 +2,25 @@ import React, { useEffect, useState } from "react";
 import { Grid } from "@mui/material";
 import Button from "@mui/material/Button";
 import { getAllQuizzesTitles } from "../services/quiz.service";
-import { Link, Navigate, useLocation } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import AuthService from "../services/auth.service";
 import { Input } from "@mui/material";
+import AnswerService from "../services/answer.service";
 
 export default function AllQuizzes() {
+  let navigate = useNavigate()
   let location = useLocation();
   const [data, setData] = useState([]);
   const [search, setSearch] = useState();
   const [originalData, setOriginalData] = useState([]);
+  const [attemptedQuizIds, setAttemptedQuizIds] = useState([])
   useEffect(() => {
     getData();
   }, []);
 
   const getData = async () => {
+    const r = await AnswerService.getAllAttemptedQuiz();
+    setAttemptedQuizIds(r.data)
     const res = await getAllQuizzesTitles();
     setOriginalData(res.data);
     setData(res.data);
@@ -70,21 +75,17 @@ export default function AllQuizzes() {
                 className="d-flex align-items-center p-2 flex-column"
                 style={{ backgroundColor: "#e3e3e3" }}
               >
-                <h4>{item.title}</h4>
+                <h4 style={{maxWidth: "100px"}}>{item.title}</h4>
                 <span>Time Limit: 20 minutes</span>
-                <Link
-                  to={"/quiz"}
-                  state={{ title: item.title }}
-                  style={{ color: "white" }}
-                >
                   <Button
                     className="my-3 px-5"
                     variant="contained"
-                    style={{ backgroundColor: "#533b7c" }}
+                    style={{ backgroundColor: attemptedQuizIds.includes(item.quiz_Id) ? "grey" : "#533b7c" }}
+                    onClick={() => navigate("/quiz", { state: {title: item.title} })}
+                    disabled={attemptedQuizIds.includes(item.quiz_Id)}
                   >
                     Start
-                  </Button>
-                </Link>
+                  </Button>  
               </div>
             </Grid>
           );

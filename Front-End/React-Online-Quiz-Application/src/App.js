@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -7,18 +7,12 @@ import AuthService from "./services/auth.service";
 
 import Login from "./components/Login";
 import Register from "./components/Register";
-import Home from "./components/Home";
 import Profile from "./components/Profile";
-import BoardUser from "./components/BoardUser";
-import BoardModerator from "./components/BoardModerator";
-import BoardAdmin from "./components/BoardAdmin";
-
 import CreateQuiz from "./components/Admin/createQuiz";
 import EventBus from "./common/EventBus";
 import Quiz from "./components/Quiz";
 import ShowAllQuizzes from "./components/ShowAllQuizzes";
 import Homepage from "./components/Homepage";
-import Navbar from "./components/Navbar";
 import Result from "./components/Result";
 const App = () => {
   const [currentUser, setCurrentUser] = useState(undefined);

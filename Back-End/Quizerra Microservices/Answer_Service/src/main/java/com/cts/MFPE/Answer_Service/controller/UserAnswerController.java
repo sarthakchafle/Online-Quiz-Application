@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.util.Arrays;
+import java.util.List;
 
 @Scope(value= WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
-@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api")
 public class UserAnswerController {
@@ -44,5 +44,10 @@ public class UserAnswerController {
             logger.info(e.getLocalizedMessage());
             return ResponseEntity.status(500).body("Something went wrong! " + e.getMessage().substring(38));
         }
+    }
+    
+    @GetMapping("/getAllAttemptedQuiz")
+    public List<Long> getAllAttemptedQuiz(@RequestParam String user_id) {
+    	return service.getAllAttemptedQuizByUser(user_id);
     }
 }

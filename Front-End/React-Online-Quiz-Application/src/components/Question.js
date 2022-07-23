@@ -4,7 +4,6 @@ import AuthService from '../services/auth.service';
 
 export default function Question({question, questionNumber, setQuestionNumber, param, setparam, submit}) {
     const [answer, setAnswer] = useState()
-    // const [param, setparam] = useState([])
     const [error, setError] = useState(false)
 
     const selectOption = (m) => {
@@ -22,7 +21,6 @@ export default function Question({question, questionNumber, setQuestionNumber, p
     
     const onNextClick = () => {
         if(answer) {
-            console.log({param})
             setQuestionNumber(questionNumber+1)
             setAnswer("")
             setError(false)

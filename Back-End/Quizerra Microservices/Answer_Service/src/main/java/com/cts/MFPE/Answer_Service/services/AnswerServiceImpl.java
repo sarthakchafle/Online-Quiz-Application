@@ -5,6 +5,9 @@ import com.cts.MFPE.Answer_Service.models.UserAnswer;
 import com.cts.MFPE.Answer_Service.repository.UserAnswerRepository;
 import com.cts.MFPE.Answer_Service.services.feign.AnswerCommunication;
 import com.cts.MFPE.Answer_Service.services.feign.UserCommunication;
+
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,4 +50,8 @@ Logger logger = LoggerFactory.getLogger(AnswerServiceImpl.class);
             throw new SavingAnswerException();
         }
     }
+    @Override
+	public List<Long> getAllAttemptedQuizByUser(String user_id) {
+		return userAnswerRepository.getAllAttemptedQuizByUser(user_id);
+	}
 }

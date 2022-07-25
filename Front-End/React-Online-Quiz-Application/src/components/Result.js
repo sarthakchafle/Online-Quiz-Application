@@ -10,6 +10,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import {Button} from '@mui/material';
+import {getQuestionAnswer} from '../services/quiz.service'
 
 const Result = () => {
   let location = useLocation();
@@ -18,13 +19,21 @@ const Result = () => {
   const [score, setScore] = useState(0)
   const [loading, setLoading] = useState(true)
   const [openDialog, setOpenDialog] = useState(false)
+  const [allQuestionAnswer, setAllQuestionAnswer] = useState([])
   // const [error, setError] = useState(second)
   useEffect(() => {
     if (!location.state) {
       navigate("/allQuizzes", { replace: true});
     }
+    getAnswers()
     getData()
   }, [])
+
+  const getAnswers = async() => {
+    let res = await getQuestionAnswer(location.state.title)
+    setAllQuestionAnswer(res.data)
+    console.log({res})
+  }
 
   const getData = async() => {
     let res = await EvaluationService.evaluate(location.state.param)
@@ -59,15 +68,22 @@ const Result = () => {
               <thead>
                 <tr>
                   <th scope="col">Question</th>
+                  <th scope="col">Correct Answer</th>
+                  <th scope="col">Your Answer</th>
                   <th scope="col">Score</th>
                 </tr>
               </thead>
               <tbody>
                 {
                   location.state.questions.map((ques, key) => {
+                    let a = allQuestionAnswer.filter(obj => {
+                      return obj.ques === ques.quesId
+                    })
+                    console.log({a})
                     return (
                       <tr className={`${data[ques.quesId] ? "table-success" : "table-danger"}`} key={key}>
                       <th style={{width: "500px"}} scope="row">{ques.question}</th>
+                      <th style={{width: "500px"}} scope="row">{a[0].answer}</th>
                       <td>{data[ques.quesId] ? "1" : "0"}</td>
                     </tr>
                     )

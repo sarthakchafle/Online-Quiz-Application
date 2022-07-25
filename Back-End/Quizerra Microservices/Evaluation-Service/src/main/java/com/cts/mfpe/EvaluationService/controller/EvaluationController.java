@@ -1,6 +1,8 @@
 package com.cts.mfpe.EvaluationService.controller;
 
 import com.cts.mfpe.EvaluationService.Exception.EvaluationException;
+import com.cts.mfpe.EvaluationService.Repository.EvaluateAnswerRepository;
+import com.cts.mfpe.EvaluationService.models.UserScore;
 import com.cts.mfpe.EvaluationService.payload.Request.EvaluateAnswerRequest;
 import com.cts.mfpe.EvaluationService.payload.Response.MessageResponse;
 import com.cts.mfpe.EvaluationService.services.EvaluationService;
@@ -26,6 +28,9 @@ Logger logger = LoggerFactory.getLogger(EvaluationController.class);
     @Autowired
     EvaluationService service;
 
+    @Autowired
+    EvaluateAnswerRepository evaluateAnswerRepository;
+
     private final Map<String, Map<Long,Integer>> userScore= new HashMap<>();
     private final Map<Long,Integer> questionScoreMap = new HashMap<>();
 
@@ -33,6 +38,7 @@ Logger logger = LoggerFactory.getLogger(EvaluationController.class);
     @ResponseBody
     ResponseEntity<?> startEvaluation(@RequestBody EvaluateAnswerRequest[] evaluateAnswerRequest){
         logger.info("evaluate post method called");
+        UserScore userScoreObj;
         try {
             Arrays.stream(evaluateAnswerRequest).forEach(e -> {
                 logger.info("user object -> "+String.valueOf(e));
@@ -51,5 +57,11 @@ Logger logger = LoggerFactory.getLogger(EvaluationController.class);
             logger.error(e.getLocalizedMessage());
             return ResponseEntity.badRequest().body("Error: Either user doesn't exists or answer or maybe both");
         }
+    }
+
+    @GetMapping("/{userId}/{quizId}")
+    @ResponseBody
+    public UserScore getUserScore(@PathVariable String userId,@PathVariable long quizId){
+        return evaluateAnswerRepository.findByUserIdAndQuizId(userId,quizId);
     }
 }

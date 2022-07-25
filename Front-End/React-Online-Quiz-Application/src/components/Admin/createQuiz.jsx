@@ -3,7 +3,7 @@ import UserService from "../../services/user.service";
 import EventBus from "../../common/EventBus";
 import Box from "@mui/material/Box";
 import { useLocation, Navigate } from "react-router-dom";
-import { Typography } from "@mui/material";
+import { AppBar, Toolbar, Typography } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Select from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
@@ -15,6 +15,7 @@ import AddedQuestions from "./AddedQuestions";
 import { postQuiz } from "../../services/quiz.service";
 import AddQuestion from "./AddQuestion";
 import AuthService from "../../services/auth.service";
+import "./createquiz.css";
 
 const CreateQuiz = () => {
   const [state, setState] = useState(0);
@@ -88,10 +89,12 @@ const CreateQuiz = () => {
   }
 
   return (
-    <div className="p-4">
+    <div className="containerrr">
+      <Typography>Create Quiz</Typography>
       {state === 0 ? (
         <div container direction={"row"}>
           <TextField
+            style={{ width: "50vw" }}
             className="my-4"
             required={true}
             id="outlined-textarea"
@@ -105,7 +108,7 @@ const CreateQuiz = () => {
               setTitle(e.target.value);
             }}
           />
-          <FormControl sx={{ width: "100%" }} className="my-4">
+          <FormControl sx={{ width: "50vw" }} className="my-4">
             <InputLabel id="demo-multiple-name-label">
               Number of Questions...
             </InputLabel>
@@ -131,7 +134,7 @@ const CreateQuiz = () => {
             className="my-2"
             onClick={(e) => setState(1)}
             variant="contained"
-            color="success"
+            sx={{ backgroundColor: "#533b7c" }}
           >
             {"Add Questions"}
           </Button>
@@ -156,14 +159,22 @@ const CreateQuiz = () => {
             onClick={(e) => handleSubmit(e)}
             sx={{ margin: "20px" }}
             variant="contained"
-            color="success"
           >
             {"Submit"}
           </Button>
         </>
       ) : null}
       {state === 2 && (
-        <Typography>Congratulation, the quiz has been added</Typography>
+        <div>
+          <Typography>Congratulation, the quiz has been added</Typography>
+          <Button
+            variant="contained"
+            href="/allQuizzes"
+            sx={{ backgroundColor: "#533b7c" }}
+          >
+            <span style={{ color: "#fff" }}>Show Quizzes</span>
+          </Button>
+        </div>
       )}
     </div>
   );

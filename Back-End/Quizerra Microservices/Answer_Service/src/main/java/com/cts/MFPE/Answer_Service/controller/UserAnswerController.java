@@ -16,7 +16,7 @@ import org.springframework.web.context.WebApplicationContext;
 import java.util.Arrays;
 import java.util.List;
 
-@Scope(value= WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
+@Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
 @RestController
 @RequestMapping("/api")
 public class UserAnswerController {
@@ -33,7 +33,7 @@ public class UserAnswerController {
             Arrays.stream(saveAnswerRequests).forEach(e -> {
                 logger.info(String.valueOf(e));
                 try {
-                    service.saveAnswer(e.getUser_id(), e.getAnswer_id(),e.getQuiz_id());
+                    service.saveAnswer(e.getUser_id(), e.getAnswer_id(), e.getQuiz_id());
                 } catch (SavingAnswerException ex) {
                     logger.error(ex.getLocalizedMessage());
                     throw new RuntimeException(ex);
@@ -45,9 +45,9 @@ public class UserAnswerController {
             return ResponseEntity.status(500).body("Something went wrong! " + e.getMessage().substring(38));
         }
     }
-    
+
     @GetMapping("/getAllAttemptedQuiz")
     public List<Long> getAllAttemptedQuiz(@RequestParam String user_id) {
-    	return service.getAllAttemptedQuizByUser(user_id);
+        return service.getAllAttemptedQuizByUser(user_id);
     }
 }

@@ -1,3 +1,4 @@
+
 2022-07-25 10:02:23.309  INFO 9088 --- [main] c.c.m.E.EvaluationServiceApplication     : Starting EvaluationServiceApplication using Java 18.0.1 on DESKTOP-IPSMHAI with PID 9088 (C:\Users\user\Documents\GitHub\Online-Quiz-Application\Back-End\Quizerra Microservices\Evaluation-Service\target\classes started by user in C:\Users\user\Documents\GitHub\Online-Quiz-Application\Back-End\Quizerra Microservices\Evaluation-Service)
 2022-07-25 10:02:23.326  INFO 9088 --- [main] c.c.m.E.EvaluationServiceApplication     : No active profile set, falling back to 1 default profile: "default"
 2022-07-25 10:02:25.337  INFO 9088 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
@@ -2081,3 +2082,32 @@ Consider defining a bean of type 'java.util.Map' in your configuration.
 2022-07-25 11:53:59.471  INFO 960 --- [http-nio-8089-exec-3] c.c.m.E.controller.EvaluationController  : Answers saved Successfully!
 2022-07-25 11:53:59.471  INFO 960 --- [http-nio-8089-exec-3] c.c.m.E.controller.EvaluationController  : result : {1=false, 2=false, 3=true}
 2022-07-25 11:55:32.674  INFO 960 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+
+2022-07-25 09:02:48.346  WARN 52872 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=9h23m47s293ms662µs500ns).
+2022-07-25 09:03:52.569  INFO 52872 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-07-25 09:08:52.578  INFO 52872 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-07-25 09:13:52.585  INFO 52872 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-07-25 09:18:52.593  INFO 52872 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-07-25 09:23:52.603  INFO 52872 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-07-25 09:28:52.609  INFO 52872 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-07-25 09:33:52.615  INFO 52872 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-07-25 09:38:52.620  INFO 52872 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-07-25 09:43:52.631  INFO 52872 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-07-25 09:48:52.646  INFO 52872 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-07-25 09:53:52.650  INFO 52872 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-07-25 09:58:52.667  INFO 52872 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-07-25 10:03:52.677  INFO 52872 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-07-25 10:08:52.685  INFO 52872 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-07-25 10:13:52.697  INFO 52872 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-07-25 10:18:52.709  INFO 52872 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-07-25 10:20:13.079  INFO 52872 --- [SpringApplicationShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application EVALUATION-SERVICE with eureka with status DOWN
+2022-07-25 10:20:13.086  INFO 52872 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1658724613086, current=DOWN, previous=UP]
+2022-07-25 10:20:13.089  INFO 52872 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_EVALUATION-SERVICE/localhost:evaluation-service:8089: registering service...
+2022-07-25 10:20:13.142  INFO 52872 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_EVALUATION-SERVICE/localhost:evaluation-service:8089 - registration status: 204
+2022-07-25 10:20:13.584  INFO 52872 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-07-25 10:20:13.656  INFO 52872 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-07-25 10:20:13.691  INFO 52872 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-07-25 10:20:13.697  INFO 52872 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2022-07-25 10:20:16.716  INFO 52872 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2022-07-25 10:20:16.729  INFO 52872 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_EVALUATION-SERVICE/localhost:evaluation-service:8089 - deregister  status: 200
+2022-07-25 10:20:16.743  INFO 52872 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient

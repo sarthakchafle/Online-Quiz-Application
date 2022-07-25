@@ -27,7 +27,6 @@ public class AnswerServiceApplication {
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
 	}
-
 	@Bean
 	public CorsWebFilter corsWebFilter() {
 

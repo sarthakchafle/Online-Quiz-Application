@@ -141,7 +141,7 @@ export default function Quiz() {
               justifySelf: "flex-start",
               flex: 1,
               margin: "2vh",
-              color: minutes == 0 ? "red" : "black",
+              color: minutes === 0 ? "red" : "black",
             }}
           >
             Time Left: {minutes} : {seconds}

@@ -92,7 +92,7 @@ const CreateQuiz = () => {
     <div className="containerrr">
       <Typography>Create Quiz</Typography>
       {state === 0 ? (
-        <div container direction={"row"}>
+        <div container direction={"row"} >
           <TextField
             style={{ width: "50vw" }}
             className="my-4"

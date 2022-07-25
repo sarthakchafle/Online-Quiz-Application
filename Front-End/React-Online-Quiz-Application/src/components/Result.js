@@ -1,81 +1,110 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./result.css";
+import {useLocation, useNavigate} from 'react-router-dom'
+import EvaluationService from "../services/evaluation.service";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import {Button} from '@mui/material';
+
 const Result = () => {
+  let location = useLocation();
+  let navigate = useNavigate();
+  const [data, setData] = useState({})
+  const [score, setScore] = useState(0)
+  const [loading, setLoading] = useState(true)
+  const [openDialog, setOpenDialog] = useState(false)
+  // const [error, setError] = useState(second)
+  useEffect(() => {
+    if (!location.state) {
+      navigate("/allQuizzes", { replace: true});
+    }
+    getData()
+  }, [])
+
+  const getData = async() => {
+    let res = await EvaluationService.evaluate(location.state.param)
+    setData(res.data)
+    let count = 0
+    Object.values(res.data).forEach(item => count = item ? count + 1 : count);
+    setScore(count)
+    setLoading(false)
+  }
+  
+  if(loading) {
+    return (
+        <Box sx={{ display: 'flex', flex: 1, alignItems: "center", justifyContent: "center", height: '100vh'}}>
+          <CircularProgress />
+        </Box>
+    )
+  }
+  
   return (
     <React.Fragment>
       <div className="name">
-        <h1 className="display-5">Name: abcd Title: html</h1>
+        <h1 className="display-5 m-2">Title: {location.state.title}</h1>
       </div>
       <div style={{ textAlign: "center" }}>
         <h4>Your Score</h4>
-        <h4>3/5</h4>
+        <h4>{score}/{Object.keys(data).length}</h4>
       </div>
-      <div className="root">
+      <div className="root" style={{padding: 40}}>
         <div>
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <table className="table table-hover mx-auto my-table shadow p-3 mb-5 bg-body rounded">
               <thead>
                 <tr>
                   <th scope="col">Question</th>
-                  <th scope="col">Correct Answer</th>
                   <th scope="col">Score</th>
                 </tr>
               </thead>
               <tbody>
-                <tr className="table-success">
-                  <th scope="row">What is Html</th>
-                  <td>Structural language</td>
-                  <td>1</td>
-                </tr>
-                <tr className="table-success">
-                  <th scope="row">What does HTML stand for?</th>
-                  <td>Hyper Text Markup language</td>
-                  <td>1</td>
-                </tr>
-                <tr className="table-danger">
-                  <th scope="row">Who is the father of HTML?</th>
-                  <td>Tim Berners-Lee</td>
-                  <td>0</td>
-                </tr>
-                <tr className="table-success">
-                  <th scope="row">Who is making the Web standards?</th>
-                  <td>W3C</td>
-                  <td>1</td>
-                </tr>
-                <tr className="table-warning">
-                  <th scope="row">
-                    Choose the correct HTML element for the largest heading:
-                  </th>
-                  <td>-</td>
-                  <td>0</td>
-                </tr>
+                {
+                  location.state.questions.map((ques, key) => {
+                    return (
+                      <tr className={`${data[ques.quesId] ? "table-success" : "table-danger"}`} key={key}>
+                      <th style={{width: "500px"}} scope="row">{ques.question}</th>
+                      <td>{data[ques.quesId] ? "1" : "0"}</td>
+                    </tr>
+                    )
+                  })
+                }
               </tbody>
             </table>
           </div>
-          <div style={{ textAlign: "center" }}>Total Score: 3/5</div>
+          <div style={{ textAlign: "center" }}>Total Score: {score}/{Object.keys(data).length}</div>
           <div style={{ textAlign: "center" }}>
-            <button type="button" className="btn">
-              Mail Score
+            <button type="button" className="btn m-2">
+              Mail the Score
+            </button>
+            <button type="button" className="btn" onClick={() => setOpenDialog(true)}>
+              Return to home
             </button>
           </div>
         </div>
       </div>
+      <Dialog
+        open={openDialog}
+        keepMounted
+        onClose={() => setOpenDialog(false)}
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle>{"Return to home"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-slide-description">
+            Once you exit this page, you cannot view this page again. Are you sure you want to return to home?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => navigate('/', {replace: true})}>Yes</Button>
+          <Button onClick={() => setOpenDialog(false)}>No</Button>
+        </DialogActions>
+      </Dialog>
     </React.Fragment>
   );
-  // return (<div style={{display:'flex', flex:1,justifyContent:'center',alignItems:'center', height : '100vh',flexDirection:'column'}}>
-  //     <h2 style={{marginBottom:'30px'}}><b>Quiz Result</b></h2><table style={{fontSize:'2vw',borderStyle:'solid',borderWidth:'1px',padding:'100px'}}>
-  //     <tr style={{height:'10vh',backgroundColor:'grey'}}>
-  //       <th style={{width:'40vw',paddingLeft:'200px'}}>Details<br></br></th>
-  //       <th style={{width:'40vw',paddingLeft:'200px'}}>Quiz Answer</th>
-  //     </tr>
-  //     <tr>
-  //       <td style={{borderStyle:'solid',borderWidth:'1px',padding:'100px'}}>User ID : dwabiwubdaidiwuadb<br></br>Username : Sarthak<br></br>Email : sarthak@gmail.com<br>
-  //       </br>Quiz Title: html<br></br>Score : 90/100</td>
-  //       <td style={{borderStyle:'solid',borderWidth:'1px',padding:'100px'}}>1.What does HTML stand for?<br></br> Answer: Hyper text markup language<br></br>2.Question<br></br>Answer:<br></br>3.Question<br>
-  //       </br>Answer:</td>
-
-  //     </tr>
-
-  //   </table></div>)
 };
 export default Result;

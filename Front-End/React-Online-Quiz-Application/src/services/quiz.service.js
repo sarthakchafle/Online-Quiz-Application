@@ -35,3 +35,10 @@ export const getQuizByTitle = async(data) => {
 		headers: authHeader() 
 	})
 }
+
+export const getQuestionAnswer = async(title) => {
+	return axios.get(API_URL + "getQuestionAnswer", {
+		params: {title: title},
+		headers: authHeader()
+	})
+}

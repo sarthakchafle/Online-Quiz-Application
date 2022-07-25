@@ -2082,6 +2082,7 @@ Consider defining a bean of type 'java.util.Map' in your configuration.
 2022-07-25 11:53:59.471  INFO 960 --- [http-nio-8089-exec-3] c.c.m.E.controller.EvaluationController  : Answers saved Successfully!
 2022-07-25 11:53:59.471  INFO 960 --- [http-nio-8089-exec-3] c.c.m.E.controller.EvaluationController  : result : {1=false, 2=false, 3=true}
 2022-07-25 11:55:32.674  INFO 960 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+<<<<<<< Updated upstream
 
 2022-07-25 09:02:48.346  WARN 52872 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=9h23m47s293ms662µs500ns).
 2022-07-25 09:03:52.569  INFO 52872 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
@@ -2111,3 +2112,459 @@ Consider defining a bean of type 'java.util.Map' in your configuration.
 2022-07-25 10:20:16.716  INFO 52872 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Unregistering ...
 2022-07-25 10:20:16.729  INFO 52872 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_EVALUATION-SERVICE/localhost:evaluation-service:8089 - deregister  status: 200
 2022-07-25 10:20:16.743  INFO 52872 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+=======
+2022-07-25 12:10:32.706  INFO 960 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+>>>>>>> Stashed changes
+2022-07-25 12:19:19.426  INFO 13412 --- [main] c.c.m.E.EvaluationServiceApplication     : Starting EvaluationServiceApplication using Java 18.0.1 on DESKTOP-IPSMHAI with PID 13412 (C:\Users\user\Documents\GitHub\Online-Quiz-Application\Back-End\Quizerra Microservices\Evaluation-Service\target\classes started by user in C:\Users\user\Documents\GitHub\Online-Quiz-Application\Back-End\Quizerra Microservices\Evaluation-Service)
+2022-07-25 12:19:19.432  INFO 13412 --- [main] c.c.m.E.EvaluationServiceApplication     : No active profile set, falling back to 1 default profile: "default"
+2022-07-25 12:19:21.759  INFO 13412 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-07-25 12:19:22.099  INFO 13412 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 324 ms. Found 1 JPA repository interfaces.
+2022-07-25 12:19:22.613  INFO 13412 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=a209d97e-85d9-3cf0-a294-3af1ee9542d1
+2022-07-25 12:19:23.663  INFO 13412 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8089 (http)
+2022-07-25 12:19:23.680  INFO 13412 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-07-25 12:19:23.681  INFO 13412 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-07-25 12:19:24.020  INFO 13412 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-07-25 12:19:24.021  INFO 13412 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4475 ms
+2022-07-25 12:19:24.376  INFO 13412 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-07-25 12:19:24.470  INFO 13412 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-07-25 12:19:24.808  INFO 13412 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-07-25 12:19:25.115  INFO 13412 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-07-25 12:19:25.723  INFO 13412 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-07-25 12:19:25.757  INFO 13412 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2022-07-25 12:19:27.284  INFO 13412 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-07-25 12:19:27.297  INFO 13412 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-07-25 12:19:28.214  WARN 13412 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-07-25 12:19:30.192  INFO 13412 --- [main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2022-07-25 12:19:30.580  WARN 13412 --- [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-07-25 12:19:30.624  INFO 13412 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2022-07-25 12:19:30.871  INFO 13412 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2022-07-25 12:19:30.884  INFO 13412 --- [main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-07-25 12:19:30.940  INFO 13412 --- [main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2022-07-25 12:19:30.941  INFO 13412 --- [main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2022-07-25 12:19:30.942  INFO 13412 --- [main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2022-07-25 12:19:30.942  INFO 13412 --- [main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2022-07-25 12:19:30.943  INFO 13412 --- [main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2022-07-25 12:19:30.943  INFO 13412 --- [main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2022-07-25 12:19:30.943  INFO 13412 --- [main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2022-07-25 12:19:31.689  INFO 13412 --- [main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2022-07-25 12:19:31.693  INFO 13412 --- [main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2022-07-25 12:19:31.699  INFO 13412 --- [main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2022-07-25 12:19:31.710  INFO 13412 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1658731771708 with initial instances count: 4
+2022-07-25 12:19:31.714  INFO 13412 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application EVALUATION-SERVICE with eureka with status UP
+2022-07-25 12:19:31.715  INFO 13412 --- [main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1658731771715, current=UP, previous=STARTING]
+2022-07-25 12:19:31.719  INFO 13412 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_EVALUATION-SERVICE/DESKTOP-IPSMHAI:evaluation-service:8089: registering service...
+2022-07-25 12:19:31.784  INFO 13412 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8089 (http) with context path ''
+2022-07-25 12:19:31.785  INFO 13412 --- [main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8089
+2022-07-25 12:19:31.969  INFO 13412 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_EVALUATION-SERVICE/DESKTOP-IPSMHAI:evaluation-service:8089 - registration status: 204
+2022-07-25 12:19:32.088  INFO 13412 --- [main] c.c.m.E.EvaluationServiceApplication     : Started EvaluationServiceApplication in 14.196 seconds (JVM running for 15.378)
+2022-07-25 12:24:30.963  INFO 13412 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-07-25 12:29:30.971  INFO 13412 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-07-25 12:30:37.158  INFO 13412 --- [http-nio-8089-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-25 12:30:37.159  INFO 13412 --- [http-nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-07-25 12:30:37.171  INFO 13412 --- [http-nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 12 ms
+2022-07-25 12:30:37.339  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.controller.EvaluationController  : evaluate post method called
+2022-07-25 12:30:37.341  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=5, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=50}
+2022-07-25 12:30:37.342  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=5, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=50}
+2022-07-25 12:30:41.678  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 12:30:41.678  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={5=0}}
+2022-07-25 12:30:41.679  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 5score -> 0
+2022-07-25 12:30:41.679  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=5, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=54}
+2022-07-25 12:30:41.680  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=5, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=54}
+2022-07-25 12:30:42.001  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 12:30:42.002  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={5=0}}
+2022-07-25 12:30:42.002  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 5score -> 0
+2022-07-25 12:30:42.002  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=5, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=58}
+2022-07-25 12:30:42.002  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=5, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=58}
+2022-07-25 12:30:42.159  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 12:30:42.159  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={5=1}}
+2022-07-25 12:30:42.159  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 5score -> 1
+2022-07-25 12:30:42.160  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : com.cts.mfpe.EvaluationService.models.UserScore@39fc17be
+2022-07-25 12:30:42.325 DEBUG 13412 --- [http-nio-8089-exec-1] org.hibernate.SQL                        : insert into user_score (quiz_id, score, user_id) values (?, ?, ?)
+2022-07-25 12:30:42.355 TRACE 13412 --- [http-nio-8089-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [5]
+2022-07-25 12:30:42.358 TRACE 13412 --- [http-nio-8089-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [INTEGER] - [1]
+2022-07-25 12:30:42.360 TRACE 13412 --- [http-nio-8089-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [415bcdc8-6454-4677-b12b-acc5240650e0]
+2022-07-25 12:30:42.451  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.controller.EvaluationController  : Answers saved Successfully!
+2022-07-25 12:30:42.451  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.controller.EvaluationController  : result : {13=false, 14=false, 15=true}
+2022-07-25 12:34:30.978  INFO 13412 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-07-25 12:39:30.992  INFO 13412 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-07-25 12:44:22.676  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.controller.EvaluationController  : evaluate post method called
+2022-07-25 12:44:22.677  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=13}
+2022-07-25 12:44:22.677  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=13}
+2022-07-25 12:44:22.824  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 12:44:22.825  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=0}}
+2022-07-25 12:44:22.825  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 0
+2022-07-25 12:44:22.826  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=15}
+2022-07-25 12:44:22.826  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=15}
+2022-07-25 12:44:22.978  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 12:44:22.979  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=1}}
+2022-07-25 12:44:22.980  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 1
+2022-07-25 12:44:22.981  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=19}
+2022-07-25 12:44:22.981  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=19}
+2022-07-25 12:44:23.130  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 12:44:23.131  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=2}}
+2022-07-25 12:44:23.131  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 2
+2022-07-25 12:44:23.132  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=23}
+2022-07-25 12:44:23.132  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=23}
+2022-07-25 12:44:23.299  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 12:44:23.300  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=2}}
+2022-07-25 12:44:23.301  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 2
+2022-07-25 12:44:23.301  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=22}
+2022-07-25 12:44:23.301  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=22}
+2022-07-25 12:44:23.419  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 12:44:23.421  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=3}}
+2022-07-25 12:44:23.421  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 3
+2022-07-25 12:44:23.421  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : com.cts.mfpe.EvaluationService.models.UserScore@39fc17be
+2022-07-25 12:44:23.540 DEBUG 13412 --- [http-nio-8089-exec-3] org.hibernate.SQL                        : select userscore0_.score_id as score_id1_0_0_, userscore0_.quiz_id as quiz_id2_0_0_, userscore0_.score as score3_0_0_, userscore0_.user_id as user_id4_0_0_ from user_score userscore0_ where userscore0_.score_id=?
+2022-07-25 12:44:23.542 TRACE 13412 --- [http-nio-8089-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [9]
+2022-07-25 12:44:23.607 DEBUG 13412 --- [http-nio-8089-exec-3] org.hibernate.SQL                        : update user_score set quiz_id=?, score=?, user_id=? where score_id=?
+2022-07-25 12:44:23.608 TRACE 13412 --- [http-nio-8089-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [2]
+2022-07-25 12:44:23.609 TRACE 13412 --- [http-nio-8089-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [INTEGER] - [3]
+2022-07-25 12:44:23.609 TRACE 13412 --- [http-nio-8089-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [415bcdc8-6454-4677-b12b-acc5240650e0]
+2022-07-25 12:44:23.609 TRACE 13412 --- [http-nio-8089-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [9]
+2022-07-25 12:44:23.628  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.controller.EvaluationController  : Answers saved Successfully!
+2022-07-25 12:44:23.629  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.controller.EvaluationController  : result : {4=true, 5=true, 6=true}
+2022-07-25 12:44:30.995  INFO 13412 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-07-25 12:49:31.013  INFO 13412 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-07-25 12:54:31.020  INFO 13412 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-07-25 12:59:31.028  INFO 13412 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-07-25 13:00:15.839  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.controller.EvaluationController  : evaluate post method called
+2022-07-25 13:00:15.840  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=13}
+2022-07-25 13:00:15.841  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=13}
+2022-07-25 13:00:16.050  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:00:16.050  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=0}}
+2022-07-25 13:00:16.050  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 0
+2022-07-25 13:00:16.051  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=15}
+2022-07-25 13:00:16.051  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=15}
+2022-07-25 13:00:16.277  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:00:16.277  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=1}}
+2022-07-25 13:00:16.277  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 1
+2022-07-25 13:00:16.278  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=19}
+2022-07-25 13:00:16.278  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=19}
+2022-07-25 13:00:16.482  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:00:16.482  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=2}}
+2022-07-25 13:00:16.482  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 2
+2022-07-25 13:00:16.483  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=23}
+2022-07-25 13:00:16.483  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=23}
+2022-07-25 13:00:16.617  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:00:16.618  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=2}}
+2022-07-25 13:00:16.618  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 2
+2022-07-25 13:00:16.618  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=22}
+2022-07-25 13:00:16.618  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=22}
+2022-07-25 13:00:16.778  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:00:16.778  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=3}}
+2022-07-25 13:00:16.778  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 3
+2022-07-25 13:00:16.778  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : com.cts.mfpe.EvaluationService.models.UserScore@39fc17be
+2022-07-25 13:00:16.782 DEBUG 13412 --- [http-nio-8089-exec-5] org.hibernate.SQL                        : select userscore0_.score_id as score_id1_0_0_, userscore0_.quiz_id as quiz_id2_0_0_, userscore0_.score as score3_0_0_, userscore0_.user_id as user_id4_0_0_ from user_score userscore0_ where userscore0_.score_id=?
+2022-07-25 13:00:16.783 TRACE 13412 --- [http-nio-8089-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [9]
+2022-07-25 13:00:16.791  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.controller.EvaluationController  : Answers saved Successfully!
+2022-07-25 13:00:16.792  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.controller.EvaluationController  : result : {4=true, 5=true, 6=true}
+2022-07-25 13:00:23.807  INFO 13412 --- [http-nio-8089-exec-6] c.c.m.E.controller.EvaluationController  : evaluate post method called
+2022-07-25 13:00:23.807  INFO 13412 --- [http-nio-8089-exec-6] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=13}
+2022-07-25 13:00:23.807  INFO 13412 --- [http-nio-8089-exec-6] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=13}
+2022-07-25 13:00:23.959  INFO 13412 --- [http-nio-8089-exec-6] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:00:23.960  INFO 13412 --- [http-nio-8089-exec-6] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=0}}
+2022-07-25 13:00:23.960  INFO 13412 --- [http-nio-8089-exec-6] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 0
+2022-07-25 13:00:23.960  INFO 13412 --- [http-nio-8089-exec-6] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=15}
+2022-07-25 13:00:23.960  INFO 13412 --- [http-nio-8089-exec-6] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=15}
+2022-07-25 13:00:24.080  INFO 13412 --- [http-nio-8089-exec-6] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:00:24.080  INFO 13412 --- [http-nio-8089-exec-6] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=1}}
+2022-07-25 13:00:24.080  INFO 13412 --- [http-nio-8089-exec-6] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 1
+2022-07-25 13:00:24.080  INFO 13412 --- [http-nio-8089-exec-6] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=19}
+2022-07-25 13:00:24.081  INFO 13412 --- [http-nio-8089-exec-6] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=19}
+2022-07-25 13:00:24.409  INFO 13412 --- [http-nio-8089-exec-6] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:00:24.409  INFO 13412 --- [http-nio-8089-exec-6] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=2}}
+2022-07-25 13:00:24.409  INFO 13412 --- [http-nio-8089-exec-6] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 2
+2022-07-25 13:00:24.409  INFO 13412 --- [http-nio-8089-exec-6] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=23}
+2022-07-25 13:00:24.409  INFO 13412 --- [http-nio-8089-exec-6] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=23}
+2022-07-25 13:00:24.517  INFO 13412 --- [http-nio-8089-exec-6] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:00:24.517  INFO 13412 --- [http-nio-8089-exec-6] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=2}}
+2022-07-25 13:00:24.517  INFO 13412 --- [http-nio-8089-exec-6] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 2
+2022-07-25 13:00:24.517  INFO 13412 --- [http-nio-8089-exec-6] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=22}
+2022-07-25 13:00:24.517  INFO 13412 --- [http-nio-8089-exec-6] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=22}
+2022-07-25 13:00:24.621  INFO 13412 --- [http-nio-8089-exec-6] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:00:24.621  INFO 13412 --- [http-nio-8089-exec-6] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=3}}
+2022-07-25 13:00:24.622  INFO 13412 --- [http-nio-8089-exec-6] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 3
+2022-07-25 13:00:24.622  INFO 13412 --- [http-nio-8089-exec-6] c.c.m.E.services.EvaluationServiceImpl   : com.cts.mfpe.EvaluationService.models.UserScore@39fc17be
+2022-07-25 13:00:24.625 DEBUG 13412 --- [http-nio-8089-exec-6] org.hibernate.SQL                        : select userscore0_.score_id as score_id1_0_0_, userscore0_.quiz_id as quiz_id2_0_0_, userscore0_.score as score3_0_0_, userscore0_.user_id as user_id4_0_0_ from user_score userscore0_ where userscore0_.score_id=?
+2022-07-25 13:00:24.626 TRACE 13412 --- [http-nio-8089-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [9]
+2022-07-25 13:00:24.630  INFO 13412 --- [http-nio-8089-exec-6] c.c.m.E.controller.EvaluationController  : Answers saved Successfully!
+2022-07-25 13:00:24.630  INFO 13412 --- [http-nio-8089-exec-6] c.c.m.E.controller.EvaluationController  : result : {4=true, 5=true, 6=true}
+2022-07-25 13:00:33.709  INFO 13412 --- [http-nio-8089-exec-7] c.c.m.E.controller.EvaluationController  : evaluate post method called
+2022-07-25 13:00:33.709  INFO 13412 --- [http-nio-8089-exec-7] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=13}
+2022-07-25 13:00:33.710  INFO 13412 --- [http-nio-8089-exec-7] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=13}
+2022-07-25 13:00:33.834  INFO 13412 --- [http-nio-8089-exec-7] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:00:33.834  INFO 13412 --- [http-nio-8089-exec-7] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=0}}
+2022-07-25 13:00:33.835  INFO 13412 --- [http-nio-8089-exec-7] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 0
+2022-07-25 13:00:33.835  INFO 13412 --- [http-nio-8089-exec-7] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=15}
+2022-07-25 13:00:33.835  INFO 13412 --- [http-nio-8089-exec-7] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=15}
+2022-07-25 13:00:33.996  INFO 13412 --- [http-nio-8089-exec-7] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:00:33.997  INFO 13412 --- [http-nio-8089-exec-7] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=1}}
+2022-07-25 13:00:33.997  INFO 13412 --- [http-nio-8089-exec-7] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 1
+2022-07-25 13:00:33.997  INFO 13412 --- [http-nio-8089-exec-7] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=19}
+2022-07-25 13:00:33.997  INFO 13412 --- [http-nio-8089-exec-7] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=19}
+2022-07-25 13:00:34.098  INFO 13412 --- [http-nio-8089-exec-7] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:00:34.099  INFO 13412 --- [http-nio-8089-exec-7] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=2}}
+2022-07-25 13:00:34.099  INFO 13412 --- [http-nio-8089-exec-7] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 2
+2022-07-25 13:00:34.099  INFO 13412 --- [http-nio-8089-exec-7] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=23}
+2022-07-25 13:00:34.099  INFO 13412 --- [http-nio-8089-exec-7] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=23}
+2022-07-25 13:00:34.225  INFO 13412 --- [http-nio-8089-exec-7] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:00:34.226  INFO 13412 --- [http-nio-8089-exec-7] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=2}}
+2022-07-25 13:00:34.226  INFO 13412 --- [http-nio-8089-exec-7] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 2
+2022-07-25 13:00:34.226  INFO 13412 --- [http-nio-8089-exec-7] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=22}
+2022-07-25 13:00:34.226  INFO 13412 --- [http-nio-8089-exec-7] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=22}
+2022-07-25 13:00:34.327  INFO 13412 --- [http-nio-8089-exec-7] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:00:34.328  INFO 13412 --- [http-nio-8089-exec-7] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=3}}
+2022-07-25 13:00:34.328  INFO 13412 --- [http-nio-8089-exec-7] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 3
+2022-07-25 13:00:34.328  INFO 13412 --- [http-nio-8089-exec-7] c.c.m.E.services.EvaluationServiceImpl   : com.cts.mfpe.EvaluationService.models.UserScore@39fc17be
+2022-07-25 13:00:34.331 DEBUG 13412 --- [http-nio-8089-exec-7] org.hibernate.SQL                        : select userscore0_.score_id as score_id1_0_0_, userscore0_.quiz_id as quiz_id2_0_0_, userscore0_.score as score3_0_0_, userscore0_.user_id as user_id4_0_0_ from user_score userscore0_ where userscore0_.score_id=?
+2022-07-25 13:00:34.332 TRACE 13412 --- [http-nio-8089-exec-7] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [9]
+2022-07-25 13:00:34.336  INFO 13412 --- [http-nio-8089-exec-7] c.c.m.E.controller.EvaluationController  : Answers saved Successfully!
+2022-07-25 13:00:34.337  INFO 13412 --- [http-nio-8089-exec-7] c.c.m.E.controller.EvaluationController  : result : {4=true, 5=true, 6=true}
+2022-07-25 13:00:47.006  INFO 13412 --- [http-nio-8089-exec-8] c.c.m.E.controller.EvaluationController  : evaluate post method called
+2022-07-25 13:00:47.006  INFO 13412 --- [http-nio-8089-exec-8] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=13}
+2022-07-25 13:00:47.006  INFO 13412 --- [http-nio-8089-exec-8] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=13}
+2022-07-25 13:00:47.111  INFO 13412 --- [http-nio-8089-exec-8] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:00:47.112  INFO 13412 --- [http-nio-8089-exec-8] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=0}}
+2022-07-25 13:00:47.112  INFO 13412 --- [http-nio-8089-exec-8] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 0
+2022-07-25 13:00:47.112  INFO 13412 --- [http-nio-8089-exec-8] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=15}
+2022-07-25 13:00:47.112  INFO 13412 --- [http-nio-8089-exec-8] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=15}
+2022-07-25 13:00:47.226  INFO 13412 --- [http-nio-8089-exec-8] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:00:47.227  INFO 13412 --- [http-nio-8089-exec-8] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=1}}
+2022-07-25 13:00:47.227  INFO 13412 --- [http-nio-8089-exec-8] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 1
+2022-07-25 13:00:47.228  INFO 13412 --- [http-nio-8089-exec-8] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=19}
+2022-07-25 13:00:47.228  INFO 13412 --- [http-nio-8089-exec-8] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=19}
+2022-07-25 13:00:47.327  INFO 13412 --- [http-nio-8089-exec-8] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:00:47.327  INFO 13412 --- [http-nio-8089-exec-8] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=2}}
+2022-07-25 13:00:47.328  INFO 13412 --- [http-nio-8089-exec-8] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 2
+2022-07-25 13:00:47.328  INFO 13412 --- [http-nio-8089-exec-8] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=23}
+2022-07-25 13:00:47.328  INFO 13412 --- [http-nio-8089-exec-8] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=23}
+2022-07-25 13:00:47.417  INFO 13412 --- [http-nio-8089-exec-8] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:00:47.417  INFO 13412 --- [http-nio-8089-exec-8] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=2}}
+2022-07-25 13:00:47.417  INFO 13412 --- [http-nio-8089-exec-8] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 2
+2022-07-25 13:00:47.417  INFO 13412 --- [http-nio-8089-exec-8] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=22}
+2022-07-25 13:00:47.417  INFO 13412 --- [http-nio-8089-exec-8] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=22}
+2022-07-25 13:00:47.511  INFO 13412 --- [http-nio-8089-exec-8] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:00:47.512  INFO 13412 --- [http-nio-8089-exec-8] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=3}}
+2022-07-25 13:00:47.512  INFO 13412 --- [http-nio-8089-exec-8] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 3
+2022-07-25 13:00:47.512  INFO 13412 --- [http-nio-8089-exec-8] c.c.m.E.services.EvaluationServiceImpl   : com.cts.mfpe.EvaluationService.models.UserScore@39fc17be
+2022-07-25 13:00:47.515 DEBUG 13412 --- [http-nio-8089-exec-8] org.hibernate.SQL                        : select userscore0_.score_id as score_id1_0_0_, userscore0_.quiz_id as quiz_id2_0_0_, userscore0_.score as score3_0_0_, userscore0_.user_id as user_id4_0_0_ from user_score userscore0_ where userscore0_.score_id=?
+2022-07-25 13:00:47.516 TRACE 13412 --- [http-nio-8089-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [9]
+2022-07-25 13:00:47.520  INFO 13412 --- [http-nio-8089-exec-8] c.c.m.E.controller.EvaluationController  : Answers saved Successfully!
+2022-07-25 13:00:47.521  INFO 13412 --- [http-nio-8089-exec-8] c.c.m.E.controller.EvaluationController  : result : {4=true, 5=true, 6=true}
+2022-07-25 13:00:54.504  INFO 13412 --- [http-nio-8089-exec-9] c.c.m.E.controller.EvaluationController  : evaluate post method called
+2022-07-25 13:00:54.504  INFO 13412 --- [http-nio-8089-exec-9] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=13}
+2022-07-25 13:00:54.505  INFO 13412 --- [http-nio-8089-exec-9] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=13}
+2022-07-25 13:00:54.593  INFO 13412 --- [http-nio-8089-exec-9] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:00:54.593  INFO 13412 --- [http-nio-8089-exec-9] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=0}}
+2022-07-25 13:00:54.594  INFO 13412 --- [http-nio-8089-exec-9] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 0
+2022-07-25 13:00:54.594  INFO 13412 --- [http-nio-8089-exec-9] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=15}
+2022-07-25 13:00:54.594  INFO 13412 --- [http-nio-8089-exec-9] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=15}
+2022-07-25 13:00:54.714  INFO 13412 --- [http-nio-8089-exec-9] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:00:54.714  INFO 13412 --- [http-nio-8089-exec-9] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=1}}
+2022-07-25 13:00:54.714  INFO 13412 --- [http-nio-8089-exec-9] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 1
+2022-07-25 13:00:54.714  INFO 13412 --- [http-nio-8089-exec-9] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=19}
+2022-07-25 13:00:54.715  INFO 13412 --- [http-nio-8089-exec-9] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=19}
+2022-07-25 13:00:54.805  INFO 13412 --- [http-nio-8089-exec-9] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:00:54.805  INFO 13412 --- [http-nio-8089-exec-9] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=2}}
+2022-07-25 13:00:54.805  INFO 13412 --- [http-nio-8089-exec-9] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 2
+2022-07-25 13:00:54.805  INFO 13412 --- [http-nio-8089-exec-9] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=23}
+2022-07-25 13:00:54.805  INFO 13412 --- [http-nio-8089-exec-9] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=23}
+2022-07-25 13:00:54.899  INFO 13412 --- [http-nio-8089-exec-9] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:00:54.900  INFO 13412 --- [http-nio-8089-exec-9] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=2}}
+2022-07-25 13:00:54.900  INFO 13412 --- [http-nio-8089-exec-9] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 2
+2022-07-25 13:00:54.901  INFO 13412 --- [http-nio-8089-exec-9] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=22}
+2022-07-25 13:00:54.902  INFO 13412 --- [http-nio-8089-exec-9] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=22}
+2022-07-25 13:00:55.003  INFO 13412 --- [http-nio-8089-exec-9] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:00:55.003  INFO 13412 --- [http-nio-8089-exec-9] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=3}}
+2022-07-25 13:00:55.003  INFO 13412 --- [http-nio-8089-exec-9] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 3
+2022-07-25 13:00:55.003  INFO 13412 --- [http-nio-8089-exec-9] c.c.m.E.services.EvaluationServiceImpl   : com.cts.mfpe.EvaluationService.models.UserScore@39fc17be
+2022-07-25 13:00:55.007 DEBUG 13412 --- [http-nio-8089-exec-9] org.hibernate.SQL                        : select userscore0_.score_id as score_id1_0_0_, userscore0_.quiz_id as quiz_id2_0_0_, userscore0_.score as score3_0_0_, userscore0_.user_id as user_id4_0_0_ from user_score userscore0_ where userscore0_.score_id=?
+2022-07-25 13:00:55.008 TRACE 13412 --- [http-nio-8089-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [9]
+2022-07-25 13:00:55.013  INFO 13412 --- [http-nio-8089-exec-9] c.c.m.E.controller.EvaluationController  : Answers saved Successfully!
+2022-07-25 13:00:55.014  INFO 13412 --- [http-nio-8089-exec-9] c.c.m.E.controller.EvaluationController  : result : {4=true, 5=true, 6=true}
+2022-07-25 13:01:00.514  INFO 13412 --- [http-nio-8089-exec-10] c.c.m.E.controller.EvaluationController  : evaluate post method called
+2022-07-25 13:01:00.515  INFO 13412 --- [http-nio-8089-exec-10] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=13}
+2022-07-25 13:01:00.515  INFO 13412 --- [http-nio-8089-exec-10] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=13}
+2022-07-25 13:01:00.631  INFO 13412 --- [http-nio-8089-exec-10] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:01:00.632  INFO 13412 --- [http-nio-8089-exec-10] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=0}}
+2022-07-25 13:01:00.632  INFO 13412 --- [http-nio-8089-exec-10] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 0
+2022-07-25 13:01:00.632  INFO 13412 --- [http-nio-8089-exec-10] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=15}
+2022-07-25 13:01:00.632  INFO 13412 --- [http-nio-8089-exec-10] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=15}
+2022-07-25 13:01:00.812  INFO 13412 --- [http-nio-8089-exec-10] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:01:00.813  INFO 13412 --- [http-nio-8089-exec-10] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=1}}
+2022-07-25 13:01:00.813  INFO 13412 --- [http-nio-8089-exec-10] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 1
+2022-07-25 13:01:00.813  INFO 13412 --- [http-nio-8089-exec-10] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=19}
+2022-07-25 13:01:00.813  INFO 13412 --- [http-nio-8089-exec-10] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=19}
+2022-07-25 13:01:00.972  INFO 13412 --- [http-nio-8089-exec-10] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:01:00.976  INFO 13412 --- [http-nio-8089-exec-10] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=2}}
+2022-07-25 13:01:00.976  INFO 13412 --- [http-nio-8089-exec-10] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 2
+2022-07-25 13:01:00.976  INFO 13412 --- [http-nio-8089-exec-10] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=23}
+2022-07-25 13:01:00.976  INFO 13412 --- [http-nio-8089-exec-10] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=23}
+2022-07-25 13:01:01.162  INFO 13412 --- [http-nio-8089-exec-10] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:01:01.162  INFO 13412 --- [http-nio-8089-exec-10] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=2}}
+2022-07-25 13:01:01.162  INFO 13412 --- [http-nio-8089-exec-10] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 2
+2022-07-25 13:01:01.163  INFO 13412 --- [http-nio-8089-exec-10] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=22}
+2022-07-25 13:01:01.163  INFO 13412 --- [http-nio-8089-exec-10] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=22}
+2022-07-25 13:01:01.323  INFO 13412 --- [http-nio-8089-exec-10] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:01:01.323  INFO 13412 --- [http-nio-8089-exec-10] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=3}}
+2022-07-25 13:01:01.324  INFO 13412 --- [http-nio-8089-exec-10] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 3
+2022-07-25 13:01:01.324  INFO 13412 --- [http-nio-8089-exec-10] c.c.m.E.services.EvaluationServiceImpl   : com.cts.mfpe.EvaluationService.models.UserScore@39fc17be
+2022-07-25 13:01:01.327 DEBUG 13412 --- [http-nio-8089-exec-10] org.hibernate.SQL                        : select userscore0_.score_id as score_id1_0_0_, userscore0_.quiz_id as quiz_id2_0_0_, userscore0_.score as score3_0_0_, userscore0_.user_id as user_id4_0_0_ from user_score userscore0_ where userscore0_.score_id=?
+2022-07-25 13:01:01.328 TRACE 13412 --- [http-nio-8089-exec-10] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [9]
+2022-07-25 13:01:01.332  INFO 13412 --- [http-nio-8089-exec-10] c.c.m.E.controller.EvaluationController  : Answers saved Successfully!
+2022-07-25 13:01:01.332  INFO 13412 --- [http-nio-8089-exec-10] c.c.m.E.controller.EvaluationController  : result : {4=true, 5=true, 6=true}
+2022-07-25 13:01:06.390  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.controller.EvaluationController  : evaluate post method called
+2022-07-25 13:01:06.391  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=13}
+2022-07-25 13:01:06.391  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=13}
+2022-07-25 13:01:06.482  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:01:06.482  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=0}}
+2022-07-25 13:01:06.483  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 0
+2022-07-25 13:01:06.483  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=15}
+2022-07-25 13:01:06.483  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=15}
+2022-07-25 13:01:06.621  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:01:06.622  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=1}}
+2022-07-25 13:01:06.622  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 1
+2022-07-25 13:01:06.622  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=19}
+2022-07-25 13:01:06.622  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=19}
+2022-07-25 13:01:06.718  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:01:06.718  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=2}}
+2022-07-25 13:01:06.718  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 2
+2022-07-25 13:01:06.718  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=23}
+2022-07-25 13:01:06.718  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=23}
+2022-07-25 13:01:06.824  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:01:06.824  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=2}}
+2022-07-25 13:01:06.824  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 2
+2022-07-25 13:01:06.824  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=22}
+2022-07-25 13:01:06.824  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=22}
+2022-07-25 13:01:06.940  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:01:06.940  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=3}}
+2022-07-25 13:01:06.940  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 3
+2022-07-25 13:01:06.940  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.services.EvaluationServiceImpl   : com.cts.mfpe.EvaluationService.models.UserScore@39fc17be
+2022-07-25 13:01:06.945 DEBUG 13412 --- [http-nio-8089-exec-1] org.hibernate.SQL                        : select userscore0_.score_id as score_id1_0_0_, userscore0_.quiz_id as quiz_id2_0_0_, userscore0_.score as score3_0_0_, userscore0_.user_id as user_id4_0_0_ from user_score userscore0_ where userscore0_.score_id=?
+2022-07-25 13:01:06.946 TRACE 13412 --- [http-nio-8089-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [9]
+2022-07-25 13:01:06.951  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.controller.EvaluationController  : Answers saved Successfully!
+2022-07-25 13:01:06.951  INFO 13412 --- [http-nio-8089-exec-1] c.c.m.E.controller.EvaluationController  : result : {4=true, 5=true, 6=true}
+2022-07-25 13:01:14.547  INFO 13412 --- [http-nio-8089-exec-2] c.c.m.E.controller.EvaluationController  : evaluate post method called
+2022-07-25 13:01:14.547  INFO 13412 --- [http-nio-8089-exec-2] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=13}
+2022-07-25 13:01:14.547  INFO 13412 --- [http-nio-8089-exec-2] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=13}
+2022-07-25 13:01:14.623  INFO 13412 --- [http-nio-8089-exec-2] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:01:14.623  INFO 13412 --- [http-nio-8089-exec-2] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=0}}
+2022-07-25 13:01:14.623  INFO 13412 --- [http-nio-8089-exec-2] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 0
+2022-07-25 13:01:14.623  INFO 13412 --- [http-nio-8089-exec-2] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=15}
+2022-07-25 13:01:14.623  INFO 13412 --- [http-nio-8089-exec-2] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=15}
+2022-07-25 13:01:14.712  INFO 13412 --- [http-nio-8089-exec-2] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:01:14.712  INFO 13412 --- [http-nio-8089-exec-2] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=1}}
+2022-07-25 13:01:14.713  INFO 13412 --- [http-nio-8089-exec-2] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 1
+2022-07-25 13:01:14.713  INFO 13412 --- [http-nio-8089-exec-2] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=19}
+2022-07-25 13:01:14.713  INFO 13412 --- [http-nio-8089-exec-2] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=19}
+2022-07-25 13:01:14.796  INFO 13412 --- [http-nio-8089-exec-2] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:01:14.796  INFO 13412 --- [http-nio-8089-exec-2] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=2}}
+2022-07-25 13:01:14.796  INFO 13412 --- [http-nio-8089-exec-2] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 2
+2022-07-25 13:01:14.796  INFO 13412 --- [http-nio-8089-exec-2] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=23}
+2022-07-25 13:01:14.796  INFO 13412 --- [http-nio-8089-exec-2] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=23}
+2022-07-25 13:01:14.894  INFO 13412 --- [http-nio-8089-exec-2] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:01:14.894  INFO 13412 --- [http-nio-8089-exec-2] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=2}}
+2022-07-25 13:01:14.894  INFO 13412 --- [http-nio-8089-exec-2] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 2
+2022-07-25 13:01:14.894  INFO 13412 --- [http-nio-8089-exec-2] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=22}
+2022-07-25 13:01:14.894  INFO 13412 --- [http-nio-8089-exec-2] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=22}
+2022-07-25 13:01:14.977  INFO 13412 --- [http-nio-8089-exec-2] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:01:14.978  INFO 13412 --- [http-nio-8089-exec-2] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=3}}
+2022-07-25 13:01:14.978  INFO 13412 --- [http-nio-8089-exec-2] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 3
+2022-07-25 13:01:14.978  INFO 13412 --- [http-nio-8089-exec-2] c.c.m.E.services.EvaluationServiceImpl   : com.cts.mfpe.EvaluationService.models.UserScore@39fc17be
+2022-07-25 13:01:14.980 DEBUG 13412 --- [http-nio-8089-exec-2] org.hibernate.SQL                        : select userscore0_.score_id as score_id1_0_0_, userscore0_.quiz_id as quiz_id2_0_0_, userscore0_.score as score3_0_0_, userscore0_.user_id as user_id4_0_0_ from user_score userscore0_ where userscore0_.score_id=?
+2022-07-25 13:01:14.981 TRACE 13412 --- [http-nio-8089-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [9]
+2022-07-25 13:01:14.985  INFO 13412 --- [http-nio-8089-exec-2] c.c.m.E.controller.EvaluationController  : Answers saved Successfully!
+2022-07-25 13:01:14.985  INFO 13412 --- [http-nio-8089-exec-2] c.c.m.E.controller.EvaluationController  : result : {4=true, 5=true, 6=true}
+2022-07-25 13:01:57.744  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.controller.EvaluationController  : evaluate post method called
+2022-07-25 13:01:57.745  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=13}
+2022-07-25 13:01:57.745  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=13}
+2022-07-25 13:01:57.821  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:01:57.822  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=0}}
+2022-07-25 13:01:57.822  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 0
+2022-07-25 13:01:57.822  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=15}
+2022-07-25 13:01:57.822  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=15}
+2022-07-25 13:01:57.921  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:01:57.921  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=1}}
+2022-07-25 13:01:57.921  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 1
+2022-07-25 13:01:57.921  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=19}
+2022-07-25 13:01:57.921  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=19}
+2022-07-25 13:01:58.008  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:01:58.008  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=2}}
+2022-07-25 13:01:58.008  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 2
+2022-07-25 13:01:58.008  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=23}
+2022-07-25 13:01:58.009  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=23}
+2022-07-25 13:01:58.092  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:01:58.092  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=2}}
+2022-07-25 13:01:58.092  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 2
+2022-07-25 13:01:58.092  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=22}
+2022-07-25 13:01:58.092  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=22}
+2022-07-25 13:01:58.187  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:01:58.188  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=3}}
+2022-07-25 13:01:58.188  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 3
+2022-07-25 13:01:58.188  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.services.EvaluationServiceImpl   : com.cts.mfpe.EvaluationService.models.UserScore@39fc17be
+2022-07-25 13:01:58.191 DEBUG 13412 --- [http-nio-8089-exec-3] org.hibernate.SQL                        : select userscore0_.score_id as score_id1_0_0_, userscore0_.quiz_id as quiz_id2_0_0_, userscore0_.score as score3_0_0_, userscore0_.user_id as user_id4_0_0_ from user_score userscore0_ where userscore0_.score_id=?
+2022-07-25 13:01:58.191 TRACE 13412 --- [http-nio-8089-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [9]
+2022-07-25 13:01:58.196  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.controller.EvaluationController  : Answers saved Successfully!
+2022-07-25 13:01:58.196  INFO 13412 --- [http-nio-8089-exec-3] c.c.m.E.controller.EvaluationController  : result : {4=true, 5=true, 6=true}
+2022-07-25 13:02:07.586  INFO 13412 --- [http-nio-8089-exec-4] c.c.m.E.controller.EvaluationController  : evaluate post method called
+2022-07-25 13:02:07.586  INFO 13412 --- [http-nio-8089-exec-4] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=13}
+2022-07-25 13:02:07.586  INFO 13412 --- [http-nio-8089-exec-4] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=13}
+2022-07-25 13:02:07.664  INFO 13412 --- [http-nio-8089-exec-4] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:02:07.664  INFO 13412 --- [http-nio-8089-exec-4] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=0}}
+2022-07-25 13:02:07.664  INFO 13412 --- [http-nio-8089-exec-4] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 0
+2022-07-25 13:02:07.664  INFO 13412 --- [http-nio-8089-exec-4] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=15}
+2022-07-25 13:02:07.664  INFO 13412 --- [http-nio-8089-exec-4] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=15}
+2022-07-25 13:02:07.749  INFO 13412 --- [http-nio-8089-exec-4] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:02:07.749  INFO 13412 --- [http-nio-8089-exec-4] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=1}}
+2022-07-25 13:02:07.749  INFO 13412 --- [http-nio-8089-exec-4] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 1
+2022-07-25 13:02:07.750  INFO 13412 --- [http-nio-8089-exec-4] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=19}
+2022-07-25 13:02:07.750  INFO 13412 --- [http-nio-8089-exec-4] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=19}
+2022-07-25 13:02:07.836  INFO 13412 --- [http-nio-8089-exec-4] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:02:07.836  INFO 13412 --- [http-nio-8089-exec-4] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=2}}
+2022-07-25 13:02:07.836  INFO 13412 --- [http-nio-8089-exec-4] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 2
+2022-07-25 13:02:07.836  INFO 13412 --- [http-nio-8089-exec-4] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=23}
+2022-07-25 13:02:07.836  INFO 13412 --- [http-nio-8089-exec-4] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=23}
+2022-07-25 13:02:07.922  INFO 13412 --- [http-nio-8089-exec-4] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:02:07.922  INFO 13412 --- [http-nio-8089-exec-4] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=2}}
+2022-07-25 13:02:07.922  INFO 13412 --- [http-nio-8089-exec-4] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 2
+2022-07-25 13:02:07.922  INFO 13412 --- [http-nio-8089-exec-4] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=22}
+2022-07-25 13:02:07.922  INFO 13412 --- [http-nio-8089-exec-4] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=22}
+2022-07-25 13:02:08.105  INFO 13412 --- [http-nio-8089-exec-4] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:02:08.106  INFO 13412 --- [http-nio-8089-exec-4] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=3}}
+2022-07-25 13:02:08.106  INFO 13412 --- [http-nio-8089-exec-4] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 3
+2022-07-25 13:02:08.106  INFO 13412 --- [http-nio-8089-exec-4] c.c.m.E.services.EvaluationServiceImpl   : com.cts.mfpe.EvaluationService.models.UserScore@39fc17be
+2022-07-25 13:02:08.111 DEBUG 13412 --- [http-nio-8089-exec-4] org.hibernate.SQL                        : select userscore0_.score_id as score_id1_0_0_, userscore0_.quiz_id as quiz_id2_0_0_, userscore0_.score as score3_0_0_, userscore0_.user_id as user_id4_0_0_ from user_score userscore0_ where userscore0_.score_id=?
+2022-07-25 13:02:08.112 TRACE 13412 --- [http-nio-8089-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [9]
+2022-07-25 13:02:08.116  INFO 13412 --- [http-nio-8089-exec-4] c.c.m.E.controller.EvaluationController  : Answers saved Successfully!
+2022-07-25 13:02:08.116  INFO 13412 --- [http-nio-8089-exec-4] c.c.m.E.controller.EvaluationController  : result : {4=true, 5=true, 6=true}
+2022-07-25 13:02:56.594  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.controller.EvaluationController  : evaluate post method called
+2022-07-25 13:02:56.595  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=13}
+2022-07-25 13:02:56.595  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=13}
+2022-07-25 13:02:56.745  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:02:56.745  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=0}}
+2022-07-25 13:02:56.745  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 0
+2022-07-25 13:02:56.745  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=15}
+2022-07-25 13:02:56.745  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=15}
+2022-07-25 13:02:57.125  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:02:57.125  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=1}}
+2022-07-25 13:02:57.126  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 1
+2022-07-25 13:02:57.126  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=19}
+2022-07-25 13:02:57.126  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=19}
+2022-07-25 13:02:57.475  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:02:57.475  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=2}}
+2022-07-25 13:02:57.475  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 2
+2022-07-25 13:02:57.475  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=23}
+2022-07-25 13:02:57.475  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=23}
+2022-07-25 13:02:57.576  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:02:57.576  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=2}}
+2022-07-25 13:02:57.576  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 2
+2022-07-25 13:02:57.576  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.controller.EvaluationController  : user object -> EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=22}
+2022-07-25 13:02:57.576  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : EvaluateAnswerRequest{quiz_id=2, user_id='415bcdc8-6454-4677-b12b-acc5240650e0', answer_id=22}
+2022-07-25 13:02:57.712  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : all attributes are correct
+2022-07-25 13:02:57.712  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : {415bcdc8-6454-4677-b12b-acc5240650e0={2=3}}
+2022-07-25 13:02:57.713  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : userId -> 415bcdc8-6454-4677-b12b-acc5240650e0quizId -> 2score -> 3
+2022-07-25 13:02:57.713  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.services.EvaluationServiceImpl   : com.cts.mfpe.EvaluationService.models.UserScore@39fc17be
+2022-07-25 13:02:57.716 DEBUG 13412 --- [http-nio-8089-exec-5] org.hibernate.SQL                        : select userscore0_.score_id as score_id1_0_0_, userscore0_.quiz_id as quiz_id2_0_0_, userscore0_.score as score3_0_0_, userscore0_.user_id as user_id4_0_0_ from user_score userscore0_ where userscore0_.score_id=?
+2022-07-25 13:02:57.717 TRACE 13412 --- [http-nio-8089-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [9]
+2022-07-25 13:02:57.721  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.controller.EvaluationController  : Answers saved Successfully!
+2022-07-25 13:02:57.722  INFO 13412 --- [http-nio-8089-exec-5] c.c.m.E.controller.EvaluationController  : result : {4=true, 5=true, 6=true}

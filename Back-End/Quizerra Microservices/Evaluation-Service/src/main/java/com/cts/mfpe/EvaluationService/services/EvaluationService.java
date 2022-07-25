@@ -8,5 +8,4 @@ import java.util.Map;
 
 public interface EvaluationService {
     void startEvaluation(EvaluateAnswerRequest evaluateAnswerRequest, Map<String, Map<Long, Integer>> userScore, Map<Long, Integer> questionScoreMap, int length, Map<Long, Boolean> result) throws EvaluationException;
-
 }

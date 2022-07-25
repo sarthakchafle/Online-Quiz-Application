@@ -81,7 +81,7 @@ export default function AllQuizzes() {
                     className="my-3 px-5"
                     variant="contained"
                     style={{ backgroundColor: attemptedQuizIds.includes(item.quiz_Id) ? "grey" : "#533b7c" }}
-                    onClick={() => navigate("/quiz", { state: {title: item.title} })}
+                    onClick={() => navigate("/quiz", { state: {title: item.title}, replace: true })}
                     disabled={attemptedQuizIds.includes(item.quiz_Id)}
                   >
                     Start

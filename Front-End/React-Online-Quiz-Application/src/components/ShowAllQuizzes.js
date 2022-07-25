@@ -69,6 +69,7 @@ export default function AllQuizzes() {
         style={{ display: "flex", flexDirection: "row" }}
       >
         {data.map((item, key) => {
+          let isAttempted = attemptedQuizIds.filter(quiz => quiz.quiz_Id === item.quiz_Id).length > 0
           return (
             <Grid item xs={6} md={4} lg={3} key={key}>
               <div
@@ -80,9 +81,9 @@ export default function AllQuizzes() {
                   <Button
                     className="my-3 px-5"
                     variant="contained"
-                    style={{ backgroundColor: attemptedQuizIds.includes(item.quiz_Id) ? "grey" : "#533b7c" }}
+                    style={{ backgroundColor: isAttempted ? "grey" : "#533b7c" }}
                     onClick={() => navigate("/quiz", { state: {title: item.title}, replace: true })}
-                    // disabled={attemptedQuizIds.includes(item.quiz_Id)}
+                    disabled={isAttempted}
                   >
                     Start
                   </Button>  

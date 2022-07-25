@@ -1,6 +1,7 @@
 package com.cts.MFPE.Answer_Service.repository;
 
 import com.cts.MFPE.Answer_Service.models.UserAnswer;
+import com.cts.MFPE.Answer_Service.payload.response.QuizTitleResponse;
 
 import java.util.List;
 
@@ -18,6 +19,6 @@ public interface UserAnswerRepository extends JpaRepository<UserAnswer,Long> {
     @Transactional
     public void saveAnswer(@Param("user_id") String user_id, @Param("answer_id") long answer_id,@Param("quiz_id") long quiz_id);
 
-    @Query(value="select distinct quiz_id from user_answer where user_id=:user_id", nativeQuery=true)
-    public List<Long> getAllAttemptedQuizByUser(String user_id);
+    @Query(value="select distinct ans.quiz_id, quiz.title from quiz2answers.user_answer ans join quiz2questions.quiz quiz on ans.quiz_id = quiz.quiz_id where ans.user_id=:user_id", nativeQuery=true)
+    public List<QuizTitleResponse> getAllAttemptedQuizByUser(String user_id);
 }

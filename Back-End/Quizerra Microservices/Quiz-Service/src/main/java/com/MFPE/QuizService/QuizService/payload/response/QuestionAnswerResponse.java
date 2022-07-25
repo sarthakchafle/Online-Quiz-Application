@@ -6,6 +6,8 @@ public interface QuestionAnswerResponse {
 
     public String getTitle();
 
+    public long getQues();
+
     public String getQuestion();
 
     public String getAnswer();

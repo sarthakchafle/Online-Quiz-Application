@@ -3,6 +3,7 @@ package com.cts.MFPE.Answer_Service.controller;
 import com.cts.MFPE.Answer_Service.Exception.SavingAnswerException;
 import com.cts.MFPE.Answer_Service.payload.request.SaveAnswerRequest;
 import com.cts.MFPE.Answer_Service.payload.response.MessageResponse;
+import com.cts.MFPE.Answer_Service.payload.response.QuizTitleResponse;
 import com.cts.MFPE.Answer_Service.services.AnswerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,7 +48,7 @@ public class UserAnswerController {
     }
 
     @GetMapping("/getAllAttemptedQuiz")
-    public List<Long> getAllAttemptedQuiz(@RequestParam String user_id) {
+    public List<QuizTitleResponse> getAllAttemptedQuiz(@RequestParam String user_id) {
         return service.getAllAttemptedQuizByUser(user_id);
     }
 }

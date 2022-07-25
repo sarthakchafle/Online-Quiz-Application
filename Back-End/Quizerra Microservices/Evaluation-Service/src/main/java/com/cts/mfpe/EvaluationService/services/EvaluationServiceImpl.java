@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @Service
@@ -29,9 +30,9 @@ public class EvaluationServiceImpl implements EvaluationService {
 
     @Autowired
     UserScore userScoreObj;
-
+    
     @Override
-    public void startEvaluation(EvaluateAnswerRequest evaluateAnswerRequest, Map<String, Map<Long, Integer>> userScore, Map<Long, Integer> questionScoreMap, int length) throws EvaluationException {
+    public void startEvaluation(EvaluateAnswerRequest evaluateAnswerRequest, Map<String, Map<Long, Integer>> userScore, Map<Long, Integer> questionScoreMap, int length, Map<Long, Boolean> result) throws EvaluationException {
         logger.info(String.valueOf(evaluateAnswerRequest));
         if (userCommunication.ifExists(evaluateAnswerRequest.getUser_id()) && quizCommunication.ifExistsQuiz(evaluateAnswerRequest.getQuiz_id()) && quizCommunication.ifExistsAnswer(evaluateAnswerRequest.getAnswer_id())) {
             count++;
@@ -43,7 +44,7 @@ public class EvaluationServiceImpl implements EvaluationService {
             boolean isCorrect = (evaluateAnswerRequest.getAnswer_id() == correctAnswerId && evaluateAnswerRequest.getQuiz_id() == quizId && questionIdFromAnswer == questionId);
             System.out.println(isCorrect);
             logger.info("all attributes are correct");
-
+            result.put(questionIdFromAnswer, isCorrect);
             String userId = evaluateAnswerRequest.getUser_id();
 
             if (isCorrect) {

@@ -20,7 +20,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Scope(value= WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
-@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api")
 public class EvaluationController {
@@ -36,26 +35,29 @@ Logger logger = LoggerFactory.getLogger(EvaluationController.class);
 
     @PostMapping("/evaluate")
     @ResponseBody
-    ResponseEntity<?> startEvaluation(@RequestBody EvaluateAnswerRequest[] evaluateAnswerRequest){
+    Map<Long, Boolean> startEvaluation(@RequestBody EvaluateAnswerRequest[] evaluateAnswerRequest){
         logger.info("evaluate post method called");
+        Map<Long, Boolean> result = new HashMap<>();
         UserScore userScoreObj;
         try {
             Arrays.stream(evaluateAnswerRequest).forEach(e -> {
                 logger.info("user object -> "+String.valueOf(e));
                 try {
-                    service.startEvaluation(e, userScore, questionScoreMap, evaluateAnswerRequest.length);
+                    service.startEvaluation(e, userScore, questionScoreMap, evaluateAnswerRequest.length, result);
                 } catch (EvaluationException ex) {
                     logger.info(ex.getLocalizedMessage());
                     throw new RuntimeException(ex);
                 }
             });
             logger.info("Answers saved Successfully!");
-            return ResponseEntity.ok(new MessageResponse("Answers saved Successfully!"));
-        }
-        catch (Exception e){
+            logger.info("result : " + result);
+            return result;
+//            return ResponseEntity.ok(new MessageResponse("Answers saved Successfully!"));
+        } catch (Exception e){
 //            e.printStackTrace();
             logger.error(e.getLocalizedMessage());
-            return ResponseEntity.badRequest().body("Error: Either user doesn't exists or answer or maybe both");
+            return result;
+//            return ResponseEntity.badRequest().body("Error: Either user doesn't exists or answer or maybe both");
         }
     }
 

@@ -2,6 +2,7 @@ package com.cts.MFPE.Answer_Service.services;
 
 import com.cts.MFPE.Answer_Service.Exception.SavingAnswerException;
 import com.cts.MFPE.Answer_Service.models.UserAnswer;
+import com.cts.MFPE.Answer_Service.payload.response.QuizTitleResponse;
 import com.cts.MFPE.Answer_Service.repository.UserAnswerRepository;
 import com.cts.MFPE.Answer_Service.services.feign.AnswerCommunication;
 import com.cts.MFPE.Answer_Service.services.feign.UserCommunication;
@@ -51,7 +52,7 @@ Logger logger = LoggerFactory.getLogger(AnswerServiceImpl.class);
         }
     }
     @Override
-	public List<Long> getAllAttemptedQuizByUser(String user_id) {
+	public List<QuizTitleResponse> getAllAttemptedQuizByUser(String user_id) {
 		return userAnswerRepository.getAllAttemptedQuizByUser(user_id);
 	}
 }

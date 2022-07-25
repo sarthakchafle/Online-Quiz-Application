@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Button from "@mui/material/Button";
 import AuthService from '../services/auth.service';
 
-export default function Question({question, questionNumber, setQuestionNumber, param, setparam, submit}) {
+export default function Question({question, questionNumber, setQuestionNumber, param, setparam, submit, userAnswers, setUserAnswers}) {
     const [answer, setAnswer] = useState()
     const [error, setError] = useState(false)
 
@@ -17,6 +17,15 @@ export default function Question({question, questionNumber, setQuestionNumber, p
         }
         a.param.push(temp)
         setparam(a)
+
+        console.log({m})
+        let b = userAnswers
+        b.push({
+            answer: m.answer,
+            ques: question.quesId
+        })
+        setUserAnswers(b);
+        console.log({b})
     }
     
     const onNextClick = () => {

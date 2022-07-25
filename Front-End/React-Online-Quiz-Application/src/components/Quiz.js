@@ -18,6 +18,7 @@ export default function Quiz() {
   const [questions, setQuestions] = useState([]);
   const [param, setparam] = useState();
   const [error, setError] = useState(false)
+  const [userAnswers, setUserAnswers] = useState([])
 
   useEffect(() => {
     if (!location.state) {
@@ -56,6 +57,7 @@ export default function Quiz() {
   });
   const submit = () => {
     console.log({ param });
+    console.log({userAnswers})
     AnswerService.saveAnswers(param.param).then(
       (response) => {
         console.log({response});
@@ -125,7 +127,8 @@ export default function Quiz() {
                   variant="contained"
                   style={{ backgroundColor: "#533b7c" }}
                   onClick={() => {
-                    navigate("/result", { state: {param: param.param, title: title, questions: questions}, replace: true});
+                    console.log("answer: ", userAnswers)
+                    navigate("/result", { state: {param: param.param, title: title, questions: questions, userAnswers: userAnswers}});
                   }}
                 >
                   Click here for the results
@@ -158,6 +161,8 @@ export default function Quiz() {
             questionNumber={questionNumber}
             setQuestionNumber={setQuestionNumber}
             submit={submit}
+            userAnswers={userAnswers}
+            setUserAnswers={setUserAnswers}
           />
         </div>
       )}

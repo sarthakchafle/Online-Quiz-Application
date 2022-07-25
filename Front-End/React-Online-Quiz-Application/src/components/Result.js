@@ -25,6 +25,7 @@ const Result = () => {
     if (!location.state) {
       navigate("/allQuizzes", { replace: true});
     }
+    console.log("user: ", location.state.userAnswers)
     getAnswers()
     getData()
   }, [])
@@ -64,7 +65,7 @@ const Result = () => {
       <div className="root" style={{padding: 40}}>
         <div>
           <div className="table-wrapper-scroll-y my-custom-scrollbar">
-            <table className="table table-hover mx-auto my-table shadow p-3 mb-5 bg-body rounded">
+            <table className="table table-hover mx-auto my-table shadow p-3 mb-5 bg-body rounded" style={{width: "90vw"}}>
               <thead>
                 <tr>
                   <th scope="col">Question</th>
@@ -76,14 +77,17 @@ const Result = () => {
               <tbody>
                 {
                   location.state.questions.map((ques, key) => {
-                    let a = allQuestionAnswer.filter(obj => {
+                    let correctAns = allQuestionAnswer.find(obj => {
                       return obj.ques === ques.quesId
                     })
-                    console.log({a})
+                    let userAnswer = location.state.userAnswers.find(obj => {
+                      return obj.ques === ques.quesId
+                    })
                     return (
                       <tr className={`${data[ques.quesId] ? "table-success" : "table-danger"}`} key={key}>
                       <th style={{width: "500px"}} scope="row">{ques.question}</th>
-                      <th style={{width: "500px"}} scope="row">{a[0].answer}</th>
+                      <th style={{width: "500px"}} scope="row">{correctAns.answer}</th>
+                      <th style={{width: "500px"}} scope="row">{userAnswer.answer}</th>
                       <td>{data[ques.quesId] ? "1" : "0"}</td>
                     </tr>
                     )

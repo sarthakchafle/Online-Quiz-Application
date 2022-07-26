@@ -18,6 +18,10 @@ const saveAnswers = (param) => {
 }
 
 export const getAllAttemptedQuiz = () => {
+	// fetch(`${API_URL}getAllAttemptedQuiz?user_id=${AuthService.getCurrentUser().id}`, {
+    //     method: 'get',
+    //     headers: authHeader()
+    // })
 	return axios.get(API_URL + "getAllAttemptedQuiz", {
 		params: { user_id: AuthService.getCurrentUser().id}, 
 		headers: authHeader() 

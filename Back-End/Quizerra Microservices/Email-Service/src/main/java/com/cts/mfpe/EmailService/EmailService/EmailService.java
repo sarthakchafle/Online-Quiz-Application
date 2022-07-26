@@ -63,15 +63,9 @@ public class EmailService {
     }
 
     public void triggerMail() throws MessagingException {
-
-
-//        sendEmailWithAttachment(mailRequest.getEmail(),
-//                "This is Email Body with Attachment...",
-//                "This email has attachment",
-//                "D:\\git handson\\welcome.txt");
         sendSimpleEmail(mailRequest.getEmail(),
-                "you scored 5/5",
-                "This email has attachment");
+                mailRequest.getScore(),
+                mailRequest.getTitle());
 
     }
 

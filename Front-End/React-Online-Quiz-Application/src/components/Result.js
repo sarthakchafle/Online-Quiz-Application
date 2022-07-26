@@ -11,6 +11,8 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import {Button} from '@mui/material';
 import {getQuestionAnswer} from '../services/quiz.service'
+import UserService from "../services/user.service";
+import EmailService from "../services/email.service";
 
 const Result = () => {
   let location = useLocation();
@@ -20,20 +22,20 @@ const Result = () => {
   const [loading, setLoading] = useState(true)
   const [openDialog, setOpenDialog] = useState(false)
   const [allQuestionAnswer, setAllQuestionAnswer] = useState([])
+  const [email, setEmail] = useState("")
   // const [error, setError] = useState(second)
   useEffect(() => {
     if (!location.state) {
       navigate("/allQuizzes", { replace: true});
     }
-    console.log("user: ", location.state.userAnswers)
     getAnswers()
+    getProfileData()
     getData()
   }, [])
 
   const getAnswers = async() => {
     let res = await getQuestionAnswer(location.state.title)
     setAllQuestionAnswer(res.data)
-    console.log({res})
   }
 
   const getData = async() => {
@@ -43,6 +45,19 @@ const Result = () => {
     Object.values(res.data).forEach(item => count = item ? count + 1 : count);
     setScore(count)
     setLoading(false)
+  }
+
+  const getProfileData = async() => {
+    let res = await UserService.getProfile()
+    setEmail(res.data.email)
+  }
+
+  const sendMail = async() => {
+    let res = await EmailService.sendMail({
+      email: email,
+      score: `Congratulations!! You scored ${score}/${Object.keys(data).length} in quiz ${location.state.title}`,
+      title: `Score: ${location.state.title}`
+    });
   }
   
   if(loading) {
@@ -98,7 +113,7 @@ const Result = () => {
           </div>
           <div style={{ textAlign: "center" }}>Total Score: {score}/{Object.keys(data).length}</div>
           <div style={{ textAlign: "center" }}>
-            <button type="button" className="btn m-2">
+            <button type="button" className="btn m-2" onClick={sendMail}>
               Mail the Score
             </button>
             <button type="button" className="btn" onClick={() => setOpenDialog(true)}>

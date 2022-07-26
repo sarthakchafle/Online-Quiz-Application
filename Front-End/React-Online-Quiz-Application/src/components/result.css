@@ -1,8 +1,9 @@
 .root {
     margin-top: 5%;
-    background: #EEE;
+    background: beige;
     margin-right:auto;
     margin-left:auto;
+    
 
 }
 .table {
@@ -29,4 +30,7 @@ table.my-table tr:hover td {
 }
 .btn{
     background:#a190be;
+}
+tr{
+    background-color: #a190be;
 }

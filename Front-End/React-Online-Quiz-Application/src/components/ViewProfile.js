@@ -2,23 +2,43 @@ import React, {useEffect, useState} from "react";
 import AnswerService from "../services/answer.service";
 import trophy from "../assets/trophy.json";
 import Lottie from "lottie-react";
-import AuthService from "../services/auth.service";
+import EvaluationService from "../services/evaluation.service";
+import LoadingSpinner from "./LoadingSpinner";
 
 const ViewProfile = () => {
     const [data, setData] = useState([])
-    useEffect(() => {
-        console.log(AuthService.getCurrentUser().id)
+    const [loading, setLoading] = useState(true)
+    useEffect(async() => {
         getData()
+        await new Promise(r => setTimeout(r, 1000));
+        setLoading(false)
     }, [])
 
     const getData = async() => {
         let res = await AnswerService.getAllAttemptedQuiz();
-        setData(res.data)
-        console.log(res.data)
+        let a = []
+        await Promise.all(res.data.map(async (i) => {
+            await EvaluationService.getQuizScoreByUser(i.quiz_Id).then(
+                (response) => {
+                    i.score = response ? response.data : 0
+                },
+                (error) => {
+                  i.score = 0
+                }
+              );
+            a.push(i)
+        }));
+        setData(a)
     }
+
+    if (loading) {
+        return (
+          <LoadingSpinner asOverlay />
+        );
+      }
     return (
         <div style={{backgroundColor: "#533b7c"}}>
-            <div style={{height: "30vh", backgroundColor: "#f7fdcb"}}>
+            <div style={{height: "30vh", backgroundColor: "beige"}}>
                 <center>
                     <Lottie animationData={trophy} loop={true} style={{height: "150px"}}/>
                     <h1>Miletstones Achieved</h1>
@@ -36,11 +56,10 @@ const ViewProfile = () => {
                         {
                             data.map((item, key) => {
                                 return (
-                                    <tr>
-                                    <th scope="row">{item.title}</th>
-                                
-                                    <td>1</td>
-                                </tr>
+                                    <tr key={key}>
+                                        <th scope="row">{item.title}</th>
+                                        <td>{item.score}</td>
+                                    </tr>
                                 )
                             })
                         }

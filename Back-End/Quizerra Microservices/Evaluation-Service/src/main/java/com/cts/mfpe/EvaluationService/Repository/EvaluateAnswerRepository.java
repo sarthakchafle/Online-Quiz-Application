@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EvaluateAnswerRepository extends JpaRepository<UserScore,Long> {
 
-    @Query(value = "select sum(score) from user_score where user_id=:userId and quiz_id=:quizId;",nativeQuery = true)
+    @Query(value = "select sum(score) from user_score where user_id=:userId and quiz_id=:quizId",nativeQuery = true)
     int findByUserIdAndQuizId(String userId,long quizId);
 }

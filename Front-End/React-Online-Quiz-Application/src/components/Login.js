@@ -100,7 +100,11 @@ const Login = () => {
                 marginBottom: "10px",
               }}
             />
-            <Form onSubmit={handleLogin} ref={form} class="d-flex flex-column">
+            <Form
+              onSubmit={handleLogin}
+              ref={form}
+              className="d-flex flex-column"
+            >
               <div className="form-group">
                 <label htmlFor="email">Email*</label>
                 <Input
@@ -154,10 +158,10 @@ const Login = () => {
                 }}
               >
                 Don't have an account?{" "}
-                <Link 
-                  to={"/register"} 
+                <Link
+                  to={"/register"}
                   state={{ from: location.state ? location.state.from : "/" }}
-                > 
+                >
                   Register
                 </Link>
               </div>

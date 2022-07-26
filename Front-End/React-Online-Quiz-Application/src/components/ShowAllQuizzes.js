@@ -8,19 +8,19 @@ import { Input } from "@mui/material";
 import AnswerService from "../services/answer.service";
 
 export default function AllQuizzes() {
-  let navigate = useNavigate()
+  let navigate = useNavigate();
   let location = useLocation();
   const [data, setData] = useState([]);
   const [search, setSearch] = useState();
   const [originalData, setOriginalData] = useState([]);
-  const [attemptedQuizIds, setAttemptedQuizIds] = useState([])
+  const [attemptedQuizIds, setAttemptedQuizIds] = useState([]);
   useEffect(() => {
     getData();
   }, []);
 
   const getData = async () => {
     const r = await AnswerService.getAllAttemptedQuiz();
-    setAttemptedQuizIds(r.data)
+    setAttemptedQuizIds(r.data);
     const res = await getAllQuizzesTitles();
     setOriginalData(res.data);
     setData(res.data);
@@ -66,27 +66,37 @@ export default function AllQuizzes() {
       <Grid
         container
         spacing={2}
-        style={{ display: "flex", flexDirection: "row" }}
+        style={{
+          display: "flex",
+          flexDirection: "row",
+        }}
       >
         {data.map((item, key) => {
-          let isAttempted = attemptedQuizIds.filter(quiz => quiz.quiz_Id === item.quiz_Id).length > 0
+          let isAttempted =
+            attemptedQuizIds.filter((quiz) => quiz.quiz_Id === item.quiz_Id)
+              .length > 0;
           return (
             <Grid item xs={6} md={4} lg={3} key={key}>
               <div
                 className="d-flex align-items-center p-2 flex-column"
-                style={{ backgroundColor: "#e3e3e3" }}
+                style={{ backgroundColor: "beige" }}
               >
-                <h4 style={{maxWidth: "100px"}}>{item.title}</h4>
+                <h4 style={{ maxWidth: "100px" }}>{item.title}</h4>
                 <span>Time Limit: 20 minutes</span>
-                  <Button
-                    className="my-3 px-5"
-                    variant="contained"
-                    style={{ backgroundColor: isAttempted ? "grey" : "#533b7c" }}
-                    onClick={() => navigate("/quiz", { state: {title: item.title}, replace: true })}
-                    disabled={isAttempted}
-                  >
-                    Start
-                  </Button>  
+                <Button
+                  className="my-3 px-5"
+                  variant="contained"
+                  style={{ backgroundColor: isAttempted ? "grey" : "#533b7c" }}
+                  onClick={() =>
+                    navigate("/quiz", {
+                      state: { title: item.title },
+                      replace: true,
+                    })
+                  }
+                  disabled={isAttempted}
+                >
+                  Start
+                </Button>
               </div>
             </Grid>
           );

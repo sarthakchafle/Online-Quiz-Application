@@ -100,7 +100,7 @@ export default function AddQuestion({
           margin: "auto",
         }}
       >
-        <h5 class="display-3 text-center">Add Question</h5>
+        <h5 className="display-3 text-center">Add Question</h5>
         <div className="d-flex justify-content-center">
           <TextField
             className="border p-2 m-2 pr-1 justify-content-center"

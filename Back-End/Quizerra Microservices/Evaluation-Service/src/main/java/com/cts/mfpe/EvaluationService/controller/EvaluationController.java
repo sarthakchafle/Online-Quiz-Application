@@ -61,9 +61,8 @@ Logger logger = LoggerFactory.getLogger(EvaluationController.class);
         }
     }
 
-    @GetMapping("/{userId}/{quizId}")
-    @ResponseBody
-    public UserScore getUserScore(@PathVariable String userId,@PathVariable long quizId){
+    @GetMapping("/score/{userId}/{quizId}")
+    public int getUserScore(@PathVariable String userId,@PathVariable long quizId){
         return evaluateAnswerRepository.findByUserIdAndQuizId(userId,quizId);
     }
 }

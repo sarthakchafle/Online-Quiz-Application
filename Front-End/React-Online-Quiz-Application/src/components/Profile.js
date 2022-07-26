@@ -4,6 +4,7 @@ import axios from "axios";
 import authHeader from "../services/auth-header";
 import { useLocation, Navigate, useNavigate } from "react-router-dom";
 import "../components/profile.css";
+import UserService from "../services/user.service";
 
 const Profile = () => {
   const location = useLocation();
@@ -14,10 +15,8 @@ const Profile = () => {
   const [data, setData] = useState([]);
 
   const getData = async () => {
-    const { data } = await axios.get(`${USER_API}${currentUser.id}`, {
-      headers: authHeader(),
-    });
-    setData(data);
+    let res = await UserService.getProfile()
+    setData(res.data);
   };
   useEffect(() => {
     getData();

@@ -29,14 +29,34 @@ public class MailController {
         return matcher.find();
     }
 
+//    @PostMapping("/sendMail")
+//    ResponseEntity<?> sendMail(@RequestParam String email) throws Exception {
+//
+//        try {
+//            if (!validate(email)) {
+//                throw new EmailException("Email is invalid");
+//            }
+//            mailRequest.setEmail(email);
+//            service.triggerMail();
+//            return ResponseEntity.ok().body("Email sent");
+//        } catch (EmailException e) {
+//            return ResponseEntity.badRequest().body(e.getMessage());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return ResponseEntity.badRequest().body("something went wrong");
+//    }
+    
     @PostMapping("/sendMail")
-    ResponseEntity<?> sendMail(@RequestParam String email) throws Exception {
+    ResponseEntity<?> sendMail(@RequestParam String email, @RequestParam String score, @RequestParam String title) throws Exception {
 
         try {
             if (!validate(email)) {
                 throw new EmailException("Email is invalid");
             }
             mailRequest.setEmail(email);
+            mailRequest.setScore(score);
+            mailRequest.setTitle(title);
             service.triggerMail();
             return ResponseEntity.ok().body("Email sent");
         } catch (EmailException e) {

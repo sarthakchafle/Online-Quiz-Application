@@ -9,12 +9,33 @@ import org.springframework.web.context.WebApplicationContext;
 @Component
 public class MailRequest {
     String email;
+    String score;
+    String title;
 
-    public MailRequest(String email) {
-        this.email = email;
-    }
+    public String getScore() {
+		return score;
+	}
 
-    public MailRequest() {
+	public void setScore(String score) {
+		this.score = score;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+    public MailRequest(String email, String score, String title) {
+		super();
+		this.email = email;
+		this.score = score;
+		this.title = title;
+	}
+
+	public MailRequest() {
     }
 
     public String getEmail() {

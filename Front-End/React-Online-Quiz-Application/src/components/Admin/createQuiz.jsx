@@ -30,18 +30,18 @@ const CreateQuiz = () => {
     question: formattedArray,
   }; // api
 
-  useEffect(() => {
-    UserService.getCreateQuiz().then(
-      (response) => {
-        setAdmin(true);
-      },
-      (error) => {
-        if (error.response && error.response.status === 401) {
-          EventBus.dispatch("logout");
-        }
-      }
-    );
-  }, []);
+  // useEffect(() => {
+  //   UserService.getCreateQuiz().then(
+  //     (response) => {
+  //       setAdmin(true);
+  //     },
+  //     (error) => {
+  //       if (error.response && error.response.status === 401) {
+  //         EventBus.dispatch("logout");
+  //       }
+  //     }
+  //   );
+  // }, []);
   function timeSince(firsttime, secondtime) {
     var seconds = Math.floor((secondtime - firsttime) / 1000);
 

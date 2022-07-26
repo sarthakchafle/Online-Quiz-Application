@@ -17,12 +17,12 @@ export default function Quiz() {
   const [seconds, setSeconds] = useState(0);
   const [questions, setQuestions] = useState([]);
   const [param, setparam] = useState();
-  const [error, setError] = useState(false)
-  const [userAnswers, setUserAnswers] = useState([])
+  const [error, setError] = useState(false);
+  const [userAnswers, setUserAnswers] = useState([]);
 
   useEffect(() => {
     if (!location.state) {
-      navigate("/allQuizzes", { replace: true});
+      navigate("/allQuizzes", { replace: true });
     }
     getData();
   }, []);
@@ -31,10 +31,11 @@ export default function Quiz() {
     let res = await getQuizByTitle(title);
     setQuestions(res.data.question);
     setparam({
-      length: 3,
+      length: res.data.question.length,
       quiz_id: res.data.quizId,
       param: [],
     });
+    console.log(res.data);
   };
 
   useEffect(() => {
@@ -57,20 +58,20 @@ export default function Quiz() {
   });
   const submit = () => {
     console.log({ param });
-    console.log({userAnswers})
+    console.log({ userAnswers });
     AnswerService.saveAnswers(param.param).then(
       (response) => {
-        console.log({response});
+        console.log({ response });
         setMinutes(0);
         setSeconds(0);
       },
       (error) => {
         setMinutes(0);
         setSeconds(0);
-        setError(true)
+        setError(true);
       }
     );
-  }
+  };
 
   if (!AuthService.isLoggedIn()) {
     return <Navigate to="/login" replace state={{ from: location }} />;
@@ -114,11 +115,14 @@ export default function Quiz() {
           style={{ height: "100vh" }}
         >
           <div className="quiz-semi-container d-flex justify-content-center align-items-center flex-column rounded p-5">
-            {
-              error ? 
+            {error ? (
               <>
-                <h4 className="text-danger">There was an error in submitting the answer. Please try again later.</h4>
-              </> : 
+                <h4 className="text-danger">
+                  There was an error in submitting the answer. Please try again
+                  later.
+                </h4>
+              </>
+            ) : (
               <>
                 <h1 className="font-italic my-4">Congratulations!!</h1>
                 <h4 className="">The test has been submitted</h4>
@@ -127,14 +131,21 @@ export default function Quiz() {
                   variant="contained"
                   style={{ backgroundColor: "#533b7c" }}
                   onClick={() => {
-                    console.log("answer: ", userAnswers)
-                    navigate("/result", { state: {param: param.param, title: title, questions: questions, userAnswers: userAnswers}});
+                    console.log("answer: ", userAnswers);
+                    navigate("/result", {
+                      state: {
+                        param: param.param,
+                        title: title,
+                        questions: questions,
+                        userAnswers: userAnswers,
+                      },
+                    });
                   }}
                 >
                   Click here for the results
                 </Button>
               </>
-            }
+            )}
           </div>
         </div>
       ) : (

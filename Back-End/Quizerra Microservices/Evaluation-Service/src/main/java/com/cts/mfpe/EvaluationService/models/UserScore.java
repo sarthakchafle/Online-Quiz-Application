@@ -10,7 +10,6 @@ import java.io.Serializable;
 public class UserScore implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private long scoreId;
 
     private String user_id;

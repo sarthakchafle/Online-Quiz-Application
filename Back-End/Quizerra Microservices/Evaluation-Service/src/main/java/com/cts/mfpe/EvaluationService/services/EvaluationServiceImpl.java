@@ -30,7 +30,7 @@ public class EvaluationServiceImpl implements EvaluationService {
 
     @Autowired
     UserScore userScoreObj;
-    
+
     @Override
     public void startEvaluation(EvaluateAnswerRequest evaluateAnswerRequest, Map<String, Map<Long, Integer>> userScore, Map<Long, Integer> questionScoreMap, int length, Map<Long, Boolean> result) throws EvaluationException {
         logger.info(String.valueOf(evaluateAnswerRequest));
@@ -69,6 +69,7 @@ public class EvaluationServiceImpl implements EvaluationService {
                         userScoreObj.setScore(score);
                         logger.info(String.valueOf(userScoreObj));
                         evaluateAnswerRepository.save(userScoreObj);
+//                        evaluateAnswerRepository.saveScore(evaluateAnswerRequest.getQuiz_id(),score,evaluateAnswerRequest.getUser_id());
                         count = 0;
                     }
                 }

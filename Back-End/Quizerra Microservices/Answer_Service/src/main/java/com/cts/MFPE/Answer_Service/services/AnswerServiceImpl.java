@@ -35,6 +35,9 @@ Logger logger = LoggerFactory.getLogger(AnswerServiceImpl.class);
     public void saveAnswer(String userId, long answerId,long quizId) throws SavingAnswerException {
         isUser = userCommunication.ifExists(userId);
         isAnswer = answerCommunication.ifExistsAnswer(answerId);
+        if(!isAnswer && answerId==-1){
+            isAnswer=true;
+        }
         isQuiz = answerCommunication.ifExistsQuiz(quizId);
         logger.info("UserId exists="+isUser);
         logger.info("AnswerId exists="+isAnswer);

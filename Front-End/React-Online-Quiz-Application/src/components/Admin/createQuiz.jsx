@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import UserService from "../../services/user.service";
 import EventBus from "../../common/EventBus";
 import Box from "@mui/material/Box";
-import { useLocation, Navigate } from "react-router-dom";
+import { useLocation, Navigate, useNavigate } from "react-router-dom";
 import { AppBar, Toolbar, Typography } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Select from "@mui/material/Select";
@@ -16,8 +16,10 @@ import { postQuiz } from "../../services/quiz.service";
 import AddQuestion from "./AddQuestion";
 import AuthService from "../../services/auth.service";
 import "./createquiz.css";
+import NotAllowed from "../NotAllowed";
 
 const CreateQuiz = () => {
+  let navigate = useNavigate();
   const [state, setState] = useState(0);
   const location = useLocation();
   const [title, setTitle] = useState("");
@@ -31,8 +33,8 @@ const CreateQuiz = () => {
   }; // api
 
   useEffect(() => {
-    console.log(AuthService.getCurrentUser().isAdmin)
-    setAdmin(AuthService.getCurrentUser().isAdmin)
+    console.log(AuthService.getCurrentUser().isAdmin);
+    setAdmin(AuthService.getCurrentUser().isAdmin);
   }, []);
   function timeSince(firsttime, secondtime) {
     var seconds = Math.floor((secondtime - firsttime) / 1000);
@@ -71,10 +73,19 @@ const CreateQuiz = () => {
   };
 
   if (admin === "false") {
-    return(
-    <Typography variant="h2" gutterBottom component="div">
-      Quiz cannot be created. The user is not admin.
-    </Typography>)
+    return (
+      // <div className="containerrr">
+      //   <h2 style={{ maxWidth: "50vw" }}>Quiz cannot be created.</h2>
+      //   <p>The user is not admin. Please try again using admin account.</p>
+      //   <button
+      //     className="btn-red-for-rest-pages"
+      //     onClick={() => navigate("/")}
+      //   >
+      //     Back to home
+      //   </button>
+      // </div>
+      <NotAllowed />
+    );
   }
 
   if (!AuthService.isLoggedIn()) {
@@ -84,8 +95,8 @@ const CreateQuiz = () => {
   return (
     <div className={"containerrr"}>
       {state === 0 ? (
-        <div container direction={"row"} >
-          <Typography>Create Quiz{admin}</Typography>
+        <div container direction={"row"}>
+          <Typography>Create Quiz</Typography>
           <TextField
             style={{ width: "50vw" }}
             className="my-4"

@@ -19,7 +19,7 @@ export default function Quiz() {
   const [param, setparam] = useState();
   const [error, setError] = useState(false);
   const [userAnswers, setUserAnswers] = useState([]);
-  const [canSubmit, setcanSubmit] = useState(false)
+  const [canSubmit, setcanSubmit] = useState(false);
 
   useEffect(() => {
     if (!location.state) {
@@ -53,28 +53,28 @@ export default function Quiz() {
         }
       }
     }, 1000);
-    if(minutes === 0 && seconds === 0 && canSubmit) {
-      console.log("here")
+    if (minutes === 0 && seconds === 0 && canSubmit) {
+      console.log("here");
       submit();
-    } 
+    }
     return () => {
       clearInterval(myInterval);
-    }
+    };
   });
   const submit = () => {
     console.log({ param });
     console.log({ userAnswers });
-    let temp = param ? param.param : []
-    if(temp.length !== questions.length) {
-      while(temp.length !== questions.length) {
+    let temp = param ? param.param : [];
+    if (temp.length !== questions.length) {
+      while (temp.length !== questions.length) {
         temp.push({
-          "user_id": AuthService.getCurrentUser().id,
-          "answer_id": -1,
-          "quiz_id": param.quiz_id
-        })
+          user_id: AuthService.getCurrentUser().id,
+          answer_id: -1,
+          quiz_id: param.quiz_id,
+        });
       }
     }
-    console.log({param})
+    console.log({ param });
     AnswerService.saveAnswers(param.param).then(
       (response) => {
         console.log({ response });
@@ -116,7 +116,7 @@ export default function Quiz() {
               setStarted(true);
               setMinutes(0);
               setSeconds(30);
-              setcanSubmit(true)
+              setcanSubmit(true);
             }}
           >
             Start

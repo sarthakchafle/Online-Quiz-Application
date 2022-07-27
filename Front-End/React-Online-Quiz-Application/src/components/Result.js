@@ -13,7 +13,7 @@ import UserService from "../services/user.service";
 import EmailService from "../services/email.service";
 import LoadingSpinner from "./LoadingSpinner";
 import Alert from "@mui/material/Alert";
-import Snackbar from '@mui/material/Snackbar';
+import Snackbar from "@mui/material/Snackbar";
 
 const Result = () => {
   let location = useLocation();
@@ -24,7 +24,7 @@ const Result = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [allQuestionAnswer, setAllQuestionAnswer] = useState([]);
   const [email, setEmail] = useState("");
-  const [mail, setMail] = useState(true);
+  const [mail, setMail] = useState(false);
   // const [error, setError] = useState(second)
   useEffect(() => {
     if (!location.state) {
@@ -43,6 +43,7 @@ const Result = () => {
   const getData = async () => {
     let res = await EvaluationService.evaluate(location.state.param);
     setData(res.data);
+    console.log(res.data);
     let count = 0;
     Object.values(res.data).forEach(
       (item) => (count = item ? count + 1 : count)
@@ -95,7 +96,7 @@ const Result = () => {
       <div style={{ textAlign: "center" }}>
         <h4>Your Score</h4>
         <h4>
-          {score}/{Object.keys(data).length}
+          {score}/{location.state.questions.length}
         </h4>
       </div>
       <div className="root" style={{ padding: 40 }}>
@@ -118,13 +119,19 @@ const Result = () => {
                   let correctAns = allQuestionAnswer.find((obj) => {
                     return obj.ques === ques.quesId;
                   });
+                  console.log(correctAns);
                   let userAnswer = location.state.userAnswers.find((obj) => {
                     return obj.ques === ques.quesId;
                   });
+                  console.log(userAnswer);
                   return (
                     <tr
                       className={`${
-                        data[ques.quesId] ? "table-success" : "table-danger"
+                        data[ques.quesId]
+                          ? "table-success"
+                          : userAnswer
+                          ? "table-danger"
+                          : "table-warning"
                       }`}
                       key={key}
                     >
@@ -135,7 +142,7 @@ const Result = () => {
                         {correctAns.answer}
                       </th>
                       <th style={{ width: "500px" }} scope="row">
-                        {userAnswer.answer}
+                        {userAnswer ? userAnswer.answer : ""}
                       </th>
                       <td>{data[ques.quesId] ? "1" : "0"}</td>
                     </tr>
@@ -145,7 +152,7 @@ const Result = () => {
             </table>
           </div>
           <div style={{ textAlign: "center" }}>
-            Total Score: {score}/{Object.keys(data).length}
+            Total Score: {score}/{location.state.questions.length}
           </div>
           <div style={{ textAlign: "center" }}>
             <button type="button" className="btn m-2" onClick={sendMail}>
@@ -176,7 +183,9 @@ const Result = () => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => navigate("/", { replace: true })}>Yes</Button>
+          <Button onClick={() => navigate("/feedback", { replace: true })}>
+            Yes
+          </Button>
           <Button onClick={() => setOpenDialog(false)}>No</Button>
         </DialogActions>
       </Dialog>

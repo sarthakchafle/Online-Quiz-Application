@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, NotFoundRoute } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -14,8 +14,9 @@ import Quiz from "./components/Quiz";
 import ShowAllQuizzes from "./components/ShowAllQuizzes";
 import Homepage from "./components/Homepage";
 import Result from "./components/Result";
-import ViewProfile from './components/ViewProfile'
+import ViewProfile from "./components/ViewProfile";
 import Feedback from "./components/Feedback";
+import NotFound from "./components/NotFound";
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -109,6 +110,7 @@ const App = () => {
           <Route path="/result" element={<Result />} />
           <Route path="/viewProfile" element={<ViewProfile />} />
           <Route path="/feedback" element={<Feedback />} />
+          <Route path="/*" element={<NotFound />} />
         </Routes>
       </div>
     </div>

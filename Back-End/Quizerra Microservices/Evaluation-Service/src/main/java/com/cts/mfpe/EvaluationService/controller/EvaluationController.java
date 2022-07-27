@@ -19,41 +19,58 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-@Scope(value= WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
+@Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
 @RestController
 @RequestMapping("/api")
 public class EvaluationController {
-Logger logger = LoggerFactory.getLogger(EvaluationController.class);
+    Logger logger = LoggerFactory.getLogger(EvaluationController.class);
     @Autowired
     EvaluationService service;
 
     @Autowired
     EvaluateAnswerRepository evaluateAnswerRepository;
 
-    private final Map<String, Map<Long,Integer>> userScore= new HashMap<>();
-    private final Map<Long,Integer> questionScoreMap = new HashMap<>();
-
+    private final Map<String, Map<Long, Integer>> userScore = new HashMap<>();
+    private final Map<Long, Integer> questionScoreMap = new HashMap<>();
+private int getLength(EvaluateAnswerRequest[] evaluateAnswerRequest){
+    int count=0;
+    for(int i=0;i<evaluateAnswerRequest.length;i++){
+        if(evaluateAnswerRequest[i].getAnswer_id()!=-1){
+            count++;
+        }
+    }
+    return count;
+}
     @PostMapping("/evaluate")
     @ResponseBody
-    Map<Long, Boolean> startEvaluation(@RequestBody EvaluateAnswerRequest[] evaluateAnswerRequest){
+    Map<Long, Boolean> startEvaluation(@RequestBody EvaluateAnswerRequest[] evaluateAnswerRequest) {
         logger.info("evaluate post method called");
         Map<Long, Boolean> result = new HashMap<>();
-        UserScore userScoreObj;
+        UserScore userScoreObj = new UserScore();
+        int length = getLength(evaluateAnswerRequest);
+        if(length==0){
+            userScoreObj.setQuiz_id(evaluateAnswerRequest[0].getQuiz_id());
+            userScoreObj.setScore(0);
+            userScoreObj.setUser_id(evaluateAnswerRequest[0].getUser_id());
+            evaluateAnswerRepository.save(userScoreObj);
+        }
         try {
             Arrays.stream(evaluateAnswerRequest).forEach(e -> {
-                logger.info("user object -> "+String.valueOf(e));
-                try {
-                    service.startEvaluation(e, userScore, questionScoreMap, evaluateAnswerRequest.length, result);
-                } catch (EvaluationException ex) {
-                    logger.info(ex.getLocalizedMessage());
-                    throw new RuntimeException(ex);
+                if (e.getAnswer_id() != -1) {
+                    logger.info("user object -> " + String.valueOf(e));
+                    try {
+                        service.startEvaluation(e, userScore, questionScoreMap, length, result);
+                    } catch (EvaluationException ex) {
+                        logger.info(ex.getLocalizedMessage());
+                        throw new RuntimeException(ex);
+                    }
                 }
             });
             logger.info("Answers saved Successfully!");
             logger.info("result : " + result);
             return result;
 //            return ResponseEntity.ok(new MessageResponse("Answers saved Successfully!"));
-        } catch (Exception e){
+        } catch (Exception e) {
 //            e.printStackTrace();
             logger.error(e.getLocalizedMessage());
             return result;
@@ -62,7 +79,7 @@ Logger logger = LoggerFactory.getLogger(EvaluationController.class);
     }
 
     @GetMapping("/score/{userId}/{quizId}")
-    public int getUserScore(@PathVariable String userId,@PathVariable long quizId){
-        return evaluateAnswerRepository.findByUserIdAndQuizId(userId,quizId);
+    public int getUserScore(@PathVariable String userId, @PathVariable long quizId) {
+        return evaluateAnswerRepository.findByUserIdAndQuizId(userId, quizId);
     }
 }

@@ -5,8 +5,17 @@ public class CreateUserResponseModel {
     private String lastName;
     private String email;
     private String userId;
+    private boolean admin;
 
-    public String getFirstName() {
+    public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
+
+	public String getFirstName() {
         return firstName;
     }
 

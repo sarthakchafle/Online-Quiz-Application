@@ -10,6 +10,7 @@ public class UserDto implements Serializable {
     private String email;
     private String password;
     private String userId;
+    private boolean admin;
     private List<AlbumResponseModel> albums;
 
     public List<AlbumResponseModel> getAlbums() {
@@ -22,16 +23,25 @@ public class UserDto implements Serializable {
 
     private String encryptedPassword;
 
-    public UserDto(String firstName, String lastName, String email, String password, String userId, String encryptedPassword) {
+    public UserDto(String firstName, String lastName, String email, String password, String userId, String encryptedPassword, boolean admin) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.userId = userId;
         this.encryptedPassword = encryptedPassword;
+        this.admin = admin;
     }
 
-    public UserDto() {
+    public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
+
+	public UserDto() {
     }
 
     public String getFirstName() {

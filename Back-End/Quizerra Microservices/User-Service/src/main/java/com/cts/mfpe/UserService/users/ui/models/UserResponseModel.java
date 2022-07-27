@@ -8,8 +8,17 @@ public class UserResponseModel {
     private String lastName;
     private String email;
     private List<AlbumResponseModel> albums;
+    private boolean admin;
 
-    public String getUserId() {
+    public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
+
+	public String getUserId() {
         return userId;
     }
 

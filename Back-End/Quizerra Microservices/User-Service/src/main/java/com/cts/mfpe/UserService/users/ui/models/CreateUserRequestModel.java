@@ -18,15 +18,26 @@ public class CreateUserRequestModel{
     @NotNull(message = "email cannot be null")
     @Email
     private String email;
+    @NotNull
+    private boolean admin;
 
-    public CreateUserRequestModel(String firstName, String lastName, String password, String email) {
+    public CreateUserRequestModel(String firstName, String lastName, String password, String email, boolean admin) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
         this.email = email;
+        this.admin = admin;
     }
 
-    public CreateUserRequestModel() {
+    public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
+
+	public CreateUserRequestModel() {
     }
 
     public String getFirstName() {

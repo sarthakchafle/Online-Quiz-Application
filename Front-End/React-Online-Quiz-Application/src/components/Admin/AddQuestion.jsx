@@ -68,14 +68,14 @@ export default function AddQuestion({
       </IconButton>
     </React.Fragment>
   );
-  let temp = [];
+  let displayOptions = [];
   const handleOption = (e, i) => {
     let a = options.slice();
     a[i] = e.target.value;
     setoptions(a);
   };
   for (let i = 0; i < 4; i++) {
-    temp.push(
+    displayOptions.push(
       <TextField
         className="my-1"
         required={true}
@@ -85,25 +85,25 @@ export default function AddQuestion({
         multiline
         margin="dense"
         value={options[i]}
-        sx={{ width: "49%", marginRight: "2px" }}
+        sx={{ width: "49%", margin: "5px" }}
         onChange={(e) => handleOption(e, i)}
       />
     );
   }
   return (
-    <div className="questionContainer">
+    <div className="d-flex p-3 align-items-center justify-content-center" style={{height: "100vh"}}>
       <div
         className="rounded p-3 border"
         style={{
-          height: "90vh",
           width: "80vw",
           margin: "auto",
+          backgroundColor: "#f9f8fc"
         }}
       >
         <h5 className="display-3 text-center">Add Question</h5>
         <div className="d-flex justify-content-center">
           <TextField
-            className="border p-2 m-2 pr-1 justify-content-center"
+            className="justify-content-center"
             required={true}
             id="outlined-textarea"
             label={`Question ${count + 1}`}
@@ -117,7 +117,7 @@ export default function AddQuestion({
             }}
           />
         </div>
-        {temp}
+        {displayOptions}
         <FormControl sx={{ width: "100%" }} className="my-4">
           <InputLabel id="demo-multiple-name-label">
             Correct Answer...
@@ -139,7 +139,7 @@ export default function AddQuestion({
             <MenuItem value={options[3]}>{options[3]}</MenuItem>
           </Select>
         </FormControl>
-        <Button
+        <button
           variant="contained"
           type="submit"
           onClick={handleAdd}
@@ -148,11 +148,11 @@ export default function AddQuestion({
             border: "none",
             borderRadius: "4px",
             height: "6.5vh",
-            backgroundColor: "green",
           }}
+          className="btn-red-for-rest-pages"
         >
           {"Add"}
-        </Button>
+        </button>
         <Snackbar
           open={open}
           autoHideDuration={6000}

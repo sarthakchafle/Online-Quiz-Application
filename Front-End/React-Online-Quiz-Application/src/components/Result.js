@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./result.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import EvaluationService from "../services/evaluation.service";
-import CircularProgress from "@mui/material/CircularProgress";
-import Box from "@mui/material/Box";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
@@ -15,6 +13,7 @@ import UserService from "../services/user.service";
 import EmailService from "../services/email.service";
 import LoadingSpinner from "./LoadingSpinner";
 import Alert from "@mui/material/Alert";
+import Snackbar from '@mui/material/Snackbar';
 
 const Result = () => {
   let location = useLocation();
@@ -25,7 +24,7 @@ const Result = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [allQuestionAnswer, setAllQuestionAnswer] = useState([]);
   const [email, setEmail] = useState("");
-  const [mail, setMail] = useState(false);
+  const [mail, setMail] = useState(true);
   // const [error, setError] = useState(second)
   useEffect(() => {
     if (!location.state) {
@@ -182,9 +181,12 @@ const Result = () => {
         </DialogActions>
       </Dialog>
       {mail && (
-        <Alert variant="filled" severity="success">
-          This is a success alert — check it out!
-        </Alert>
+        <Snackbar
+          open={mail}
+          autoHideDuration={6000}
+          onClose={() => setMail(false)}
+          message="Mail has been sent"
+        />
       )}
     </div>
   );

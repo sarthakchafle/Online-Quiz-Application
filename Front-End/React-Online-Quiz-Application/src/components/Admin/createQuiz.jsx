@@ -21,7 +21,7 @@ const CreateQuiz = () => {
   const [state, setState] = useState(0);
   const location = useLocation();
   const [title, setTitle] = useState("");
-  const [admin, setAdmin] = useState(false);
+  const [admin, setAdmin] = useState("");
   const [count, setCount] = useState(0);
   const [numberOfQuestions, setNumberOfQuestions] = useState(3);
   const [formattedArray, setFormattedArray] = useState([]); //api
@@ -30,18 +30,10 @@ const CreateQuiz = () => {
     question: formattedArray,
   }; // api
 
-  // useEffect(() => {
-  //   UserService.getCreateQuiz().then(
-  //     (response) => {
-  //       setAdmin(true);
-  //     },
-  //     (error) => {
-  //       if (error.response && error.response.status === 401) {
-  //         EventBus.dispatch("logout");
-  //       }
-  //     }
-  //   );
-  // }, []);
+  useEffect(() => {
+    console.log(AuthService.getCurrentUser().isAdmin)
+    setAdmin(AuthService.getCurrentUser().isAdmin)
+  }, []);
   function timeSince(firsttime, secondtime) {
     var seconds = Math.floor((secondtime - firsttime) / 1000);
 
@@ -78,10 +70,11 @@ const CreateQuiz = () => {
     setFormattedArray([]);
   };
 
-  if (!admin) {
+  if (admin === "false") {
+    return(
     <Typography variant="h2" gutterBottom component="div">
       Quiz cannot be created. The user is not admin.
-    </Typography>;
+    </Typography>)
   }
 
   if (!AuthService.isLoggedIn()) {
@@ -89,10 +82,10 @@ const CreateQuiz = () => {
   }
 
   return (
-    <div className="containerrr">
-      <Typography>Create Quiz</Typography>
+    <div className={"containerrr"}>
       {state === 0 ? (
         <div container direction={"row"} >
+          <Typography>Create Quiz{admin}</Typography>
           <TextField
             style={{ width: "50vw" }}
             className="my-4"
@@ -130,14 +123,14 @@ const CreateQuiz = () => {
             </Select>
           </FormControl>
           <Box>Time of Assignment will be : 20 minutes</Box>
-          <Button
-            className="my-2"
+          <button
+            className="btn-red-for-rest-pages my-2"
             onClick={(e) => setState(1)}
             variant="contained"
             sx={{ backgroundColor: "#533b7c" }}
           >
             {"Add Questions"}
-          </Button>
+          </button>
         </div>
       ) : null}
       {state === 1 && count < numberOfQuestions ? (

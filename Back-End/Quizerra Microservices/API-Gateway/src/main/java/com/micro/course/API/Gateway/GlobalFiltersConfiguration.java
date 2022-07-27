@@ -40,11 +40,11 @@ public class GlobalFiltersConfiguration {
 //        corsConfig.setAllowCredentials(true);
 //        configuration.setAllowedOrigins(Arrays.asList(FRONT_END_SERVER));
 //        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
-        corsConfig.setAllowedHeaders(Arrays.asList("X-Requested-With","Origin","Content-Type","Accept","Authorization","token","userId","Access-Control-Allow-Origin"));
+        corsConfig.setAllowedHeaders(Arrays.asList("X-Requested-With","Origin","Content-Type","Accept","Authorization","token","userId", "isAdmin", "Access-Control-Allow-Origin"));
 
         // This allow us to expose the headers
         corsConfig.setExposedHeaders(Arrays.asList("Access-Control-Allow-Headers", "Authorization, x-xsrf-token, Access-Control-Allow-Headers, Origin, Accept, X-Requested-With, " +
-                "Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers","token","userId","Access-Control-Allow-Origin"));
+                "Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers","token","userId", "isAdmin", "Access-Control-Allow-Origin"));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfig);

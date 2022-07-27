@@ -24,9 +24,9 @@ const login = async(email, password) => {
     .then((response) => {
       console.log(response);
       if (response.headers.token) {
-        console.log(true);
         localStorage.setItem("user", response.headers.token);
         localStorage.setItem("userId", response.headers.userid);
+        localStorage.setItem("isAdmin", response.headers.isadmin);
       }
       console.log(response.headers.token);
       return response.headers.token;
@@ -36,12 +36,14 @@ const login = async(email, password) => {
 const logout = () => {
   window.localStorage.removeItem("user");
   window.localStorage.removeItem("userId");
+  window.localStorage.removeItem("isAdmin");
 };
 
 const getCurrentUser = () => {
   return {
     user: localStorage.getItem("user"),
     id: localStorage.getItem("userId"),
+    isAdmin: localStorage.getItem("isAdmin")
   };
 };
 

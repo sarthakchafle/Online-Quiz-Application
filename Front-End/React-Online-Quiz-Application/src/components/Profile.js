@@ -61,18 +61,13 @@ const Profile = () => {
             </p>
           </div>
           <button
-            type="button"
-            style={{ backgroundColor: "#533b7c" }}
-            className="btn btn-primary"
+            className="btn-red-for-rest-pages mx-2"
             onClick={() => navigate("/viewProfile")}
           >
             View More
-          </button>{" "}
-          &nbsp; &nbsp;
+          </button>
           <button
-            type="button"
-            style={{ backgroundColor: "#533b7c" }}
-            className="btn btn-danger"
+            className="btn-red-for-rest-pages mx-2"
             onClick={() => navigate("/")}
           >
             Close

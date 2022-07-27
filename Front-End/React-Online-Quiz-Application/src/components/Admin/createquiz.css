@@ -1,17 +1,16 @@
 .containerrr{
-    background: linear-gradient(135deg,
-      #f9f8fc 0%,
-      #f9f8fc 50%,
-      #533b7c 50%,
-      #533b7c 100%
-    );
-    justify-content: center;
-    align-items: center;
-    height: 90vh;
-    margin-top: 10vh;
-    margin-left: 2.5vw;
-  }
- Button{
-background-color: #533b7c;
-color:#FFF;
-  }
+  background: linear-gradient(135deg,
+    #f9f8fc 0%,
+    #f9f8fc 50%,
+    #533b7c 50%,
+    #533b7c 100%
+  );
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 2.5vh;
+}
+/* Button {
+  background-color: #533b7c;
+  color:#FFF;
+} */

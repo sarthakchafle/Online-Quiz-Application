@@ -15,6 +15,7 @@ import ShowAllQuizzes from "./components/ShowAllQuizzes";
 import Homepage from "./components/Homepage";
 import Result from "./components/Result";
 import ViewProfile from './components/ViewProfile'
+import Feedback from "./components/Feedback";
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -107,6 +108,7 @@ const App = () => {
           <Route path="/allQuizzes" element={<ShowAllQuizzes />} />
           <Route path="/result" element={<Result />} />
           <Route path="/viewProfile" element={<ViewProfile />} />
+          <Route path="/feedback" element={<Feedback />} />
         </Routes>
       </div>
     </div>

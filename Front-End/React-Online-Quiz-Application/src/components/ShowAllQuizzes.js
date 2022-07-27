@@ -93,7 +93,7 @@ export default function AllQuizzes() {
                       replace: true,
                     })
                   }
-                  disabled={isAttempted}
+                  // disabled={isAttempted}
                 >
                   Start
                 </Button>

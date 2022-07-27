@@ -21,15 +21,26 @@ public class UserEntity implements Serializable {
     private String userId;
     @Column(nullable = false, unique = true)
     private String encryptedPassword;
-
-    public UserEntity(long id, String firstName, String lastName, String email, String userId, String encryptedPassword) {
+    @Column(nullable=false, name="admin")
+    private boolean admin;
+    
+    public UserEntity(long id, String firstName, String lastName, String email, String userId, String encryptedPassword, boolean admin) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.userId = userId;
         this.encryptedPassword = encryptedPassword;
+        this.admin = admin;
     }
+
+    public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
 
     public UserEntity() {
     }

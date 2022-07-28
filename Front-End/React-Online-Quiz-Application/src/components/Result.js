@@ -142,7 +142,7 @@ const Result = () => {
                         {correctAns.answer}
                       </th>
                       <th style={{ width: "500px" }} scope="row">
-                        {userAnswer ? userAnswer.answer : ""}
+                        {userAnswer ? userAnswer.answer : "-"}
                       </th>
                       <td>{data[ques.quesId] ? "1" : "0"}</td>
                     </tr>

@@ -1103,4 +1103,10 @@ a.primary-btn:hover {
   color: var(--clr-primary-SoftRed);
 }
 
+.faqs__info p a {
+  font-size: 15px;
+  color: #533b7c;
+  text-decoration: underline;
+}
+
 /* (: */

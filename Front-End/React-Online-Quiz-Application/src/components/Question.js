@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Button from "@mui/material/Button";
 import AuthService from '../services/auth.service';
 
@@ -6,26 +6,43 @@ export default function Question({question, questionNumber, setQuestionNumber, p
     const [answer, setAnswer] = useState()
     const [error, setError] = useState(false)
 
+    useEffect(() => {
+      console.log(param.param)
+    }, [])
+    
+
     const selectOption = (m) => {
+        console.log({questionNumber})
         setAnswer(m.answer)
-        let a = param
-        let temp = {
-            "user_id": AuthService.getCurrentUser().id,
-            "answer_id": m.ansId,
-            "quiz_id": param.quiz_id
-
+        console.log(param.param.length, " ", questionNumber)
+        if(questionNumber === param.param.length) {
+            let a = param
+            let temp = {
+                "user_id": AuthService.getCurrentUser().id,
+                "answer_id": m.ansId,
+                "quiz_id": param.quiz_id
+            }
+            a.param.push(temp)
+            setparam(a)
+        } else {
+            let a = param
+            a.param[a.param.length-1].answer_id = m.ansId
+            setparam(a)
         }
-        a.param.push(temp)
-        setparam(a)
 
-        console.log({m})
-        let b = userAnswers
-        b.push({
-            answer: m.answer,
-            ques: question.quesId
-        })
-        setUserAnswers(b);
-        console.log({b})
+        if(questionNumber === userAnswers.length) {
+            let b = userAnswers
+            b.push({
+                answer: m.answer,
+                ques: question.quesId
+            })
+            setUserAnswers(b);
+        } else {
+            let b = userAnswers
+            b[b.length-1].answer = m.answer
+            setUserAnswers(b)
+        }
+        
     }
     
     const onNextClick = () => {

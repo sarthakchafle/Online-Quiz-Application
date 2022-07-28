@@ -11,7 +11,7 @@ const NotFound = () => {
         animationData={PageNotFound}
         loop={true}
         style={{ height: "90vh" }}
-      ></Lottie>
+      />
       <div
         style={{
           justifyContent: "center",
@@ -24,7 +24,7 @@ const NotFound = () => {
           onClick={() => navigate("/")}
           style={{ alignSelf: "center" }}
         >
-          Return Home
+          Return to Home
         </button>
       </div>
     </div>

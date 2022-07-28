@@ -3,8 +3,12 @@ package com.cts.Feedback.Controller;
 import com.cts.Feedback.Model.Feedback;
 import com.cts.Feedback.Service.FeedbackService;
 import com.cts.Feedback.Service.FeedbackServiceImpl;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,5 +21,10 @@ public class FeedbackController {
     @PostMapping("/feedback")
     public void savefeedback(@RequestBody Feedback feed) {
         this.feedback.saveFeedback(feed);
+    }
+    
+    @GetMapping("/getFeedback")
+    public List<Feedback> feedbacks(){
+    	return this.feedback.feedbacks();
     }
 }

@@ -260,6 +260,12 @@ const Homepage = () => {
                 <Link to={"/profile"} className="btn-red">
                   Profile
                 </Link>
+                {!AuthService.getCurrentUser().isAdmin?
+                <Link to={"/review"} className="btn-red">
+                Reviews
+              </Link> : null
+              }
+                
                 <Link to={"/"} className="btn-red" onClick={logOut}>
                   Logout
                 </Link>

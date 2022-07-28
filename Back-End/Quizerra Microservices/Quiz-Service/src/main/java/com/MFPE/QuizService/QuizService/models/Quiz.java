@@ -18,17 +18,27 @@ public class Quiz {
     @JoinColumn(name="fk_quiz_id", referencedColumnName = "quiz_id")
     private List<Question> question;
 
+    private int timeLimit;
 
-    public Quiz(long quizId, String title, List<Question> question) {
+    public Quiz(long quizId, String title, List<Question> question, int timeLimit) {
         this.quizId = quizId;
         this.title = title;
         this.question = question;
+        this.timeLimit = timeLimit;
     }
 
     public Quiz() {
     }
 
-    public long getQuizId() {
+    public int getTimeLimit() {
+		return timeLimit;
+	}
+
+	public void setTimeLimit(int timeLimit) {
+		this.timeLimit = timeLimit;
+	}
+
+	public long getQuizId() {
         return quizId;
     }
 

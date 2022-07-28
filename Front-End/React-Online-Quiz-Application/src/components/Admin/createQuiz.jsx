@@ -1,22 +1,20 @@
 import React, { useEffect, useState } from "react";
-import UserService from "../../services/user.service";
-import EventBus from "../../common/EventBus";
-import Box from "@mui/material/Box";
 import { useLocation, Navigate, useNavigate } from "react-router-dom";
-import { AppBar, Toolbar, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Select from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
-import Button from "@mui/material/Button";
 import AddedQuestions from "./AddedQuestions";
 import { postQuiz } from "../../services/quiz.service";
 import AddQuestion from "./AddQuestion";
 import AuthService from "../../services/auth.service";
 import "./createquiz.css";
 import NotAllowed from "../NotAllowed";
+import Snackbar from "@mui/material/Snackbar";
+
 
 const CreateQuiz = () => {
   let navigate = useNavigate();
@@ -27,41 +25,18 @@ const CreateQuiz = () => {
   const [count, setCount] = useState(0);
   const [numberOfQuestions, setNumberOfQuestions] = useState(3);
   const [formattedArray, setFormattedArray] = useState([]); //api
+  const [timeLimit, setTimeLimit] = useState()
+  const [showSnackBar, setshowSnackBar] = useState(false)
   let que = {
     title: title,
     question: formattedArray,
+    timeLimit: timeLimit
   }; // api
 
   useEffect(() => {
     console.log(AuthService.getCurrentUser().isAdmin);
     setAdmin(AuthService.getCurrentUser().isAdmin);
   }, []);
-  function timeSince(firsttime, secondtime) {
-    var seconds = Math.floor((secondtime - firsttime) / 1000);
-
-    var interval = seconds / 31536000;
-    if (interval > 1) return Math.floor(interval) + " years";
-
-    interval = seconds / 2592000;
-    if (interval > 1) return Math.floor(interval) + " months";
-
-    interval = seconds / 86400;
-    if (interval > 1) return Math.floor(interval) + " days";
-
-    interval = seconds / 3600;
-    if (interval > 1)
-      return (
-        Math.floor(interval) +
-        " hours, " +
-        (seconds - Math.floor(interval) * 3600) / 60 +
-        " mins "
-      );
-
-    interval = seconds / 60;
-    if (interval > 1) return Math.floor(interval) + " minutes ";
-
-    return Math.floor(seconds) + " seconds";
-  }
   const handleSubmit = () => {
     console.log(que);
     postQuiz(que);
@@ -72,20 +47,20 @@ const CreateQuiz = () => {
     setFormattedArray([]);
   };
 
+  if (!AuthService.isLoggedIn()) {
+    return <Navigate to="/login" replace state={{ from: location }} />;
+  }
+
   if (admin === "false") {
     return (
       <NotAllowed />
     );
   }
 
-  if (!AuthService.isLoggedIn()) {
-    return <Navigate to="/login" replace state={{ from: location }} />;
-  }
-
   return (
     <div className={"containerrr"}>
       {state === 0 ? (
-        <div container direction={"row"}>
+        <div direction={"row"}>
           <Typography>Create Quiz</Typography>
           <TextField
             style={{ width: "50vw" }}
@@ -123,10 +98,34 @@ const CreateQuiz = () => {
               <MenuItem value={20}>{20}</MenuItem>
             </Select>
           </FormControl>
-          <Box>Time of Assignment will be : 20 minutes</Box>
+          <TextField
+            type={"number"}
+            style={{ width: "50vw" }}
+            className="my-4"
+            required={true}
+            id="outlined-textarea"
+            label="Time Limit"
+            placeholder="Time limit..."
+            multiline
+            fullWidth
+            margin="dense"
+            value={timeLimit}
+            onChange={(e) => {
+              setTimeLimit(e.target.value);
+            }}
+          />
+          <br />          
           <button
             className="btn-red-for-rest-pages my-2"
-            onClick={(e) => setState(1)}
+            onClick={(e) => {
+              let reg = /^\d+$/
+              if(title && timeLimit && reg.test(timeLimit)) {
+                setState(1)
+              } else {
+                setshowSnackBar(true)
+              }
+              
+            }}
             variant="contained"
             sx={{ backgroundColor: "#533b7c" }}
           >
@@ -147,29 +146,34 @@ const CreateQuiz = () => {
           <AddedQuestions
             array={formattedArray}
             title={title}
-            time={"20 minutes"}
+            time={`${timeLimit} minutes`}
           />
-          <Button
+          <button
             onClick={(e) => handleSubmit(e)}
             sx={{ margin: "20px" }}
-            variant="contained"
+            className="btn-red-for-rest-pages mx-5"
           >
-            {"Submit"}
-          </Button>
+            Submit
+          </button>
         </>
       ) : null}
       {state === 2 && (
         <div>
           <Typography>Congratulation, the quiz has been added</Typography>
-          <Button
-            variant="contained"
+          <button
             href="/allQuizzes"
-            sx={{ backgroundColor: "#533b7c" }}
+            className="btn-red-for-rest-pages"
           >
-            <span style={{ color: "#fff" }}>Show Quizzes</span>
-          </Button>
+            Show Quizzes
+          </button>
         </div>
       )}
+        <Snackbar
+          open={showSnackBar}
+          autoHideDuration={6000}
+          onClose={() => setshowSnackBar(false)}
+          message="Enter valid response"
+        />
     </div>
   );
 };

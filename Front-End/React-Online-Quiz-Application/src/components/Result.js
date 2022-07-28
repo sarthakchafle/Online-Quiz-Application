@@ -12,7 +12,6 @@ import { getQuestionAnswer } from "../services/quiz.service";
 import UserService from "../services/user.service";
 import EmailService from "../services/email.service";
 import LoadingSpinner from "./LoadingSpinner";
-import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
 
 const Result = () => {

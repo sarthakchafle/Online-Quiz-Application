@@ -23,6 +23,7 @@ export default function AllQuizzes() {
     setAttemptedQuizIds(r.data);
     const res = await getAllQuizzesTitles();
     setOriginalData(res.data);
+    console.log(res.data)
     setData(res.data);
   };
 
@@ -82,7 +83,7 @@ export default function AllQuizzes() {
                 style={{ backgroundColor: "beige" }}
               >
                 <h4 style={{ maxWidth: "100px" }}>{item.title}</h4>
-                <span>Time Limit: 20 minutes</span>
+                <span>Time Limit: {item.time_Limit} minutes</span>
                 <Button
                   className="my-3 px-5"
                   variant="contained"
@@ -93,7 +94,7 @@ export default function AllQuizzes() {
                       replace: true,
                     })
                   }
-                  // disabled={isAttempted}
+                  disabled={isAttempted}
                 >
                   Start
                 </Button>

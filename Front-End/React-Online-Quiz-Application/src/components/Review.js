@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import AuthService from "../services/auth.service";
 import FeedbackService from "../services/feedback.service";
 import NotAllowed from "./NotAllowed";
+import { Navigate, useLocation} from "react-router-dom";
 
 const Review =()=>{
+  let location = useLocation();
   const [data, setData] = useState([]);
   const getData = async () => {
     let res = await FeedbackService.getFeedback();
@@ -15,6 +17,11 @@ const Review =()=>{
       getData();
     }
   }, []);
+  if(!AuthService.isLoggedIn()) {
+    return (
+      <Navigate to="/login" replace state={{ from: location }} />
+    )
+  }
  if(AuthService.getCurrentUser().isAdmin === "false"){
     return (<NotAllowed/>)
  }

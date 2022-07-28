@@ -22,7 +22,7 @@ public interface QuizRepository extends JpaRepository<Quiz, Long> {
 
     Boolean existsByTitleIgnoreCase(String title);
 
-    @Query(value = "SELECT quiz_id,title FROM QUIZ", nativeQuery = true)
+    @Query(value = "SELECT quiz_id,title, time_limit FROM QUIZ", nativeQuery = true)
     List<QuizTitleResponse> findAllQuizzesByTitle();
 
 

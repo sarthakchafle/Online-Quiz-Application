@@ -20,6 +20,7 @@ export default function Quiz() {
   const [error, setError] = useState(false);
   const [userAnswers, setUserAnswers] = useState([]);
   const [canSubmit, setcanSubmit] = useState(false);
+  const [timeLimit, setTimeLimit] = useState(0)
 
   useEffect(() => {
     if (!location.state) {
@@ -31,12 +32,12 @@ export default function Quiz() {
   const getData = async () => {
     let res = await getQuizByTitle(title);
     setQuestions(res.data.question);
+    setTimeLimit(res.data.timeLimit)
     setparam({
       length: res.data.question.length,
       quiz_id: res.data.quizId,
       param: [],
     });
-    console.log(res.data);
   };
 
   useEffect(() => {
@@ -114,8 +115,7 @@ export default function Quiz() {
             style={{ backgroundColor: "#533b7c" }}
             onClick={() => {
               setStarted(true);
-              setMinutes(0);
-              setSeconds(30);
+              setMinutes(timeLimit);
               setcanSubmit(true);
             }}
           >

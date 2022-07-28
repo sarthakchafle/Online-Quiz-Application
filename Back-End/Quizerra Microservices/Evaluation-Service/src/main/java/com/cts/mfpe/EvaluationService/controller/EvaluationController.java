@@ -32,15 +32,15 @@ public class EvaluationController {
 
     private final Map<String, Map<Long, Integer>> userScore = new HashMap<>();
     private final Map<Long, Integer> questionScoreMap = new HashMap<>();
-private int getLength(EvaluateAnswerRequest[] evaluateAnswerRequest){
-    int count=0;
-    for(int i=0;i<evaluateAnswerRequest.length;i++){
-        if(evaluateAnswerRequest[i].getAnswer_id()!=-1){
-            count++;
-        }
-    }
-    return count;
-}
+	private int getLength(EvaluateAnswerRequest[] evaluateAnswerRequest){
+	    int count=0;
+	    for(int i=0;i<evaluateAnswerRequest.length;i++){
+	        if(evaluateAnswerRequest[i].getAnswer_id()!=-1){
+	            count++;
+	        }
+	    }
+	    return count;
+	}
     @PostMapping("/evaluate")
     @ResponseBody
     Map<Long, Boolean> startEvaluation(@RequestBody EvaluateAnswerRequest[] evaluateAnswerRequest) {

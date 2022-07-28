@@ -51,7 +51,7 @@ const ViewProfile = () => {
           <h1>Miletstones Achieved</h1>
         </center>
       </div>
-      <div style={{ backgroundColor: "#533b7c", padding: "40px" }}>
+      <div style={{ backgroundColor: "#533b7c", padding: "40px", minHeight: "70vh" }}>
         <table
           className="table table-hover mx-auto rounded shadow"
           style={{ backgroundColor: "#f7fdcb", textAlign: "center" }}

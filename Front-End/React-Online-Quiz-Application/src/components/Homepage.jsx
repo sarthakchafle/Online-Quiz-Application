@@ -83,7 +83,7 @@ const Homepage = () => {
   let location = useLocation();
   const faq = [
     {
-      que: "what is the minimum requirement for using this app?",
+      que: "What is the minimum requirement for using this app?",
       ans: "You need only a web browser with internet access.",
     },
     {
@@ -91,7 +91,7 @@ const Homepage = () => {
       ans: "You will find a wide variety of quizzes from many topics.",
     },
     {
-      que: "is there any subscription to use?",
+      que: "Is there any subscription to use?",
       ans: "No.",
     },
   ];
@@ -394,7 +394,7 @@ const Homepage = () => {
                 />
                 <div className="card__details">
                   <h3>Web Browser</h3>
-                  <span>just a web browser is needed.</span>
+                  <span>Just a web browser is needed.</span>
                 </div>
                 {/* <div className="card__separate"></div>
                             <button type="button" className="card__add-btn">Add & Install Extension</button> */}
@@ -407,7 +407,7 @@ const Homepage = () => {
                 />
                 <div className="card__details">
                   <h3>Variety</h3>
-                  <span>contains quizzes from a lot of topics</span>
+                  <span>Quizzes from a lot of topics</span>
                 </div>
                 {/* <div className="card__separate"></div>
                         <button type="button" className="card__add-btn">Add & Install Extension</button> */}
@@ -434,8 +434,9 @@ const Homepage = () => {
             <div className="faqs__info">
               <h1>Frequently Asked Questions</h1>
               <p>
-                Here are some of our FAQs. If you have any other questions you’d
-                like answered please feel free to email us.
+                Here are some of our FAQs. If you have any other questions you would
+                like answered please feel free to email us. <br />
+                <a href="mailto:quizzera@gmail.com">quizzera@gmail.com</a>
               </p>
             </div>
 

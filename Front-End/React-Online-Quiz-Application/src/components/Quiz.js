@@ -62,8 +62,7 @@ export default function Quiz() {
     };
   });
   const submit = () => {
-    console.log({ param });
-    console.log({ userAnswers });
+    
     let temp = param ? param.param : [];
     if (temp.length !== questions.length) {
       while (temp.length !== questions.length) {
@@ -75,6 +74,7 @@ export default function Quiz() {
       }
     }
     console.log({ param });
+    console.log({ userAnswers });
     AnswerService.saveAnswers(param.param).then(
       (response) => {
         console.log({ response });

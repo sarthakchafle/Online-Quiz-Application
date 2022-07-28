@@ -32,7 +32,7 @@ Logger logger = LoggerFactory.getLogger(AnswerServiceImpl.class);
 
 
     @Override
-    public void saveAnswer(String userId, long answerId,long quizId) throws SavingAnswerException {
+    public void saveAnswer(String userId, long answerId,long quizId,String title) throws SavingAnswerException {
         isUser = userCommunication.ifExists(userId);
         isAnswer = answerCommunication.ifExistsAnswer(answerId);
         if(!isAnswer && answerId==-1){
@@ -48,6 +48,7 @@ Logger logger = LoggerFactory.getLogger(AnswerServiceImpl.class);
             userAnswer.setUserId(userId);
             userAnswer.setAnswerId(answerId);
             userAnswer.setQuizId(quizId);
+            userAnswer.setTitle(title);
             userAnswerRepository.save(userAnswer);
             logger.info("User response saved");
         } else {

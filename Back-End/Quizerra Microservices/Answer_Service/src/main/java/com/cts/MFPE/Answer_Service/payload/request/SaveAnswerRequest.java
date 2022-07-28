@@ -6,9 +6,19 @@ public class SaveAnswerRequest implements Serializable {
 
     private String user_id;
     private long answer_id;
-    private long quiz_id;
 
-    public SaveAnswerRequest(String user_id, long answer_id, long quiz_id) {
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    private long quiz_id;
+    private String title;
+
+    public SaveAnswerRequest(String user_id, long answer_id, long quiz_id,String title) {
         this.user_id = user_id;
         this.answer_id = answer_id;
         this.quiz_id = quiz_id;

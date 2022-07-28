@@ -6,6 +6,6 @@ import com.cts.MFPE.Answer_Service.Exception.SavingAnswerException;
 import com.cts.MFPE.Answer_Service.payload.response.QuizTitleResponse;
 
 public interface AnswerService {
-    void saveAnswer(String userId,long answerId,long quizId) throws SavingAnswerException;
+    void saveAnswer(String userId,long answerId,long quizId,String title) throws SavingAnswerException;
     public List<QuizTitleResponse> getAllAttemptedQuizByUser(String user_id);
 }

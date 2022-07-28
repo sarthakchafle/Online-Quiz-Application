@@ -35,7 +35,7 @@ const ViewProfile = () => {
     );
     setData(a);
   };
-
+console.log(data);
   if (loading) {
     return <LoadingSpinner asOverlay />;
   }

@@ -13,8 +13,17 @@ public class UserAnswer  {
     private String userId;
     private long quizId;
     private long answerId;
+    private String title;
 
-    public UserAnswer(long userAnswerId, String userId, long quizId, long answerId) {
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public UserAnswer(long userAnswerId, String userId, long quizId, long answerId, String title) {
         this.userAnswerId = userAnswerId;
         this.userId = userId;
         this.quizId = quizId;

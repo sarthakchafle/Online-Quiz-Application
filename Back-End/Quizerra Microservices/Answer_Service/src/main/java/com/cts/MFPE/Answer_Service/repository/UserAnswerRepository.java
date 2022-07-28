@@ -15,10 +15,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public interface UserAnswerRepository extends JpaRepository<UserAnswer,Long> {
     @Modifying
-    @Query(value = "insert into user_answer values(:user_id,:answer_id,:quiz_id) ",nativeQuery = true)
+    @Query(value = "insert into user_answer values(:user_id,:answer_id,:quiz_id,:title) ",nativeQuery = true)
     @Transactional
-    public void saveAnswer(@Param("user_id") String user_id, @Param("answer_id") long answer_id,@Param("quiz_id") long quiz_id);
+    public void saveAnswer(@Param("user_id") String user_id, @Param("answer_id") long answer_id,@Param("quiz_id") long quiz_id,@Param("title") String title);
 
-    @Query(value="select distinct ans.quiz_id, quiz.title from quiz2answers.user_answer ans join quiz2questions.quiz quiz on ans.quiz_id = quiz.quiz_id where ans.user_id=:user_id", nativeQuery=true)
+    //@Query(value="select distinct ans.quiz_id, quiz.title from answer-service.user_answer ans join quiz-service.quiz quiz on ans.quiz_id = quiz.quiz_id where ans.user_id=:user_id", nativeQuery=true)
+    //public List<QuizTitleResponse> getAllAttemptedQuizByUser(String user_id);
+    @Query(value="select distinct quiz_id,title from user_answer where user_id=:user_id", nativeQuery=true)
     public List<QuizTitleResponse> getAllAttemptedQuizByUser(String user_id);
 }

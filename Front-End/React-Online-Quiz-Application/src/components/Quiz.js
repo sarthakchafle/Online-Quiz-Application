@@ -70,6 +70,7 @@ export default function Quiz() {
           user_id: AuthService.getCurrentUser().id,
           answer_id: -1,
           quiz_id: param.quiz_id,
+          title:title
         });
       }
     }
@@ -191,6 +192,7 @@ export default function Quiz() {
             submit={submit}
             userAnswers={userAnswers}
             setUserAnswers={setUserAnswers}
+            title = {title}
           />
         </div>
       )}

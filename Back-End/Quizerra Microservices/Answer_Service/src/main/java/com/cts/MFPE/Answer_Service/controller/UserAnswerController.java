@@ -34,7 +34,7 @@ public class UserAnswerController {
             Arrays.stream(saveAnswerRequests).forEach(e -> {
                 logger.info(String.valueOf(e));
                 try {
-                    service.saveAnswer(e.getUser_id(), e.getAnswer_id(), e.getQuiz_id());
+                    service.saveAnswer(e.getUser_id(), e.getAnswer_id(), e.getQuiz_id(),e.getTitle());
                 } catch (SavingAnswerException ex) {
                     logger.error(ex.getLocalizedMessage());
                     throw new RuntimeException(ex);

@@ -222,7 +222,6 @@ const Homepage = () => {
   }
   const logOut = () => {
     AuthService.logout();
-    //setcreateQuiz(false);
   };
   return (
     <>
@@ -231,7 +230,7 @@ const Homepage = () => {
         <header className="header">
           <div className="overlay has-fade hide-for-desktop"></div>
           <nav className="flex flex-jc-sb flex-ai-c container container--pall">
-            <Link to="/home" className="header__logo logo">
+            <Link to="/" className="header__logo logo">
               <i className="bx bxs-bookmark"></i>
               <span>Quizerra</span>
             </Link>
@@ -260,7 +259,7 @@ const Homepage = () => {
                 <Link to={"/profile"} className="btn-red">
                   Profile
                 </Link>
-                {!AuthService.getCurrentUser().isAdmin?
+                {AuthService.getCurrentUser().isAdmin === "true"?
                 <Link to={"/review"} className="btn-red">
                 Reviews
               </Link> : null

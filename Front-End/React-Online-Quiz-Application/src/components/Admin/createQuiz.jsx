@@ -74,16 +74,6 @@ const CreateQuiz = () => {
 
   if (admin === "false") {
     return (
-      // <div className="containerrr">
-      //   <h2 style={{ maxWidth: "50vw" }}>Quiz cannot be created.</h2>
-      //   <p>The user is not admin. Please try again using admin account.</p>
-      //   <button
-      //     className="btn-red-for-rest-pages"
-      //     onClick={() => navigate("/")}
-      //   >
-      //     Back to home
-      //   </button>
-      // </div>
       <NotAllowed />
     );
   }

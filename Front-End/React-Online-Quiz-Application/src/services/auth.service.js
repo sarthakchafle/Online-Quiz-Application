@@ -8,6 +8,7 @@ const register = (firstName, lastName, email, password) => {
     lastName,
     password,
     email,
+    "admin": false
   });
 };
 

@@ -17,6 +17,7 @@ import Result from "./components/Result";
 import ViewProfile from "./components/ViewProfile";
 import Feedback from "./components/Feedback";
 import NotFound from "./components/NotFound";
+import Review from "./components/Review";
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -42,6 +43,16 @@ const App = () => {
     AuthService.logout();
     //setcreateQuiz(false);
   };
+  useEffect(() => {
+    const unloadCallback = (event) => {
+      event.preventDefault();
+      event.returnValue = "";
+      return "";
+    };
+
+    window.addEventListener("beforeunload", unloadCallback);
+    return () => window.removeEventListener("beforeunload", unloadCallback);
+  }, []);
   return (
     <div>
       {/* <nav
@@ -111,6 +122,7 @@ const App = () => {
           <Route path="/viewProfile" element={<ViewProfile />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/*" element={<NotFound />} />
+          <Route path="/review" element={<Review />} />
         </Routes>
       </div>
     </div>

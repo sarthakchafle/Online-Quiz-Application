@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { makeStyles } from "@mui/styles";
+import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
-import { Container, Paper, Button, Rating } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Paper } from "@mui/material";
+import { useNavigate, Navigate, useLocation} from "react-router-dom";
 import "./homepage.css";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import FeedBackService from "../services/feedback.service";
 import StarIcon from "@mui/icons-material/Star";
+import AuthService from "../services/auth.service";
 
 export default function Feedback() {
   const formRef = React.useRef();
+  let location = useLocation()
   let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [feedback, setFeedback] = useState("");
@@ -18,31 +19,16 @@ export default function Feedback() {
   const onBtnSubmit = (e) => {
     const check = formRef.current.reportValidity();
     if (check) {
-      //console.log("added");
       FeedBackService.sendFeedback(email, star, feedback)
         .then(() => console.log("Feedback saved"))
         .then(navigate("/"));
 
-      //   window.location.reload();
     } else alert("Please fill the feedback completely");
   };
-  const onBtnSkip = (e) => {
-    navigate("/finalPage");
-    window.location.reload();
-  };
-  /*
-        e.preventDefault()
-        const feeds={email,ratings,feedback}
-        console.log(feeds)
-        fetch("",{
-          method:"POST",
-          headers:{"Content-Type":"application/json"},
-          body:JSON.stringify(feeds)
-    
-      }).then(()=>{
-        console.log("feedback added")
-      }) 
-      }*/
+  
+  if(!AuthService.isLoggedIn()) {
+    return <Navigate to="/login" replace state={{ from: location }} />;
+  }
 
   return (
     <div

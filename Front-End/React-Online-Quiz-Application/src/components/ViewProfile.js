@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from "react";
 import AnswerService from "../services/answer.service";
 import trophy from "../assets/trophy.json";
+import { Navigate, useLocation} from "react-router-dom";
 import Lottie from "lottie-react";
 import EvaluationService from "../services/evaluation.service";
 import LoadingSpinner from "./LoadingSpinner";
+import AuthService from "../services/auth.service";
 
 const ViewProfile = () => {
+  let location = useLocation()
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     async function fetchMyAPI() {
-      getData();
-      await new Promise((r) => setTimeout(r, 1000));
-      setLoading(false);
+      if(AuthService.isLoggedIn()) {
+        getData();
+        await new Promise((r) => setTimeout(r, 1000));
+        setLoading(false);
+      }
     }
     fetchMyAPI();
   }, []);
@@ -35,7 +40,12 @@ const ViewProfile = () => {
     );
     setData(a);
   };
-console.log(data);
+
+  if(!AuthService.isLoggedIn()) {
+    return (
+      <Navigate to="/login" replace state={{ from: location }} />
+    )
+  }
   if (loading) {
     return <LoadingSpinner asOverlay />;
   }

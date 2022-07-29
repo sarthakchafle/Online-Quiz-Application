@@ -12,7 +12,6 @@ import { getQuestionAnswer } from "../services/quiz.service";
 import UserService from "../services/user.service";
 import EmailService from "../services/email.service";
 import LoadingSpinner from "./LoadingSpinner";
-import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
 
 const Result = () => {
@@ -25,7 +24,6 @@ const Result = () => {
   const [allQuestionAnswer, setAllQuestionAnswer] = useState([]);
   const [email, setEmail] = useState("");
   const [mail, setMail] = useState(false);
-  // const [error, setError] = useState(second)
   useEffect(() => {
     if (!location.state) {
       navigate("/allQuizzes", { replace: true });
@@ -43,7 +41,6 @@ const Result = () => {
   const getData = async () => {
     let res = await EvaluationService.evaluate(location.state.param);
     setData(res.data);
-    console.log(res.data);
     let count = 0;
     Object.values(res.data).forEach(
       (item) => (count = item ? count + 1 : count)
@@ -72,18 +69,6 @@ const Result = () => {
 
   if (loading) {
     return (
-      // <Box
-      //   sx={{
-      //     display: "flex",
-      //     flex: 1,
-      //     alignItems: "center",
-      //     justifyContent: "center",
-      //     height: "100vh",
-      //     background: "none",
-      //   }}
-      // >
-      //   <CircularProgress />
-      // </Box>
       <LoadingSpinner asOverlay />
     );
   }
@@ -119,11 +104,9 @@ const Result = () => {
                   let correctAns = allQuestionAnswer.find((obj) => {
                     return obj.ques === ques.quesId;
                   });
-                  console.log(correctAns);
                   let userAnswer = location.state.userAnswers.find((obj) => {
                     return obj.ques === ques.quesId;
                   });
-                  console.log(userAnswer);
                   return (
                     <tr
                       className={`${
@@ -183,10 +166,10 @@ const Result = () => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
+          <Button onClick={() => setOpenDialog(false)}>No</Button>
           <Button onClick={() => navigate("/feedback", { replace: true })}>
             Yes
           </Button>
-          <Button onClick={() => setOpenDialog(false)}>No</Button>
         </DialogActions>
       </Dialog>
       {mail && (

@@ -51,7 +51,6 @@ const Register = () => {
   const [message, setMessage] = useState("");
 
   const handleLogin = (e) => {
-    //e.preventDefault();
     setMessage("");
     setLoading(true);
     AuthService.login(email, password).then(

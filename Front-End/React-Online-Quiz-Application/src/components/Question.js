@@ -2,19 +2,12 @@ import React, { useState, useEffect } from 'react'
 import Button from "@mui/material/Button";
 import AuthService from '../services/auth.service';
 
-export default function Question({question, questionNumber, setQuestionNumber, param, setparam, submit, userAnswers, setUserAnswers,title}) {
+export default function Question({question, questionNumber, setQuestionNumber, param, setparam, submit, userAnswers, setUserAnswers, title}) {
     const [answer, setAnswer] = useState()
-    const [error, setError] = useState(false)
-
-    useEffect(() => {
-      console.log(param.param)
-    }, [])
-    
+    const [error, setError] = useState(false)    
 
     const selectOption = (m) => {
-        console.log({questionNumber})
         setAnswer(m.answer)
-        console.log(param.param.length, " ", questionNumber)
         if(questionNumber === param.param.length) {
             let a = param
             let temp = {
@@ -23,7 +16,6 @@ export default function Question({question, questionNumber, setQuestionNumber, p
                 "quiz_id": param.quiz_id,
                 "title": title
             }
-
             a.param.push(temp)
             setparam(a)
         } else {
@@ -31,7 +23,6 @@ export default function Question({question, questionNumber, setQuestionNumber, p
             a.param[a.param.length-1].answer_id = m.ansId
             setparam(a)
         }
-        console.log(param);
 
         if(questionNumber === userAnswers.length) {
             let b = userAnswers

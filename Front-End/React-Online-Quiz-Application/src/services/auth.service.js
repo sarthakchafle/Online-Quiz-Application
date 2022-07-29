@@ -8,6 +8,7 @@ const register = (firstName, lastName, email, password) => {
     lastName,
     password,
     email,
+    "admin": false
   });
 };
 
@@ -22,13 +23,11 @@ const login = async(email, password) => {
       { "Access-Control-Expose-Headers": "*" }
     )
     .then((response) => {
-      console.log(response);
       if (response.headers.token) {
         localStorage.setItem("user", response.headers.token);
         localStorage.setItem("userId", response.headers.userid);
         localStorage.setItem("isAdmin", response.headers.isadmin);
       }
-      console.log(response.headers.token);
       return response.headers.token;
     });
 };

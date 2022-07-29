@@ -14,8 +14,11 @@ export default function AllQuizzes() {
   const [search, setSearch] = useState();
   const [originalData, setOriginalData] = useState([]);
   const [attemptedQuizIds, setAttemptedQuizIds] = useState([]);
+  
   useEffect(() => {
-    getData();
+    if(AuthService.isLoggedIn()) {
+      getData();
+    }
   }, []);
 
   const getData = async () => {
@@ -82,7 +85,7 @@ export default function AllQuizzes() {
                 style={{ backgroundColor: "beige" }}
               >
                 <h4 style={{ maxWidth: "100px" }}>{item.title}</h4>
-                <span>Time Limit: 20 minutes</span>
+                <span>Time Limit: {item.time_Limit} minutes</span>
                 <Button
                   className="my-3 px-5"
                   variant="contained"
@@ -93,7 +96,7 @@ export default function AllQuizzes() {
                       replace: true,
                     })
                   }
-                  // disabled={isAttempted}
+                  disabled={isAttempted}
                 >
                   Start
                 </Button>

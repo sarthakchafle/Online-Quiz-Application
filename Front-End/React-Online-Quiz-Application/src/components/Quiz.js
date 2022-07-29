@@ -20,6 +20,7 @@ export default function Quiz() {
   const [error, setError] = useState(false);
   const [userAnswers, setUserAnswers] = useState([]);
   const [canSubmit, setcanSubmit] = useState(false);
+  const [timeLimit, setTimeLimit] = useState(0);
 
   useEffect(() => {
     if (!location.state) {
@@ -31,18 +32,22 @@ export default function Quiz() {
   const getData = async () => {
     let res = await getQuizByTitle(title);
     setQuestions(res.data.question);
+    setTimeLimit(res.data.timeLimit);
     setparam({
       length: res.data.question.length,
       quiz_id: res.data.quizId,
       param: [],
     });
-    console.log(res.data);
   };
 
   useEffect(() => {
     let myInterval = setInterval(() => {
       if (seconds > 0) {
         setSeconds(seconds - 1);
+      }
+      if (minutes === 1 && seconds === 1) {
+        setSeconds(60);
+        setMinutes(0);
       }
       if (seconds === 0) {
         if (minutes === 0) {
@@ -54,15 +59,14 @@ export default function Quiz() {
       }
     }, 1000);
     if (minutes === 0 && seconds === 0 && canSubmit) {
-      console.log("here");
       submit();
     }
     return () => {
       clearInterval(myInterval);
     };
   });
+  
   const submit = () => {
-    
     let temp = param ? param.param : [];
     if (temp.length !== questions.length) {
       while (temp.length !== questions.length) {
@@ -70,15 +74,12 @@ export default function Quiz() {
           user_id: AuthService.getCurrentUser().id,
           answer_id: -1,
           quiz_id: param.quiz_id,
-          title:title
+          title: title
         });
       }
     }
-    console.log({ param });
-    console.log({ userAnswers });
     AnswerService.saveAnswers(param.param).then(
       (response) => {
-        console.log({ response });
         setMinutes(0);
         setSeconds(0);
       },
@@ -115,8 +116,13 @@ export default function Quiz() {
             style={{ backgroundColor: "#533b7c" }}
             onClick={() => {
               setStarted(true);
-              setMinutes(0);
-              setSeconds(30);
+              setMinutes(1)
+              setSeconds(15)
+              // if(timeLimit === 1) {
+              //   setSeconds(60);
+              // } else {
+              //   setMinutes(timeLimit);
+              // }
               setcanSubmit(true);
             }}
           >
@@ -149,7 +155,6 @@ export default function Quiz() {
                   variant="contained"
                   style={{ backgroundColor: "#533b7c" }}
                   onClick={() => {
-                    console.log("answer: ", userAnswers);
                     navigate("/result", {
                       state: {
                         param: param.param,
@@ -192,7 +197,7 @@ export default function Quiz() {
             submit={submit}
             userAnswers={userAnswers}
             setUserAnswers={setUserAnswers}
-            title = {title}
+            title={title}
           />
         </div>
       )}

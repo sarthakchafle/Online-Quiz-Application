@@ -5,7 +5,6 @@ import AuthService from "./auth.service";
 const API_URL = "http://localhost:8299/answer-service/api/";
 
 const saveAnswers = (param) => {
-	console.log(param);
 	try {
 		return axios.post(API_URL + "saveAnswer", param, {
 		headers: authHeader(),
@@ -18,10 +17,6 @@ const saveAnswers = (param) => {
 }
 
 export const getAllAttemptedQuiz = () => {
-	// fetch(`${API_URL}getAllAttemptedQuiz?user_id=${AuthService.getCurrentUser().id}`, {
-    //     method: 'get',
-    //     headers: authHeader()
-    // })
 	return axios.get(API_URL + "getAllAttemptedQuiz", {
 		params: { user_id: AuthService.getCurrentUser().id}, 
 		headers: authHeader() 

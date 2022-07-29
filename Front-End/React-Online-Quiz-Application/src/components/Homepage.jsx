@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@mui/styles";
 import { Link, useLocation, Navigate } from "react-router-dom";
 import "./homepage.css";
-import Navbar from "./Navbar";
 import AuthService from "../services/auth.service";
-// import Loading from "components/Loading";
-// import { getHomepage } from "services/staticdata";
 
 const useStyles = makeStyles({
   rightImage: {
@@ -199,39 +196,21 @@ const Homepage = () => {
   });
 
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-
-  // useEffect(() => {
-  //   console.log("loading...");
-  //   getHomepage(
-  //     () => {
-  //       //loading
-  //       setIsLoading(true);
-  //     },
-  //     (response) => {
-  //       if (response.success) {
-  //         setHpdata(response.data);
-  //         setIsLoading(false);
-  //       }
-  //     }
-  //   );
-  // }, []);
 
   if (!AuthService.isLoggedIn()) {
     return <Navigate to="/login" replace state={{ from: location }} />;
   }
+
   const logOut = () => {
     AuthService.logout();
-    //setcreateQuiz(false);
   };
   return (
     <>
-      {isLoading}
       <div className="homepage">
         <header className="header">
           <div className="overlay has-fade hide-for-desktop"></div>
           <nav className="flex flex-jc-sb flex-ai-c container container--pall">
-            <Link to="/home" className="header__logo logo">
+            <Link to="/" className="header__logo logo">
               <i className="bx bxs-bookmark"></i>
               <span>Quizerra</span>
             </Link>
@@ -260,6 +239,13 @@ const Homepage = () => {
                 <Link to={"/profile"} className="btn-red">
                   Profile
                 </Link>
+                {
+                  AuthService.getCurrentUser().isAdmin === "true" ?
+                    <Link to={"/review"} className="btn-red">
+                      Reviews
+                    </Link> : null
+                }
+                
                 <Link to={"/"} className="btn-red" onClick={logOut}>
                   Logout
                 </Link>

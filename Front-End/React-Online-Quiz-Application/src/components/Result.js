@@ -182,10 +182,10 @@ const Result = () => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
+          <Button onClick={() => setOpenDialog(false)}>No</Button>
           <Button onClick={() => navigate("/feedback", { replace: true })}>
             Yes
           </Button>
-          <Button onClick={() => setOpenDialog(false)}>No</Button>
         </DialogActions>
       </Dialog>
       {mail && (

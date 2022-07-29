@@ -43,6 +43,16 @@ const App = () => {
     AuthService.logout();
     //setcreateQuiz(false);
   };
+  useEffect(() => {
+    const unloadCallback = (event) => {
+      event.preventDefault();
+      event.returnValue = "";
+      return "";
+    };
+
+    window.addEventListener("beforeunload", unloadCallback);
+    return () => window.removeEventListener("beforeunload", unloadCallback);
+  }, []);
   return (
     <div>
       {/* <nav

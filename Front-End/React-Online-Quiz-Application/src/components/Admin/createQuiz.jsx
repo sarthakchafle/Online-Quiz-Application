@@ -15,7 +15,6 @@ import "./createquiz.css";
 import NotAllowed from "../NotAllowed";
 import Snackbar from "@mui/material/Snackbar";
 
-
 const CreateQuiz = () => {
   let navigate = useNavigate();
   const [state, setState] = useState(0);
@@ -25,12 +24,12 @@ const CreateQuiz = () => {
   const [count, setCount] = useState(0);
   const [numberOfQuestions, setNumberOfQuestions] = useState(3);
   const [formattedArray, setFormattedArray] = useState([]); //api
-  const [timeLimit, setTimeLimit] = useState()
-  const [showSnackBar, setshowSnackBar] = useState(false)
+  const [timeLimit, setTimeLimit] = useState();
+  const [showSnackBar, setshowSnackBar] = useState(false);
   let que = {
     title: title,
     question: formattedArray,
-    timeLimit: timeLimit
+    timeLimit: timeLimit,
   }; // api
 
   useEffect(() => {
@@ -52,9 +51,7 @@ const CreateQuiz = () => {
   }
 
   if (admin === "false") {
-    return (
-      <NotAllowed />
-    );
+    return <NotAllowed />;
   }
 
   return (
@@ -114,17 +111,16 @@ const CreateQuiz = () => {
               setTimeLimit(e.target.value);
             }}
           />
-          <br />          
+          <br />
           <button
             className="btn-red-for-rest-pages my-2"
             onClick={(e) => {
-              let reg = /^\d+$/
-              if(title && timeLimit && reg.test(timeLimit)) {
-                setState(1)
+              let reg = /^\d+$/;
+              if (title && timeLimit && reg.test(timeLimit)) {
+                setState(1);
               } else {
-                setshowSnackBar(true)
+                setshowSnackBar(true);
               }
-              
             }}
             variant="contained"
             sx={{ backgroundColor: "#533b7c" }}
@@ -163,17 +159,18 @@ const CreateQuiz = () => {
           <button
             href="/allQuizzes"
             className="btn-red-for-rest-pages"
+            onClick={() => navigate("/allQuizzes")}
           >
             Show Quizzes
           </button>
         </div>
       )}
-        <Snackbar
-          open={showSnackBar}
-          autoHideDuration={6000}
-          onClose={() => setshowSnackBar(false)}
-          message="Enter valid response"
-        />
+      <Snackbar
+        open={showSnackBar}
+        autoHideDuration={6000}
+        onClose={() => setshowSnackBar(false)}
+        message="Enter valid response"
+      />
     </div>
   );
 };

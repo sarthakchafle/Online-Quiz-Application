@@ -20,7 +20,7 @@ export default function Quiz() {
   const [error, setError] = useState(false);
   const [userAnswers, setUserAnswers] = useState([]);
   const [canSubmit, setcanSubmit] = useState(false);
-  const [timeLimit, setTimeLimit] = useState(0)
+  const [timeLimit, setTimeLimit] = useState(0);
 
   useEffect(() => {
     if (!location.state) {
@@ -32,7 +32,7 @@ export default function Quiz() {
   const getData = async () => {
     let res = await getQuizByTitle(title);
     setQuestions(res.data.question);
-    setTimeLimit(res.data.timeLimit)
+    setTimeLimit(res.data.timeLimit);
     setparam({
       length: res.data.question.length,
       quiz_id: res.data.quizId,
@@ -45,10 +45,17 @@ export default function Quiz() {
       if (seconds > 0) {
         setSeconds(seconds - 1);
       }
+      if (minutes === 1 && seconds === 1) {
+        setSeconds(60);
+        setMinutes(0);
+      }
       if (seconds === 0) {
+        console.log("here");
         if (minutes === 0) {
+          console.log("here2");
           clearInterval(myInterval);
         } else {
+          console.log("here3");
           setMinutes(minutes - 1);
           setSeconds(59);
         }
@@ -56,6 +63,7 @@ export default function Quiz() {
     }, 1000);
     if (minutes === 0 && seconds === 0 && canSubmit) {
       console.log("here");
+      console.log("submit");
       submit();
     }
     return () => {
@@ -63,7 +71,6 @@ export default function Quiz() {
     };
   });
   const submit = () => {
-    
     let temp = param ? param.param : [];
     if (temp.length !== questions.length) {
       while (temp.length !== questions.length) {
@@ -115,7 +122,11 @@ export default function Quiz() {
             style={{ backgroundColor: "#533b7c" }}
             onClick={() => {
               setStarted(true);
-              setMinutes(timeLimit);
+              if (timeLimit === 1) {
+                setSeconds(60);
+              } else {
+                setMinutes(timeLimit);
+              }
               setcanSubmit(true);
             }}
           >

@@ -56,7 +56,7 @@ const Register = () => {
     AuthService.login(email, password).then(
       () => {
         navigate(location.state ? location.state.from : "/");
-        window.location.reload();
+        // window.location.reload();
       },
       (error) => {
         const resMessage =

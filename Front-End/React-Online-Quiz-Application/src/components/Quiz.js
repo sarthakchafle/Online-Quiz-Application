@@ -50,22 +50,27 @@ export default function Quiz() {
         setMinutes(0);
       }
       if (seconds === 0) {
+        console.log("here");
         if (minutes === 0) {
+          console.log("here2");
           clearInterval(myInterval);
         } else {
+          console.log("here3");
           setMinutes(minutes - 1);
           setSeconds(59);
         }
       }
     }, 1000);
     if (minutes === 0 && seconds === 0 && canSubmit) {
+      console.log("here");
+      console.log("submit");
       submit();
     }
     return () => {
       clearInterval(myInterval);
     };
   });
-  
+
   const submit = () => {
     let temp = param ? param.param : [];
     if (temp.length !== questions.length) {
@@ -74,7 +79,7 @@ export default function Quiz() {
           user_id: AuthService.getCurrentUser().id,
           answer_id: -1,
           quiz_id: param.quiz_id,
-          title: title
+          title: title,
         });
       }
     }
@@ -116,13 +121,13 @@ export default function Quiz() {
             style={{ backgroundColor: "#533b7c" }}
             onClick={() => {
               setStarted(true);
-              setMinutes(1)
-              setSeconds(15)
-              // if(timeLimit === 1) {
-              //   setSeconds(60);
-              // } else {
-              //   setMinutes(timeLimit);
-              // }
+              // setMinutes(1)
+              // setSeconds(15)
+              if (timeLimit === 1) {
+                setSeconds(60);
+              } else {
+                setMinutes(timeLimit);
+              }
               setcanSubmit(true);
             }}
           >

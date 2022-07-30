@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8299/users-service/users";
+const API_URL =
+  "http://apigateway-env.eba-prjw3tjy.ap-southeast-1.elasticbeanstalk.com/users-service/users";
 
 const register = (firstName, lastName, email, password) => {
   return axios.post(API_URL + "/register", {
@@ -8,11 +9,11 @@ const register = (firstName, lastName, email, password) => {
     lastName,
     password,
     email,
-    "admin": false
+    admin: false,
   });
 };
 
-const login = async(email, password) => {
+const login = async (email, password) => {
   return await axios
     .post(
       API_URL + "/login",
@@ -42,23 +43,23 @@ const getCurrentUser = () => {
   return {
     user: localStorage.getItem("user"),
     id: localStorage.getItem("userId"),
-    isAdmin: localStorage.getItem("isAdmin")
+    isAdmin: localStorage.getItem("isAdmin"),
   };
 };
 
 const isLoggedIn = () => {
-  if(localStorage.getItem("user")) {
+  if (localStorage.getItem("user")) {
     return true;
   }
   return false;
-}
+};
 
 const AuthService = {
   register,
   login,
   logout,
   getCurrentUser,
-  isLoggedIn
+  isLoggedIn,
 };
 
 export default AuthService;
